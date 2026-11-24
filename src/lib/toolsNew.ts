@@ -1,0 +1,433 @@
+import type { Tool } from "@/lib/tools";
+
+type NewToolInput = {
+  slug: string;
+  name: string;
+  shortName: string;
+  category: Tool["category"];
+  icon: Tool["icon"];
+  tagline: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  about: [string, string];
+  steps: string[];
+  faqs: string[];
+  keywords: string[];
+  popular?: boolean;
+};
+
+/**
+ * Compact factory for the expansion tools. Every tool still gets a unique
+ * title, meta description, introduction, background, instructions, FAQs and
+ * keywords — they are simply authored as fixed-length tuples to keep the
+ * registry reviewable.
+ */
+/** Split a flat [title, text, title, text, …] array into validated pairs. */
+function pairs(values: string[]): [string, string][] {
+  const result: [string, string][] = [];
+  for (let index = 0; index + 1 < values.length; index += 2) {
+    const first = values[index]?.trim();
+    const second = values[index + 1]?.trim();
+    if (first && second) result.push([first, second]);
+  }
+  return result;
+}
+
+function makeTool(input: NewToolInput): Tool {
+  return {
+    slug: input.slug,
+    name: input.name,
+    shortName: input.shortName,
+    category: input.category,
+    icon: input.icon,
+    tagline: input.tagline,
+    metaTitle: input.metaTitle,
+    metaDescription: input.metaDescription,
+    intro: input.intro,
+    about: [input.about[0], input.about[1]],
+    steps: pairs(input.steps).map(([title, text]) => ({ title, text })),
+    faqs: pairs(input.faqs).map(([q, a]) => ({ q, a })),
+    keywords: input.keywords,
+    updated: "February 2026",
+    isNew: true,
+    popular: input.popular,
+  };
+}
+
+export const newTools: Tool[] = [
+  /* ---------------------------------- PDF ---------------------------------- */
+  makeTool({
+    slug: "pdf-compressor", name: "PDF Compressor", shortName: "Compress PDF", category: "files", icon: "layers",
+    tagline: "Shrink image-heavy PDFs by rebuilding pages at a controlled quality.",
+    metaTitle: "PDF Compressor — Reduce PDF File Size Locally | Toolora",
+    metaDescription: "Reduce PDF file size in your browser by re-rendering pages as compressed JPEG or WebP, with before-and-after sizes. Clear limits for text and scanned files.",
+    intro: "Choose a quality level, see the before-and-after size, and download a smaller PDF.",
+    about: ["Documents are rasterised page by page with PDF.js and rebuilt with pdf-lib. That genuinely reduces image-heavy and scanned PDFs, but it converts text into an image, so selectable text and accessible reading order are lost. Keep the original when searchable text matters.", "Password-protected PDFs cannot be opened, and files are never uploaded: the entire conversion runs in this tab. Large documents take longer and use more memory, so the tool shows progress and caps the page count."],
+    steps: ["Load a PDF", "Pick a file and (optionally) restrict it to a page range. The page count is shown before you start.", "Choose quality", "Lower quality shrinks the file more. Check the preview and the resulting size before downloading.", "Download the result", "Save the compressed PDF and compare it with the original."],
+    faqs: ["Will my PDF still be searchable?", "Not with this method. Pages are rasterised, so text becomes part of an image. Use a dedicated text-preserving optimiser if selectable text is essential.", "Why did my PDF get bigger?", "Text-only PDFs are already efficiently compressed; rasterising can increase size. If the result is larger, keep the original.", "Are my files uploaded?", "No. PDF.js and pdf-lib run in your browser. Nothing is sent to Toolora.", "What about scanned documents?", "Scanned pages are already images, which is where this tool helps most. Choose a quality that keeps handwriting and stamps legible."],
+    keywords: ["pdf compressor", "reduce pdf size", "compress pdf online"], popular: true,
+  }),
+  makeTool({
+    slug: "pdf-to-images", name: "PDF to JPG or PNG", shortName: "PDF to Images", category: "files", icon: "image",
+    tagline: "Render PDF pages as crisp JPG or PNG images, with a download for each page.",
+    metaTitle: "PDF to JPG / PNG Converter — Page Images | Toolora",
+    metaDescription: "Convert PDF pages into JPG or PNG images in your browser. Choose resolution and format, preview pages and download individual images. No uploads.",
+    intro: "Turn each page into an image for slides, previews or messaging apps.",
+    about: ["PDF.js renders every page to a canvas at a resolution you choose; the canvas is then exported as JPEG or PNG. Higher scale means sharper text and larger files. PNG keeps hard edges and transparency, while JPEG is usually smaller for scans and photographs.", "A PDF with many pages produces many images. Pages are generated in your browser, and nothing is uploaded. Encrypted PDFs are rejected with an explanation instead of an empty result."],
+    steps: ["Load the PDF", "Pick a PDF file; the page count appears once it is parsed.", "Pick format and scale", "Choose JPG or PNG and a resolution multiplier such as 2× for readable text.", "Download pages", "Convert, preview the results and download the pages you need."],
+    faqs: ["What resolution should I choose?", "1.5–2× is readable for most screens; 3× is sharper for print but much larger. Very high values can exhaust memory on mobile.", "Is the text still selectable?", "No. The output is an image; text is no longer selectable or searchable.", "Can I convert only some pages?", "Yes. Enter a range such as 1-3, 7 before converting.", "Are passwords supported?", "No. Remove the password in a reader first; encrypted PDFs are refused deliberately."],
+    keywords: ["pdf to jpg", "pdf to png", "convert pdf pages to image"], popular: true,
+  }),
+  makeTool({
+    slug: "images-to-pdf", name: "Images to PDF", shortName: "Images to PDF", category: "files", icon: "fileText",
+    tagline: "Combine photos and scans into one ordered PDF, entirely locally.",
+    metaTitle: "JPG to PDF — Combine Images into a PDF | Toolora",
+    metaDescription: "Convert JPG, PNG and WebP images into a single PDF. Reorder files, choose page size and margins, and download the result. Images never leave your device.",
+    intro: "Turn receipts, ID photos or scanned pages into one tidy PDF.",
+    about: ["Each image is embedded into a new PDF at its natural aspect ratio, with an optional A4 or Letter page and margin. PNG transparency is flattened onto white, because PDF pages here have no alpha background. The order of the file list becomes the page order.", "pdf-lib builds the document in your browser, so personal photos and identity documents are never uploaded. Very large photos are scaled to fit the page rather than cropped."],
+    steps: ["Add images", "Drop JPG, PNG or WebP files. Reorder them until the page order is right.", "Choose page settings", "Select page size and margin, or keep the image dimensions.", "Create and download", "Build the PDF and save it locally."],
+    faqs: ["Which image formats work?", "JPEG, PNG and WebP. Other formats should be converted first with the Image Format Converter.", "Does it compress the photos?", "The PDF embeds the images; pdf-lib may recompress them. Use the image compressor first if the PDF must be small.", "Can I reorder pages?", "Yes, use the arrows next to each file before building the PDF.", "Are my images uploaded?", "No, everything is processed locally in the browser."],
+    keywords: ["jpg to pdf", "images to pdf", "photos to pdf"], popular: true,
+  }),
+  makeTool({
+    slug: "pdf-organizer", name: "PDF Page Organizer", shortName: "Organize Pages", category: "files", icon: "layers",
+    tagline: "Rotate, reorder and delete PDF pages in one visual workspace.",
+    metaTitle: "PDF Page Organizer — Rotate, Reorder & Delete | Toolora",
+    metaDescription: "Rearrange PDF pages, rotate them in 90° steps and delete unwanted pages, then download the reorganised PDF. All processing happens on your device.",
+    intro: "Fix a sideways scan, move a page and drop a blank one — without a desktop editor.",
+    about: ["The organizer copies pages in the exact order you set, applying a rotation to each selected page before saving. Deleted pages are simply not included in the new document; the original file on disk is untouched.", "Page thumbnails make the operation visual, while the numeric controls stay usable on small screens and with a keyboard. Bookmarks, forms and signatures are not preserved by a page-level rebuild."],
+    steps: ["Open the PDF", "Choose a file and wait for the page thumbnails.", "Organise", "Move pages up or down, rotate in 90° steps, or delete pages you no longer need.", "Export", "Download a new PDF containing only the pages you kept, in your chosen order."],
+    faqs: ["Can I rotate only one page?", "Yes. Rotation applies per page, so you can fix a single sideways scan.", "Can I undo a deletion?", "Deleted pages are removed from the working list; reload the PDF to start again from the original.", "Does it preserve links and forms?", "No. A rebuilt document may lose interactive features. Keep the original if they matter.", "Is there a page limit?", "Very large documents depend on browser memory; the tool handles typical office documents well."],
+    keywords: ["reorder pdf pages", "rotate pdf", "delete pdf pages"], popular: true,
+  }),
+  makeTool({
+    slug: "pdf-metadata-viewer", name: "PDF Metadata Viewer", shortName: "PDF Metadata", category: "files", icon: "fileText",
+    tagline: "Inspect a PDF's title, author, producer, dates and page count.",
+    metaTitle: "PDF Metadata Viewer — Inspect Document Info | Toolora",
+    metaDescription: "View PDF document metadata: title, author, subject, creator, producer, creation and modification dates, page count and file size. Read locally, never uploaded.",
+    intro: "See what a PDF says about itself before you share it.",
+    about: ["The viewer reads the document information dictionary and the XMP metadata snapshot that many applications embed. Some PDFs contain fields such as GPS coordinates or author names that writers did not intend to publish, so checking before sharing is a sensible privacy habit.", "Metadata is often incomplete or inaccurate: scanners may record generic producer names, and dates can reflect the editing application rather than the document. This tool reads information; it does not remove or rewrite it."],
+    steps: ["Select a PDF", "The file is parsed locally in the browser.", "Review the fields", "Empty fields are shown as not present rather than hidden.", "Copy what you need", "Copy individual values for a record or an email."],
+    faqs: ["Can this remove metadata?", "No. It only displays it. Use a dedicated PDF editor to strip metadata before publishing.", "Why are some fields empty?", "Not every PDF includes title, author or dates. Missing values are normal and are shown honestly.", "Is my document uploaded?", "No. Parsing happens in the tab; no file is sent to a server.", "Are GPS coordinates visible?", "If the producing software embedded them in XMP, they may appear in the metadata table."],
+    keywords: ["pdf metadata viewer", "pdf document properties", "check pdf author"],
+  }),
+  makeTool({
+    slug: "pdf-to-text", name: "PDF to Text", shortName: "PDF to Text", category: "files", icon: "fileText",
+    tagline: "Extract selectable text from a PDF, page by page.",
+    metaTitle: "PDF to Text Converter — Extract Text Locally | Toolora",
+    metaDescription: "Extract selectable text from PDF pages in your browser. Preview, copy or download the text. Scanned image-only PDFs are explained, not guessed.",
+    intro: "Get the words out of a PDF for editing, quoting or translation.",
+    about: ["Text is extracted with PDF.js from the PDF text layer, preserving page boundaries and line breaks where the document provides them. This works for digitally created PDFs and scans that include OCR text. A pure image scan has no text layer, and no text will be produced.", "The tool does not invent OCR. If a scanned PDF yields nothing, the honest answer is that OCR is required; that would need a separate engine and is not performed here. Extraction is local, so confidential documents stay on your device."],
+    steps: ["Load a PDF", "Choose the file; the page count is detected.", "Extract", "Run extraction and review the text per page.", "Copy or download", "Copy the text or save it as a .txt file for further editing."],
+    faqs: ["Why is the text empty?", "The PDF probably contains only scanned images without an OCR text layer. This tool does not perform OCR.", "Is formatting preserved?", "Paragraph breaks are approximated. Tables, columns and precise layout are not reconstructed reliably.", "Does it support every language?", "It returns the characters stored in the PDF's text layer, including non-Latin scripts when encoded correctly.", "Are documents uploaded?", "No, extraction happens entirely in your browser."],
+    keywords: ["pdf to text", "extract text from pdf", "copy text from pdf"], popular: true,
+  }),
+
+  /* --------------------------------- images -------------------------------- */
+  makeTool({
+    slug: "bulk-image-processor", name: "Bulk Image Processor", shortName: "Bulk Images", category: "files", icon: "image",
+    tagline: "Resize, compress and convert many images at once, then download a ZIP.",
+    metaTitle: "Bulk Image Resizer & Compressor — ZIP Download | Toolora",
+    metaDescription: "Process multiple images together: resize to a maximum width, set quality and convert between JPEG, PNG and WebP. Download individual files or a ZIP archive.",
+    intro: "A whole folder of product photos or screenshots, handled in one pass.",
+    about: ["Each image is decoded locally, optionally scaled to a maximum width, and re-encoded as JPEG, WebP or PNG at the quality you choose. The results list shows original and new sizes so you can see which files actually benefited before downloading a ZIP.", "Batch processing uses sequential canvas work to keep the page responsive. A very large batch consumes memory, so the tool reports progress and keeps failed files visible rather than silently skipping them. Transparency becomes white when exporting to JPEG."],
+    steps: ["Add images", "Drop as many JPEG, PNG or WebP files as you need.", "Choose settings", "Set maximum width, quality and output format, then start the batch.", "Download results", "Save individual files or download everything as one ZIP."],
+    faqs: ["Does every image need processing?", "No. Some photos may already be smaller than an optimised re-encode. Compare the reported sizes and keep the originals when the result is larger.", "Why is the ZIP missing a file?", "That file failed to decode; failed entries are listed explicitly with the reason.", "Can I resize without compressing?", "Set quality to 100 and choose PNG for lossless output, though files may be large.", "Are images uploaded?", "No. All files are processed on your device."],
+    keywords: ["bulk image resizer", "batch image compressor", "compress images zip"], popular: true,
+  }),
+  makeTool({
+    slug: "image-dimensions-checker", name: "Image Dimensions Checker", shortName: "Dimensions", category: "files", icon: "image",
+    tagline: "Check pixel dimensions, aspect ratio and size for several images.",
+    metaTitle: "Image Dimensions Checker — Width, Height & Ratio | Toolora",
+    metaDescription: "Check image dimensions, aspect ratio, orientation and file size for JPG, PNG, WebP or GIF. Inspect several images at once, locally in your browser.",
+    intro: "Know the exact pixel size before uploading to a site or print shop.",
+    about: ["The checker reports the decoded width and height, the simplified aspect ratio, orientation and file size. It is useful when a form demands precise dimensions or when a 'high resolution' photo is actually too small for print.", "Dimensions are read locally from image metadata and decoding. No resampling happens, so the numbers are the source image's real pixel grid, not a display size."],
+    steps: ["Add images", "Drop one or several images.", "Read the table", "Width, height, ratio, megapixels and file size are listed per image.", "Copy or convert", "Copy a summary, or jump to the resizer if a different size is required."],
+    faqs: ["Does it show DPI?", "DPI is print metadata and may be missing. Pixel dimensions are what matter on screen; for print, ask the printer for required pixels at the intended size.", "What is aspect ratio?", "The reduced width-to-height relationship, such as 4:3 or 16:9.", "Can it check many files?", "Yes, results are listed per file without uploading anything.", "Which formats are supported?", "JPEG, PNG, WebP, GIF and other formats the browser itself can decode."],
+    keywords: ["image dimensions checker", "image size in pixels", "aspect ratio checker"],
+  }),
+  makeTool({
+    slug: "image-metadata-viewer", name: "Image Metadata Viewer", shortName: "EXIF Viewer", category: "files", icon: "image",
+    tagline: "Inspect EXIF, camera settings and embedded metadata before sharing a photo.",
+    metaTitle: "Image Metadata / EXIF Viewer — Check Before Sharing | Toolora",
+    metaDescription: "Read camera, capture date, GPS and other embedded metadata from JPEG photos. Understand what your image reveals before you publish it. Processed locally.",
+    intro: "Check whether a photo carries GPS, camera serial numbers or editing history.",
+    about: ["JPEG files commonly contain EXIF data: camera make and model, exposure settings, capture time and sometimes GPS coordinates. The viewer parses these fields in your browser so you can see what would travel with the file if you published it.", "Not every image has metadata, and some platforms strip it automatically. This tool reads what is present in the file you selected; it does not remove metadata. Re-encoding an image through a canvas usually drops most of it."],
+    steps: ["Select a JPEG", "EXIF parsing is most complete for JPEG files.", "Review the fields", "Camera, exposure, dates and GPS are grouped when present.", "Act on it", "Remove location data with the Image Compressor before sharing publicly."],
+    faqs: ["Which formats have EXIF?", "Mostly JPEG and some TIFF/HEIC files. PNG and WebP may carry limited metadata but typically not full camera EXIF.", "Is GPS always present?", "Only if the camera or phone recorded it. If no GPS fields appear, none were found in the file.", "Can I remove metadata here?", "This viewer only reads. Re-encoding via the image compressor or format converter usually strips EXIF.", "Are photos uploaded?", "No, parsing happens locally."],
+    keywords: ["exif viewer", "image metadata viewer", "photo gps check"], popular: true,
+  }),
+  makeTool({
+    slug: "favicon-generator", name: "Favicon Generator", shortName: "Favicon", category: "files", icon: "image",
+    tagline: "Create a square favicon set plus copy-ready HTML from any image.",
+    metaTitle: "Favicon Generator — 16/32/180 px Icons | Toolora",
+    metaDescription: "Generate 16, 32, 48, 180 and 512 pixel favicons from an image or letter, preview them in a browser tab mock-up and download each PNG with ready HTML tags.",
+    intro: "A practical favicon set without a round-trip to a design tool.",
+    about: ["The generator centres your image on a square canvas, fills the background, and exports standard sizes including the 180 px apple-touch-icon and a 512 px maskable-friendly square. Small sizes genuinely differ from a scaled-down large icon, so each size is rendered directly.", "Simple marks survive 16 px better than detailed logos. If your image is intricate, crop it to a symbol first or use the letter mode. The HTML snippet covers the common link tags; ICO conversion is not performed, and modern browsers accept PNG favicons."],
+    steps: ["Upload or choose a letter", "A square source image works best; the letter mode needs no file.", "Set colours and shape", "Choose a background, optional rounded corners and preview the sizes.", "Download and install", "Download PNGs and paste the provided link tags into your HTML head."],
+    faqs: ["Do I need an .ico file?", "Modern browsers accept PNG favicons. Some older systems still request /favicon.ico; an .ico is not produced here.", "What sizes are generated?", "16, 32, 48, 180 (Apple touch icon) and 512 px (PWA/manifest).", "Why does my icon look blurry at 16 px?", "Detail is lost at that size. Use a simpler mark or the letter mode for crisp results.", "Are images uploaded?", "No, icons are rendered locally with canvas."],
+    keywords: ["favicon generator", "website icon maker", "apple touch icon"],
+  }),
+  makeTool({
+    slug: "social-media-image-resizer", name: "Social Media Image Resizer", shortName: "Social Resizer", category: "files", icon: "image",
+    tagline: "Crop and resize images to common social and web presets.",
+    metaTitle: "Social Media Image Resizer — Platform Presets | Toolora",
+    metaDescription: "Resize and centre-crop images for Instagram, Facebook, X, LinkedIn, YouTube and Open Graph. Exact pixel presets, previews and PNG download, locally.",
+    intro: "One photo, the right dimensions for each platform.",
+    about: ["Each preset defines a fixed pixel canvas. The image is scaled to cover that canvas and cropped from the centre, so faces near an edge may need manual adjustment with the Image Cropper. Output dimensions are exact, which is what platforms' upload rules expect.", "Presets are practical guidelines rather than official guarantees: networks change crops and safe zones. Preview the result and keep important content away from edges. All rendering is local."],
+    steps: ["Choose a preset", "Pick a platform and placement to load its pixel dimensions.", "Load your image", "The tool scales and centre-crops it to the preset.", "Review and download", "Check the preview, then download the PNG at exact dimensions."],
+    faqs: ["Are these official platform sizes?", "They are widely used practical sizes. Platforms change recommendations, so verify current guidance for critical campaigns.", "Why is my image cropped?", "Presets have fixed aspect ratios. The image is scaled to fill and centre-cropped; use the cropper for manual framing.", "Can I keep the full image?", "Choose 'fit' mode to letterbox instead of cropping, accepting extra background.", "Are my photos uploaded?", "No, scaling and export happen in your browser."],
+    keywords: ["social media image resizer", "instagram size", "open graph image size"], popular: true,
+  }),
+
+  /* ----------------------------- file conversion --------------------------- */
+  makeTool({
+    slug: "csv-json-converter", name: "CSV ↔ JSON Converter", shortName: "CSV ↔ JSON", category: "developer", icon: "code",
+    tagline: "Convert CSV to JSON or JSON to CSV with clear header and quoting rules.",
+    metaTitle: "CSV to JSON & JSON to CSV Converter | Toolora",
+    metaDescription: "Convert CSV to a JSON array or JSON objects back to CSV. Handles quoted fields, custom delimiters, typed values and nested objects with explicit errors.",
+    intro: "Move tabular data between spreadsheets and code without mangling quotes.",
+    about: ["The CSV parser follows quoting rules: commas inside quotes stay part of a field, doubled quotes become a literal quote, and newlines inside quotes are preserved. JSON output uses the first row as object keys, matching what most APIs expect. JSON to CSV flattens nested objects by default so no data disappears silently.", "Very large files are processed once on demand rather than on every keystroke. If a row has a different number of fields, the tool reports it instead of quietly shifting columns."],
+    steps: ["Choose the direction", "CSV → JSON for spreadsheets to APIs; JSON → CSV for the reverse.", "Paste or drop a file", "Set the delimiter and whether values should be typed.", "Copy or download", "Download .json or .csv and inspect any reported row errors."],
+    faqs: ["Are quoted commas handled?", "Yes. Standard CSV quoting is respected, including escaped quotes and embedded line breaks inside quoted fields.", "What happens to nested JSON?", "Nested objects are flattened with dot notation in CSV so values are not silently dropped.", "Can I choose a delimiter?", "Yes, commas, semicolons, tabs and pipes are supported.", "Is my data uploaded?", "No, parsing and conversion are local."],
+    keywords: ["csv to json", "json to csv", "convert spreadsheet to json"], popular: true,
+  }),
+  makeTool({
+    slug: "json-xml-converter", name: "JSON ↔ XML Converter", shortName: "JSON ↔ XML", category: "developer", icon: "code",
+    tagline: "Convert JSON to XML or XML to JSON with predictable element mapping.",
+    metaTitle: "JSON to XML & XML to JSON Converter | Toolora",
+    metaDescription: "Convert JSON to well-formed XML and XML back to JSON. Handles attributes, arrays, repeated elements and escaping, with validation errors shown clearly.",
+    intro: "Bridge configuration formats without hand-editing angle brackets.",
+    about: ["JSON to XML wraps arrays in item elements and escapes reserved characters. XML to JSON uses attributes with an @ prefix and text content, so nothing is lost silently. XML is parsed with the browser's strict XML parser; malformed markup is reported rather than repaired.", "Mapping between the two models is not perfectly lossless in general: mixed content, comments and processing instructions have no natural JSON equivalent. The tool explains its conventions so you can predict the output."],
+    steps: ["Pick a direction", "JSON → XML or XML → JSON.", "Paste the source", "Invalid source is rejected with the parser's message.", "Copy the result", "Download or copy the converted document."],
+    faqs: ["How are array items named?", "They become <item> elements. Repeated XML siblings become JSON arrays.", "How are XML attributes represented?", "Attribute names are prefixed with @ in the JSON output.", "Are comments preserved?", "No. XML comments and processing instructions are not represented in JSON.", "Is anything uploaded?", "No, conversion happens locally."],
+    keywords: ["json to xml", "xml to json", "convert config format"],
+  }),
+  makeTool({
+    slug: "csv-viewer-editor", name: "CSV Viewer & Editor", shortName: "CSV Editor", category: "developer", icon: "list",
+    tagline: "Open a CSV as a table, edit cells and export a clean file.",
+    metaTitle: "CSV Viewer & Editor — Spreadsheet in Browser | Toolora",
+    metaDescription: "View and edit CSV files in a table, add or remove rows and columns, sort data and download the corrected file. Local processing with clear parse errors.",
+    intro: "A quick spreadsheet for fixing a CSV without launching office software.",
+    about: ["The editor parses quoted CSV correctly, renders an editable table, and re-serialises with proper quoting on export. It is designed for inspection and small corrections rather than million-row datasets; very large inputs are reported and capped to keep the tab responsive.", "Nothing is uploaded and no spreadsheet is saved between visits. Export before closing the page if you want to keep your edits."],
+    steps: ["Load a CSV", "Paste text or drop a .csv file.", "Edit the table", "Change cells, add rows or columns, remove unwanted ones.", "Export", "Download a correctly quoted CSV."],
+    faqs: ["How large a file can I edit?", "Thousands of rows work; the tool caps extremely large files to avoid freezing the browser.", "Are formulas supported?", "No. Values are treated as text, not spreadsheet formulas.", "Will commas in cells break the file?", "No, quoted values are re-exported with escaping.", "Is my data uploaded?", "No, everything stays in the tab."],
+    keywords: ["csv viewer", "csv editor online", "edit csv file"],
+  }),
+  makeTool({
+    slug: "csv-column-sorter", name: "CSV Column Sorter", shortName: "CSV Sorter", category: "developer", icon: "arrowUpDown",
+    tagline: "Sort CSV rows by any column, numerically or alphabetically.",
+    metaTitle: "CSV Sorter — Sort Rows by Column | Toolora",
+    metaDescription: "Sort CSV data by a chosen column in ascending or descending order, with numeric-aware comparison and headers kept intact. Download the sorted CSV locally.",
+    intro: "Put a spreadsheet in order without changing the original file.",
+    about: ["Sorting is stable: rows with equal values keep their original relative order. Numeric values are compared as numbers, so 2 comes before 10, while dates in YYYY-MM-DD sort chronologically. The header row is preserved.", "Parsing and sorting happen locally. Malformed rows are reported with their line numbers rather than being silently reordered."],
+    steps: ["Load CSV", "Paste or drop a file, then confirm the header row.", "Pick the column", "Choose ascending or descending and whether the column is numeric.", "Download", "Export the sorted CSV."],
+    faqs: ["Can I sort by several columns?", "One primary column is supported; apply another pass for subsequent ordering.", "Why is 10 before 2?", "The column was detected as text. Choose numeric comparison to sort by value.", "Is the header included?", "No, the header stays at the top and is excluded from sorting.", "Is my file uploaded?", "No, sorting is local."],
+    keywords: ["csv sorter", "sort csv by column", "csv alphabetical order"],
+  }),
+  makeTool({
+    slug: "csv-duplicate-remover", name: "CSV Duplicate Row Remover", shortName: "CSV Dedupe", category: "developer", icon: "list",
+    tagline: "Remove duplicate rows by all columns or a selected key.",
+    metaTitle: "Remove Duplicate Rows from CSV — Dedupe | Toolora",
+    metaDescription: "Find and remove duplicate CSV rows using all columns or a chosen key, including case and whitespace options. See counts and download the cleaned file.",
+    intro: "Clean duplicated imports, mailing lists and exports before they cause problems.",
+    about: ["The first occurrence is kept, later exact duplicates are removed. You can compare whole rows or a key column such as an email address or order ID, and optionally ignore letter case and surrounding whitespace. The original ordering is preserved.", "The tool reports how many rows were removed before you download, so the change is visible rather than silent. Processing is local and no data leaves the browser."],
+    steps: ["Load a CSV", "Paste rows or drop a file.", "Choose comparison", "Whole row or one key column, with optional case and whitespace handling.", "Download", "Review the duplicate count, then export the cleaned CSV."],
+    faqs: ["Which duplicate is kept?", "The first row in the original order.", "Can I dedupe by email only?", "Yes, choose the email column as the key so different names with the same address collapse to one row.", "Is the header preserved?", "Yes, and it is not treated as data.", "Is my CSV uploaded?", "No, everything runs locally."],
+    keywords: ["remove duplicate csv rows", "dedupe csv", "csv unique rows"],
+  }),
+  makeTool({
+    slug: "xlsx-preview", name: "XLSX Spreadsheet Preview", shortName: "XLSX Preview", category: "developer", icon: "fileText",
+    tagline: "Open an Excel workbook to inspect sheets, rows and values.",
+    metaTitle: "XLSX Preview — View Excel Sheets in Browser | Toolora",
+    metaDescription: "Preview sheets and cell values from an .xlsx file in your browser. Choose a sheet, inspect rows and copy data. Read-only; the original workbook is unchanged.",
+    intro: "Look inside an Excel file before opening a desktop application.",
+    about: ["The workbook is parsed with SheetJS, which reads .xlsx and .xls structures in the browser. Values are displayed as text with an optional table view; formatting, charts, formulas' cached results and macros are outside the preview's scope. The file itself is not modified.", "Processing is local, and the library is loaded only when you open this tool. To reduce editing risk, export or copy the visible values rather than assuming formatting is preserved."],
+    steps: ["Choose a workbook", "Select an .xlsx file; the sheets are listed.", "Pick a sheet", "Inspect rows and headers, with the option to switch sheets.", "Copy or export", "Copy the table as CSV for further work; the original .xlsx is untouched."],
+    faqs: ["Are formulas calculated?", "Cached values stored by Excel are shown. Formulas are not recalculated.", "Why is formatting missing?", "This is a value preview, not a spreadsheet renderer; cell styles and charts are not reproduced.", "Should I edit a file here?", "No, this tool is read-only. Use a spreadsheet application to modify workbooks.", "Is my workbook uploaded?", "No, parsing happens locally."],
+    keywords: ["xlsx viewer", "preview excel online", "open xlsx browser"],
+  }),
+  makeTool({
+    slug: "file-size-converter", name: "File Size Converter", shortName: "File Size", category: "calculators", icon: "scale",
+    tagline: "Convert between bytes, KB, MB, GB and TB — decimal and binary.",
+    metaTitle: "File Size Converter — Bytes, KB, MB, GB | Toolora",
+    metaDescription: "Convert file sizes between bytes, decimal KB/MB/GB/TB and binary KiB/MiB/GiB, with the difference between the two explained.",
+    intro: "Understand why a 1 GB download is 1,073,741,824 bytes.",
+    about: ["Decimal units (kB, MB, GB) use powers of 1000, while binary units (KiB, MiB, GiB) use powers of 1024. Drive manufacturers usually quote decimal capacity while operating systems often display binary units labelled as KB/GB, which explains apparent discrepancies.", "Conversions are exact ratios of the base unit. Input is limited to non-negative numbers; invalid values are reported instead of returning a misleading result."],
+    steps: ["Enter a value", "Choose the unit the number is in.", "Pick a target unit", "All common units update instantly with both decimal and binary views.", "Copy the result", "Copy the value you need for a report or a support ticket."],
+    faqs: ["Why does my 1 TB drive show less space?", "Decimal and binary units differ by about 10%. Filesystem display and reserved space also reduce usable capacity.", "Is a kilobyte 1000 or 1024 bytes?", "Both conventions exist: kB is decimal 1000, KiB is binary 1024.", "Can I convert bit rates?", "This tool converts storage sizes, not network speeds. Use the Internet Speed Guide for Mbps and MB/s.", "Does it round?", "Results are rounded for display; the conversion uses exact factors."],
+    keywords: ["file size converter", "mb to gb", "bytes to kilobytes"],
+  }),
+
+  /* ------------------------------- calculators ----------------------------- */
+  makeTool({
+    slug: "loan-mortgage-calculator", name: "Loan & Mortgage Calculator", shortName: "Loan Calculator", category: "calculators", icon: "calculator",
+    tagline: "Estimate monthly payments, total interest and a full amortisation schedule.",
+    metaTitle: "Loan & Mortgage Calculator — Payment Schedule | Toolora",
+    metaDescription: "Estimate monthly repayments, total interest and a year-by-year amortisation schedule for a mortgage or loan. Adjust amount, rate and term; assumptions shown.",
+    intro: "See what a loan really costs, including interest over the whole term.",
+    about: ["Payments use the standard annuity formula: P = r × A ÷ (1 − (1 + r)^−n), where A is the principal, r the monthly interest rate and n the number of monthly payments. The schedule shows how much of each payment is principal versus interest.", "This is an estimate, not a credit offer or financial advice. It excludes arrangement fees, insurance, early-repayment charges, payment holidays and variable-rate changes. Lenders calculate on their own terms and rates differ between products and countries."],
+    steps: ["Enter the loan amount", "Use a realistically sized estimate, not a guaranteed amount.", "Set the interest rate and term", "The annual rate is divided by twelve for monthly compounding.", "Check the schedule", "Review the payment, total interest and the amortisation table."],
+    faqs: ["Is this a mortgage quote?", "No. It is a mathematical estimate based only on the numbers you enter, not a decision or an offer.", "Why does my bank quote a different amount?", "Fees, insurance, compounding conventions and actual daily interest rules differ from this simple model.", "What about an interest-only loan?", "Set the term to the interest-only period or use a dedicated lender illustration; this tool models principal repayment.", "Is my financial data stored?", "No. Calculations happen in your browser and are not saved."],
+    keywords: ["loan calculator", "mortgage calculator", "monthly payment calculator"], popular: true,
+  }),
+  makeTool({
+    slug: "vat-calculator", name: "VAT Calculator", shortName: "VAT", category: "calculators", icon: "percent",
+    tagline: "Add or remove VAT at any rate, with the net and gross amounts.",
+    metaTitle: "VAT Calculator — Add or Remove VAT | Toolora",
+    metaDescription: "Add VAT to a net price or extract VAT from a gross price at any configurable rate. Shows net, VAT and gross amounts without assuming current tax law.",
+    intro: "Work out a net price, the VAT portion and the gross total.",
+    about: ["Adding VAT multiplies the net amount by (1 + rate). Extracting VAT from a gross price divides by the same factor, which is not the same as subtracting the rate from the gross figure. The difference catches people out on invoices.", "Rates are user-entered because VAT rules change by country, product and date. This tool deliberately does not embed statutory rates or legal treatment; confirm the correct rate with your accountant or the relevant tax authority."],
+    steps: ["Choose add or extract", "Add VAT to a net value, or find the VAT inside a gross value.", "Enter the rate", "Type the applicable percentage; no legal rate is assumed.", "Copy the breakdown", "Net, VAT and gross are shown separately for an invoice or estimate."],
+    faqs: ["Should I subtract the rate to find VAT?", "No. If a gross price includes 20% VAT, VAT is gross × 20/120, not 20% of gross.", "Which VAT rate should I use?", "That depends on your country, product and circumstances. The tool intentionally leaves the rate to you.", "Can I use decimals?", "Yes, fractional rates such as 8.1% are supported.", "Is it tax advice?", "No. It is arithmetic only; consult a qualified adviser for compliance."],
+    keywords: ["vat calculator", "add vat", "remove vat from price"], popular: true,
+  }),
+  makeTool({
+    slug: "tip-bill-splitter", name: "Tip & Bill Splitter", shortName: "Tip Splitter", category: "calculators", icon: "scale",
+    tagline: "Split a bill evenly or by share, with tip and tax included.",
+    metaTitle: "Tip Calculator & Bill Splitter | Toolora",
+    metaDescription: "Work out a restaurant tip and split the total between any number of people, with tax handling and unequal shares shown clearly. No sign-up.",
+    intro: "Settle the table total without mental arithmetic.",
+    about: ["Enter the bill, tip percentage, tax and number of people. The tool shows the tip amount, grand total and per-person share, or splits by weighted shares when people had different amounts. Rounding differences are displayed rather than hidden.", "Tipping norms vary widely; the suggested percentages are common starting points, not obligations. The tool performs arithmetic on the values you enter."],
+    steps: ["Enter the bill", "Include or exclude tax according to how the restaurant presents it.", "Choose tip and split", "Set a tip percentage and the number of people or shares.", "Share the result", "Copy the per-person amount to avoid confusion."],
+    faqs: ["Should the tip be calculated before or after tax?", "Customs vary. Decide explicitly and use the option provided so everyone sees the same assumption.", "How is an uneven split handled?", "Enter individual shares; the tool allocates the total proportionally and shows rounding.", "Does it handle multiple currencies?", "It does not assume a currency; use the symbol that applies to your bill.", "Is my bill data stored?", "No, calculations stay in the page."],
+    keywords: ["tip calculator", "bill splitter", "split restaurant bill"],
+  }),
+  makeTool({
+    slug: "fuel-cost-calculator", name: "Fuel Cost Calculator", shortName: "Fuel Cost", category: "calculators", icon: "activity",
+    tagline: "Estimate trip fuel cost from distance, consumption and price.",
+    metaTitle: "Fuel Cost Calculator — Trip Cost & Consumption | Toolora",
+    metaDescription: "Calculate fuel needed and trip cost from distance, litres per 100 km and fuel price. Supports MPG and round trips, with the formula shown.",
+    intro: "Estimate what a journey will cost in fuel before you leave.",
+    about: ["Fuel needed is distance × consumption ÷ 100 for L/100 km, and cost is that quantity × price per litre. MPG inputs are converted first. The result is a planning estimate: traffic, load, air conditioning, tyre pressure and driving style all change real consumption.", "No data is transmitted. The calculator does not know real-time fuel prices; you enter the price you expect to pay."],
+    steps: ["Enter the distance", "Use one-way distance and mark whether the trip is a round trip.", "Set consumption and price", "Use the vehicle's average or the official cycle figure.", "Review the estimate", "Check litres and cost, then copy the result."],
+    faqs: ["L/100 km or MPG?", "Both are supported, with conversion so you can compare vehicles.", "Why is my real usage higher?", "Official figures are optimistic. Traffic, weather and load can add a lot.", "Can I compare two cars?", "Run the calculation with each consumption figure and compare the costs.", "Is my trip stored?", "No, nothing is saved or uploaded."],
+    keywords: ["fuel cost calculator", "trip fuel calculator", "petrol cost"],
+  }),
+  makeTool({
+    slug: "electricity-cost-calculator", name: "Electricity Cost Calculator", shortName: "Electricity Cost", category: "calculators", icon: "zap",
+    tagline: "See what an appliance costs per hour, day, month and year.",
+    metaTitle: "Electricity Cost Calculator — Appliance Running Cost | Toolora",
+    metaDescription: "Estimate appliance electricity cost from wattage, hours of use and your price per kWh. Shows daily, monthly and yearly consumption with the formula.",
+    intro: "Decide whether an appliance is worth running, using your own tariff.",
+    about: ["Energy in kWh is power in watts × hours ÷ 1000; cost is kWh × price per kWh. A 2000 W heater running four hours a day uses 8 kWh per day, so the result scales quickly. Using the appliance's rated power is an upper estimate; many devices draw less in practice.", "Tariffs often include standing charges, tiers and time-of-use rates, which this simple model does not capture. Enter your actual unit price and treat the result as an estimate, not a bill."],
+    steps: ["Enter the power", "Use the label or manual rating in watts.", "Set usage and tariff", "Hours per day and your price per kWh.", "Review the costs", "Daily, monthly and annual estimates are shown with the formula."],
+    faqs: ["Where do I find the wattage?", "On the rating plate or in the manual. Standby use is lower than the rated maximum.", "Is the standing charge included?", "No, only the energy used by this appliance at the unit price entered.", "Can I compare appliances?", "Run each appliance separately and compare yearly figures.", "Is my tariff stored?", "No, it stays in the page and is not uploaded."],
+    keywords: ["electricity cost calculator", "appliance running cost", "kwh cost"], popular: true,
+  }),
+  makeTool({
+    slug: "time-zone-converter", name: "Time Zone Converter", shortName: "Time Zones", category: "time", icon: "globe",
+    tagline: "Compare meeting times across zones, including daylight saving.",
+    metaTitle: "Time Zone Converter — Compare Cities | Toolora",
+    metaDescription: "Find a meeting time across multiple time zones using the browser's IANA time zone database, including daylight-saving differences. Shows local dates and offsets.",
+    intro: "Pick a time that works in London, Warsaw and New York — on the right date.",
+    about: ["The converter uses the IANA time zone database built into your browser, so daylight-saving transitions follow each zone's real rules for the selected date. Choose a source date and time, then compare cities side by side with their UTC offsets.", "Time zone rules can change by government decision, so very old or future dates may reflect the latest browser data. Your browser's own zone is detected as a default but can be changed."],
+    steps: ["Pick a date and time", "Choose the source zone and the instant you want to convert.", "Add target zones", "Compare several cities at once.", "Book the meeting", "Copy the table and check both dates, especially around midnight."],
+    faqs: ["Does it handle daylight saving?", "Yes, using the browser's IANA rules for the selected date.", "Why do the offsets change with the date?", "Many zones shift seasonally. The same city can differ by an hour in summer.", "Does my device time zone matter?", "Only as the default selection; you can choose any source zone.", "Is this suitable for scheduling?", "It reflects the rules available in your browser. Verify exceptional changes for official commitments."],
+    keywords: ["time zone converter", "meeting time zones", "world clock converter"],
+  }),
+  makeTool({
+    slug: "working-days-calculator", name: "Working Days Calculator", shortName: "Working Days", category: "time", icon: "calendar",
+    tagline: "Count business days between dates, excluding weekends and holidays.",
+    metaTitle: "Working Days Calculator — Business Days Between Dates | Toolora",
+    metaDescription: "Count business days between two dates, add working days to a date, and exclude custom public holidays. Shows the calendar span and the assumptions used.",
+    intro: "Answer how many working days until a deadline — and which date 30 business days from now is.",
+    about: ["Business days are counted Monday to Friday and custom holidays are removed when they fall on a weekday. A fixed Monday–Friday week is an assumption: some countries and roles work Sunday–Thursday or different patterns, which this calculator does not model.", "Date arithmetic is inclusive or exclusive depending on the mode you choose, so the same pair of dates can legitimately give two answers. The tool states which convention it is using."],
+    steps: ["Choose a mode", "Count between two dates, or add working days to a start date.", "Enter dates", "Select the start, the end or the number of business days to add.", "Add holidays", "Enter exceptions as YYYY-MM-DD to exclude them."],
+    faqs: ["Does it include the end date?", "Only if you enable the inclusive option; the result states the convention.", "Which holidays are excluded?", "Only the dates you enter. The tool does not embed any country's public holiday calendar.", "Are weekends always Saturday and Sunday?", "Yes in this model, so other working weeks need manual adjustment.", "Is it legal payroll advice?", "No. Contractual and statutory rules vary; confirm with your employer."],
+    keywords: ["working days calculator", "business days between dates", "add working days"],
+  }),
+
+  /* -------------------------------- security ------------------------------- */
+  makeTool({
+    slug: "passphrase-generator", name: "Passphrase Generator", shortName: "Passphrase", category: "generators", icon: "key",
+    tagline: "Memorable multi-word passphrases from a large cryptographic word list.",
+    metaTitle: "Passphrase Generator — Diceware-Style Words | Toolora",
+    metaDescription: "Generate memorable passphrases from a curated word list with secure browser randomness. Choose word count, separator, capitalisation and an optional number.",
+    intro: "A long passphrase can be easier to remember and stronger than a short password.",
+    about: ["Words are chosen with crypto.getRandomValues and the passphrase is assembled locally. Entropy grows with the word count: each additional word from the list multiplies the possibilities, and the tool displays an estimate in bits so the trade-off is visible.", "The built-in word list is deliberately smaller than a full Diceware dictionary, so entropy per word is lower. Increase the number of words, use a unique passphrase per account, and store it in a password manager. Nothing is transmitted or saved."],
+    steps: ["Choose the word count", "Five or more words is a reasonable modern default.", "Set formatting", "Pick a separator and capitalisation style.", "Generate and copy", "Copy the passphrase into your password manager."],
+    faqs: ["Is this as strong as a random password?", "Security comes from unpredictability and length. A five-word passphrase from this list can be strong for many uses, but fewer words reduce entropy.", "Why a smaller word list?", "The list is bundled and curated for memorability. Fewer words means less entropy per word, which the strength estimate reflects.", "Are passphrases stored or sent?", "No. Generation is local and results disappear on reload.", "Should I reuse one passphrase?", "No. Use a manager to keep a unique passphrase for every important account."],
+    keywords: ["passphrase generator", "diceware password", "memorable password"], popular: true,
+  }),
+  makeTool({
+    slug: "uuid-generator", name: "UUID Generator", shortName: "UUID", category: "generators", icon: "hash",
+    tagline: "Generate RFC 4122 version 4 UUIDs in bulk, with formatting options.",
+    metaTitle: "UUID v4 Generator — Bulk & Uppercase | Toolora",
+    metaDescription: "Generate cryptographically random UUID v4 values in bulk. Choose count, uppercase or braces, copy the list and download a text file. Runs locally.",
+    intro: "Unique identifiers for databases, tests and APIs, generated in your browser.",
+    about: ["UUID v4 values are 122 bits of randomness with fixed version and variant bits. Generation uses crypto.randomUUID where available and otherwise crypto.getRandomValues, so identifiers are not derived from Math.random. Uniqueness is probabilistic but collision risk is negligible for practical use.", "UUIDs are identifiers, not secrets. Do not use a predictable or publicly exposed UUID as an access token; use the secure token generator for that purpose instead."],
+    steps: ["Choose how many", "Generate up to 1,000 identifiers at once.", "Pick formatting", "Uppercase, braces and hyphenation options are available.", "Copy or download", "Copy the list or save it as a text file."],
+    faqs: ["Are these real UUID v4 values?", "Yes, with the correct version and variant bits and random content.", "Can two UUIDs collide?", "Theoretically possible but statistically negligible for normal applications.", "Can I use a UUID as a password reset token?", "No. UUIDs are not secrets. Use a dedicated secure token generator instead.", "Is generation local?", "Yes, using the browser's cryptographic random source."],
+    keywords: ["uuid generator", "uuid v4", "generate unique id"],
+  }),
+  makeTool({
+    slug: "secure-token-generator", name: "Secure Token Generator", shortName: "Secure Token", category: "generators", icon: "shield",
+    tagline: "Cryptographic API keys and tokens in hex, Base64 or URL-safe form.",
+    metaTitle: "Secure Token Generator — API Keys & Secrets | Toolora",
+    metaDescription: "Generate cryptographically secure random tokens in hex, Base64 or URL-safe Base64, from 16 to 128 bytes. Shows entropy. Nothing is sent or saved.",
+    intro: "Random secrets for API keys, CSRF tokens and test fixtures.",
+    about: ["Bytes come from crypto.getRandomValues, then are encoded as hex or Base64. The displayed entropy is bytes × 8, which describes unpredictability rather than a guarantee about your overall system security. Tokens are generated in memory and never transmitted.", "Treat generated tokens as secrets: store them in a secret manager, never in a git repository or client-side code, and rotate them if exposed. This tool cannot protect a token after you copy it."],
+    steps: ["Choose the length", "16 bytes (128 bits) is a common minimum for a secret.", "Pick an encoding", "Hex is easy to audit, Base64 is compact and URL-safe Base64 fits URLs.", "Copy once and store securely", "The value is not saved anywhere, so copy it into your secret store."],
+    faqs: ["How long should a token be?", "At least 128 bits of randomness for many uses; follow your platform's guidance for API keys.", "Is this suitable for encryption keys?", "It produces random bytes, but key management and algorithms require a proper cryptographic library and process.", "Will the token be stored anywhere?", "No. It exists only in the page until you reload.", "Can I regenerate later?", "No. Generation is random each time, which is why you must store the token securely."],
+    keywords: ["api key generator", "secure token generator", "random secret"],
+  }),
+  makeTool({
+    slug: "random-team-generator", name: "Random Team Generator", shortName: "Team Generator", category: "generators", icon: "shuffle",
+    tagline: "Split a list of names into balanced, randomly assigned teams.",
+    metaTitle: "Random Team Generator — Fair Group Shuffler | Toolora",
+    metaDescription: "Create balanced random teams from a list of participants. Choose team count or size, keep or reshuffle results, and copy the groups. Secure randomness.",
+    intro: "Fair groups for a workshop, classroom or game night in one click.",
+    about: ["The participant list is shuffled with cryptographically secure randomness and dealt into teams, so every assignment is equally likely and no one is favoured by list order. Teams are balanced automatically when the group does not divide evenly.", "Assignments are generated for a single session and are not saved. If someone is absent, remove them and regenerate rather than editing groups by hand, which biases the draw."],
+    steps: ["Add participants", "One name per line, duplicates ignored if you choose.", "Choose team count or size", "The tool balances uneven groups.", "Copy or reshuffle", "Copy the teams, or shuffle again for a fresh draw."],
+    faqs: ["Is the draw fair?", "Names are shuffled with secure randomness before dealing, so positions are not biased.", "Can I keep some people together?", "Not in this version; pre-grouping would change the fairness of the remaining draw.", "Are teams saved?", "No, results exist only in the page.", "Can I make teams of equal size?", "Yes, enter the number of teams; remainder members are distributed one per team."],
+    keywords: ["random team generator", "group generator", "shuffle names into teams"],
+  }),
+
+  /* -------------------------------- students ------------------------------- */
+  makeTool({
+    slug: "study-pomodoro-timer", name: "Study & Pomodoro Timer", shortName: "Pomodoro", category: "time", icon: "timer",
+    tagline: "Focused study intervals with short and long breaks, and a daily session log.",
+    metaTitle: "Pomodoro Study Timer — Focus Sessions | Toolora",
+    metaDescription: "A Pomodoro-style study timer with configurable focus and break lengths, automatic phase switching, an audible cue and a session count kept in this tab.",
+    intro: "Work in defined intervals, rest deliberately, and see how many sessions you finished.",
+    about: ["The timer alternates focus and break phases using timestamps, so switching tabs does not accumulate drift. After a configurable number of sessions it offers a longer break. An optional chime marks the end of a phase, and the session log counts completed focus intervals in this page only.", "This is a focus aid, not a productivity guarantee. The classic 25/5 pattern suits many people but not all tasks; adjust the durations to your attention span. No history is uploaded or persisted beyond the current visit."],
+    steps: ["Set your intervals", "Choose focus length, short break, long break and how many sessions before the long break.", "Start focusing", "Pause or reset at any time; the phase changes automatically.", "Review the session count", "The page shows completed focus intervals for this visit."],
+    faqs: ["Does it keep running if I switch tabs?", "Elapsed time is recalculated from timestamps, so it stays accurate, though the chime may be slightly delayed.", "Is my study history saved?", "No. The count is for this visit only and resets on reload.", "Can I use different intervals?", "Yes, focus and break lengths are configurable.", "Will it play a sound?", "An optional chime plays at phase changes if the browser permits audio after your first interaction."],
+    keywords: ["pomodoro timer", "study timer", "focus timer"], popular: true,
+  }),
+  makeTool({
+    slug: "exam-countdown", name: "Exam Countdown", shortName: "Exam Countdown", category: "time", icon: "calendar",
+    tagline: "Countdown to exams and deadlines, saved in this browser.",
+    metaTitle: "Exam Countdown — Days Until Your Exam | Toolora",
+    metaDescription: "Add exam dates and see a live countdown in days and hours. Saves your list locally in this browser, with no account and no upload.",
+    intro: "A calm view of how much time is actually left.",
+    about: ["Each entry stores a title and date in this browser's local storage, then shows the remaining time updated live. Past dates are labelled rather than turned into negative countdowns. The list survives reloads on the same device but does not sync.", "Dates are treated as local calendar days at the start of the day. The tool is a planner, not a reminder service: it cannot notify you while the site is closed."],
+    steps: ["Add an exam", "Give it a clear title and choose the date.", "Keep the list current", "Mark entries as done or delete them when finished.", "Check the countdown", "Open the tool to see the remaining days and hours."],
+    faqs: ["Will it send me reminders?", "No. It only shows a countdown while the page is open.", "Is my list private?", "It is stored in local storage on this device and never uploaded. Clearing site data removes it.", "Does it sync across devices?", "No, there are no accounts in Toolora.", "How is the time calculated?", "Against the start of the selected local calendar day."],
+    keywords: ["exam countdown", "days until exam", "deadline countdown"], popular: true,
+  }),
+  makeTool({
+    slug: "flashcard-creator", name: "Flashcard Creator", shortName: "Flashcards", category: "text", icon: "fileText",
+    tagline: "Build a card deck and study it with flip and shuffle.",
+    metaTitle: "Flashcard Creator — Study Cards with Flip Mode | Toolora",
+    metaDescription: "Create flashcards with front and back text, then study them with flip and shuffle. Your deck is stored locally in this browser with no account.",
+    intro: "Type your questions once, then review them actively rather than rereading notes.",
+    about: ["Cards are two-sided text: a prompt and an answer. Study mode hides the answer until you flip the card, which supports active recall. Shuffle uses secure randomness so the order is not predictable. Decks are saved in this browser's local storage.", "Flashcards work best with small, specific prompts. The tool is a study aid, not a spaced-repetition scheduler; review timing is up to you. Images and rich formatting are not supported in this version."],
+    steps: ["Write cards", "Add a front and back for each idea, one card per concept.", "Save the deck", "Cards are stored locally on this device.", "Study", "Shuffle the deck, flip each card and mark the ones to revisit."],
+    faqs: ["Is this spaced repetition?", "No. It provides flip-and-shuffle review, not a scheduling algorithm.", "Are my cards uploaded?", "No, they stay in this browser's local storage.", "Can I share a deck?", "Not in this version; export is limited to copying the text you entered.", "How many cards can I store?", "Local storage has limits; decks with hundreds of short cards are fine, extremely large decks may not persist."],
+    keywords: ["flashcard creator", "online flashcards", "study cards"],
+  }),
+  makeTool({
+    slug: "checklist-maker", name: "Checklist Maker", shortName: "Checklist", category: "text", icon: "checkCircle",
+    tagline: "Simple task lists with progress, saved locally.",
+    metaTitle: "Checklist Maker — Simple Task List | Toolora",
+    metaDescription: "Create a checklist with checkable items, rename or delete entries, and see progress as a percentage. Saved in your browser with no account required.",
+    intro: "A small, dependable list for a trip, a move or a release.",
+    about: ["Items are stored in local storage with their checked state, so a list survives reloads on the same device. Progress is calculated from checked items, and deleting an item is explicit. There is no account and nothing is uploaded.", "This is deliberately a simple checklist rather than a project management tool: no due dates, assignees or collaboration. It is useful when you need a list immediately and do not want another app."],
+    steps: ["Add items", "Type a task and press add; the list is editable.", "Work through it", "Tick items as you complete them.", "Watch progress", "The header shows the completed fraction and a progress bar."],
+    faqs: ["Does it sync to my phone?", "No. It stays in this browser and device.", "What happens if I clear my browser?", "Site data removal deletes the list; copy important items elsewhere.", "Is there a limit?", "Storage limits depend on the browser, and typical lists are far below them.", "Can I keep multiple lists?", "The current version keeps one active list."],
+    keywords: ["checklist maker", "online to do list", "simple checklist"],
+  }),
+];

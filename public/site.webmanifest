@@ -1,0 +1,22 @@
+{
+  "name": "Toolora — Free Online Tools",
+  "short_name": "Toolora",
+  "description": "Free browser-based tools for documents, images, data, calculations and everyday work. No account required.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#060709",
+  "theme_color": "#060709",
+  "categories": ["productivity", "utilities", "business"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "PDF Workspace", "url": "/toolkits/pdf-toolkit" },
+    { "name": "Image Studio", "url": "/toolkits/image-studio" },
+    { "name": "Search all tools", "url": "/tools" }
+  ]
+}

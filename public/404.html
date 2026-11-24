@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Page Not Found — Toolora</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; min-height: 100vh; display: grid; place-items: center;
+        background: radial-gradient(60% 50% at 50% 0%, rgba(199,240,95,.08), transparent 70%), #060709;
+        color: #f7f8f3;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        padding: 24px;
+      }
+      main { max-width: 520px; text-align: center; }
+      .mark {
+        width: 52px; height: 52px; border-radius: 14px; background: #C7F05F; color: #08090C;
+        display: grid; place-items: center; margin: 0 auto 24px; font-size: 26px; font-weight: 800;
+      }
+      .label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #c7f05f; }
+      h1 { font-size: 34px; line-height: 1.1; letter-spacing: -.03em; margin: 12px 0 0; }
+      p { color: #9aa294; font-size: 14px; line-height: 1.7; margin: 14px 0 0; }
+      .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+      a {
+        display: inline-flex; align-items: center; gap: 8px; border-radius: 12px;
+        padding: 12px 18px; font-size: 14px; font-weight: 700; text-decoration: none;
+      }
+      .primary { background: #C7F05F; color: #08090C; }
+      .secondary { border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color: #eceee7; }
+      nav { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+      nav a {
+        padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.09);
+        color: #9aa294; font-size: 12px; font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mark" aria-hidden="true">T.</div>
+      <p class="label">404 · page not found</p>
+      <h1>This one isn't in the toolkit.</h1>
+      <p>
+        The address may be mistyped, or the page may have moved. Every Toolora tool is still
+        working, private and account-free.
+      </p>
+      <div class="actions">
+        <a class="primary" href="/tools">Browse all tools</a>
+        <a class="secondary" href="/">Back to Toolora</a>
+      </div>
+      <nav aria-label="Popular tools">
+        <a href="/tools/password-generator">Password generator</a>
+        <a href="/tools/word-counter">Word counter</a>
+        <a href="/tools/unit-converter">Unit converter</a>
+        <a href="/tools/qr-code-generator">QR codes</a>
+      </nav>
+    </main>
+  </body>
+</html>
