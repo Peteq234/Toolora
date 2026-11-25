@@ -71,7 +71,7 @@ function computeLineDiff(oldText: string, newText: string): { ops: DiffOp[]; tru
   return { ops, truncated };
 }
 
-const SAMPLE_OLD = `Release notes — Toolora 1.0
+const SAMPLE_OLD = `Release notes — Toolsy 1.0
 
 - Fifteen browser tools
 - Password generator and QR codes
@@ -79,7 +79,7 @@ const SAMPLE_OLD = `Release notes — Toolora 1.0
 - No account required
 - Local processing only`;
 
-const SAMPLE_NEW = `Release notes — Toolora 2.0
+const SAMPLE_NEW = `Release notes — Toolsy 2.0
 
 - Twenty-five browser tools
 - Password generator, JSON formatter and QR codes
@@ -584,7 +584,7 @@ function MarkdownPreview({ source }: { source: string }) {
   );
 }
 
-const MARKDOWN_SAMPLE = `# Toolora Markdown
+const MARKDOWN_SAMPLE = `# Toolsy Markdown
 
 Write on the left, preview on the right. Everything stays in your browser.
 
@@ -592,7 +592,7 @@ Write on the left, preview on the right. Everything stays in your browser.
 
 - **Bold**, *italic* and \`inline code\`
 - Ordered and unordered lists
-- [Links](https://toolora.com/tools)
+- [Links](https://toolsy.com/tools)
 - Quotes, horizontal rules and tables
 
 > A calm editor for notes, README files and documentation.
@@ -600,7 +600,7 @@ Write on the left, preview on the right. Everything stays in your browser.
 ## Code blocks
 
 \`\`\`tsx
-export function Toolora() {
+export function Toolsy() {
   return <h1>Free tools, done properly.</h1>;
 }
 \`\`\`
@@ -629,7 +629,7 @@ export function MarkdownEditor() {
 
   function exportMarkdown() {
     if (!source.trim()) return;
-    downloadFile(source, "toolora-note.md", "text/markdown;charset=utf-8");
+    downloadFile(source, "toolsy-note.md", "text/markdown;charset=utf-8");
   }
 
   useEffect(() => {
@@ -769,8 +769,8 @@ const REGEX_PRESETS = [
   { label: "Digits", pattern: "\\d+" },
 ];
 
-const REGEX_SAMPLE = `Contact: hello@toolora.com
-Docs: https://toolora.com/tools/regex-tester
+const REGEX_SAMPLE = `Contact: hello@toolsy.com
+Docs: https://toolsy.com/tools/regex-tester
 The palette uses #C7F05F and #0B0D11.
 Version 2.0 shipped with 25 tools on 2026-02-12.`;
 
@@ -1011,7 +1011,7 @@ export function RegexTester() {
           </Button>
           <Link
             href="/tools/text-diff-checker"
-            className="ml-auto inline-flex items-center gap-1 text-[11.5px] font-medium text-mist-500 transition hover:text-mist-200"
+            className="ml-auto inline-flex min-h-9 items-center gap-1 text-[11.5px] font-medium text-mist-500 transition hover:text-mist-200"
           >
             Comparing text instead?
             <Icon name="arrowUpRight" size={12} />

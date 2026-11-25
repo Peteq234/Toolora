@@ -176,7 +176,7 @@ export function ToolPage({ tool }: { tool: Tool }) {
         inLanguage: "en",
         isAccessibleForFree: true,
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        publisher: { "@type": "Organization", name: "Toolora", url: SITE_URL },
+        publisher: { "@type": "Organization", name: "Toolsy", url: SITE_URL },
       },
       {
         "@type": "FAQPage",
@@ -221,7 +221,7 @@ export function ToolPage({ tool }: { tool: Tool }) {
             <div className="flex flex-wrap items-center gap-2">
               <Badge>{categoryLabel(category.id, category.name)}</Badge>
               {suite && (
-                <Link href={`/toolkits/${suite.slug}`} className="rounded-full border border-brand-400/25 bg-brand-400/[0.07] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-brand-200 transition hover:bg-brand-400/[0.12]">
+                <Link href={`/toolkits/${suite.slug}`} className="inline-flex min-h-8 items-center rounded-full border border-brand-400/25 bg-brand-400/[0.07] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-brand-200 transition hover:bg-brand-400/[0.12]">
                   {suite.name}
                 </Link>
               )}
@@ -331,7 +331,7 @@ export function ToolPage({ tool }: { tool: Tool }) {
               </h2>
               <Link
                 href="/tools"
-                className="inline-flex items-center gap-1 text-[12px] font-medium text-mist-500 transition hover:text-mist-200"
+                className="inline-flex min-h-9 items-center gap-1 text-[12px] font-medium text-mist-500 transition hover:text-mist-200"
               >
                 All tools
                 <Icon name="arrowRight" size={13} />
@@ -343,7 +343,7 @@ export function ToolPage({ tool }: { tool: Tool }) {
               ))}
             </div>
             {suite && (
-              <Link href={`/toolkits/${suite.slug}`} className="mt-3 inline-flex items-center gap-1.5 text-[11.5px] font-medium text-brand-300 hover:text-brand-200">
+              <Link href={`/toolkits/${suite.slug}`} className="mt-3 inline-flex min-h-9 items-center gap-1.5 text-[11.5px] font-medium text-brand-300 hover:text-brand-200">
                 Explore all {suite.toolSlugs.length} tools in {suite.name}
                 <Icon name="arrowRight" size={12} />
               </Link>
@@ -403,7 +403,7 @@ export function ToolPage({ tool }: { tool: Tool }) {
               </p>
               <Link
                 href="/privacy"
-                className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-medium text-mist-300 underline decoration-white/20 underline-offset-2 hover:text-brand-200"
+                className="mt-2.5 inline-flex min-h-9 items-center gap-1 text-[11px] font-medium text-mist-300 underline decoration-white/20 underline-offset-2 hover:text-brand-200"
               >
                 Read the privacy policy
               </Link>

@@ -3,9 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 
-if ("serviceWorker" in navigator && import.meta.env.PROD) {
+const canRegisterServiceWorker =
+  typeof window !== "undefined" &&
+  window.location.protocol !== "file:" &&
+  "serviceWorker" in navigator;
+
+if (canRegisterServiceWorker && import.meta.env.PROD) {
   window.addEventListener("load", () => {
-    void navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+    void navigator.serviceWorker.register(`${window.location.origin}/sw.js`).catch(() => undefined);
   });
 }
 

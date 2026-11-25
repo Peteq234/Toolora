@@ -94,7 +94,7 @@ export function RemoveDuplicateLines() {
             </div>
             <div className="flex flex-wrap gap-2">
               <CopyButton value={analysis.output} label="Copy output" copiedLabel="Copied" />
-              <Button variant="secondary" size="sm" onClick={() => downloadFile(analysis.output, "toolora-unique-lines.txt")}>
+              <Button variant="secondary" size="sm" onClick={() => downloadFile(analysis.output, "toolsy-unique-lines.txt")}>
                 <Icon name="download" size={14} /> Download .txt
               </Button>
               <Button variant="ghost" size="sm" onClick={() => setInput(analysis.output)}>Use output as input</Button>
@@ -194,7 +194,7 @@ export function SortTextLines() {
         <div className="flex flex-wrap items-center gap-2">
           <CopyButton value={output.text} label="Copy sorted lines" copiedLabel="Copied" />
           <Button variant="secondary" size="sm" onClick={() => setInput(output.text)} disabled={!output.text}>Use output as input</Button>
-          <Button variant="ghost" size="sm" onClick={() => downloadFile(output.text, "toolora-sorted-lines.txt")} disabled={!output.text}>
+          <Button variant="ghost" size="sm" onClick={() => downloadFile(output.text, "toolsy-sorted-lines.txt")} disabled={!output.text}>
             <Icon name="download" size={14} /> Download
           </Button>
           <Button variant="ghost" size="sm" className="ml-auto" onClick={() => setInput("")} disabled={!input}>
@@ -299,7 +299,7 @@ export function TextCleaner() {
 
         <div className="flex flex-wrap items-center gap-2">
           <CopyButton value={cleaned.text} label="Copy cleaned text" copiedLabel="Copied" />
-          <Button variant="secondary" size="sm" onClick={() => downloadFile(cleaned.text, "toolora-cleaned.txt")} disabled={!cleaned.text}>
+          <Button variant="secondary" size="sm" onClick={() => downloadFile(cleaned.text, "toolsy-cleaned.txt")} disabled={!cleaned.text}>
             <Icon name="download" size={14} /> Download
           </Button>
           <Button variant="ghost" size="sm" onClick={() => setInput(cleaned.text)} disabled={!cleaned.text}>Use as input</Button>
@@ -397,7 +397,7 @@ export function LoremIpsumGenerator() {
           <Button variant="primary" size="sm" onClick={() => setCount(String(amount))}>
             <Icon name="refresh" size={14} /> Generate new
           </Button>
-          <Button variant="ghost" size="sm" onClick={() => downloadFile(text, "toolora-lorem.txt")}>
+          <Button variant="ghost" size="sm" onClick={() => downloadFile(text, "toolsy-lorem.txt")}>
             <Icon name="download" size={14} /> Download
           </Button>
         </div>

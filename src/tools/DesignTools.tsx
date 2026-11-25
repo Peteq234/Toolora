@@ -353,7 +353,7 @@ const DARK_COLORS = [
 ];
 
 export function QrCodeGenerator() {
-  const [text, setText] = useState("https://toolora.com");
+  const [text, setText] = useState("https://toolsy.com");
   const [size, setSize] = useState("512");
   const [level, setLevel] = useState<ErrorLevel>("M");
   const [dark, setDark] = useState(DARK_COLORS[0].value);
@@ -414,7 +414,7 @@ export function QrCodeGenerator() {
   function download() {
     const canvas = canvasRef.current;
     if (!canvas || !hasCode) return;
-    downloadDataUrl(canvas.toDataURL("image/png"), `toolora-qr-${size}.png`);
+    downloadDataUrl(canvas.toDataURL("image/png"), `toolsy-qr-${size}.png`);
     setDownloaded(true);
     window.setTimeout(() => setDownloaded(false), 2000);
   }
@@ -494,7 +494,7 @@ export function QrCodeGenerator() {
             </Button>
             <CopyButton value={text} label="Copy text" copiedLabel="Copied" />
             <CopyButton
-              value="https://toolora.com/tools/qr-code-generator"
+              value="https://toolsy.com/tools/qr-code-generator"
               label="Copy tool link"
               copiedLabel="Link copied"
               variant="ghost"

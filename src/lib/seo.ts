@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-export const SITE_URL = "https://toolora.com";
-export const SITE_NAME = "Toolora";
+export const SITE_URL = "https://toolsy.com";
+export const SITE_NAME = "Toolsy";
 
 type SeoOptions = {
   title: string;
@@ -55,12 +55,12 @@ export function useSeo({ title, description, path, noindex, schema, type = "webs
     ensureMeta("property", "og:image:height").setAttribute("content", "630");
     ensureMeta("property", "og:image:alt").setAttribute(
       "content",
-      "Toolora — free online tools, no account required"
+      "Toolsy — free online tools, no account required"
     );
     ensureMeta("name", "twitter:image").setAttribute("content", `${SITE_URL}/og-image.png`);
     ensureLink("canonical").setAttribute("href", `${SITE_URL}${path}`);
 
-    const scriptId = "toolora-page-schema";
+    const scriptId = "toolsy-page-schema";
     document.getElementById(scriptId)?.remove();
     if (schemaKey) {
       const parsed = JSON.parse(schemaKey);

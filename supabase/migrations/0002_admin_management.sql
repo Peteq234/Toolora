@@ -1,4 +1,4 @@
--- Toolora admin management upgrade.
+-- Toolsy admin management upgrade.
 -- Run AFTER 0001_admin_schema.sql. Contains no credentials or personal data.
 
 -- ---------------------------------------------------------------------------

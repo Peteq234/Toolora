@@ -1,4 +1,4 @@
-# Toolora private admin — secure setup
+# Toolsy private admin — secure setup
 
 The admin dashboard is real authentication, not a hidden page. A browser can only *ask* to
 use it: every `/api/admin/*` request is verified on the server, the server uses a service-role

@@ -157,7 +157,7 @@ function formatHtml(html: string, indentSize: number, keepInline: boolean): { ou
 }
 
 export function HtmlFormatter() {
-  const [input, setInput] = useState("<!DOCTYPE html>\n<html>\n<head><meta charset=\"utf-8\"><title>Toolora</title></head>\n<body><h1>Free tools</h1><p>Built for <strong>everyday</strong> tasks.</p></body>\n</html>");
+  const [input, setInput] = useState("<!DOCTYPE html>\n<html>\n<head><meta charset=\"utf-8\"><title>Toolsy</title></head>\n<body><h1>Free tools</h1><p>Built for <strong>everyday</strong> tasks.</p></body>\n</html>");
   const [indentSize, setIndentSize] = useState(2);
   const [keepInline, setKeepInline] = useState(true);
   const [minify, setMinify] = useState(false);
@@ -200,7 +200,7 @@ export function HtmlFormatter() {
 
         <div className="flex flex-wrap gap-2">
           <CopyButton value={result.output} label="Copy HTML" copiedLabel="Copied" />
-          <Button variant="secondary" size="sm" onClick={() => downloadFile(result.output, "toolora-formatted.html", "text/html")} disabled={!result.output}>
+          <Button variant="secondary" size="sm" onClick={() => downloadFile(result.output, "toolsy-formatted.html", "text/html")} disabled={!result.output}>
             <Icon name="download" size={14} /> Download .html
           </Button>
           <Button variant="ghost" size="sm" className="ml-auto" onClick={() => setInput("")} disabled={!input}>
@@ -273,7 +273,7 @@ export function XmlFormatter() {
         {!result.problem && input.trim() && <Note tone="brand">Well-formed XML — open and closing tags balance, and the document parsed successfully.</Note>}
         <div className="flex flex-wrap gap-2">
           <CopyButton value={result.output} label="Copy XML" copiedLabel="Copied" />
-          <Button variant="secondary" size="sm" onClick={() => downloadFile(result.output, "toolora-formatted.xml", "application/xml")} disabled={!result.output}>
+          <Button variant="secondary" size="sm" onClick={() => downloadFile(result.output, "toolsy-formatted.xml", "application/xml")} disabled={!result.output}>
             <Icon name="download" size={14} /> Download .xml
           </Button>
           <Button variant="ghost" size="sm" className="ml-auto" onClick={() => setInput("")} disabled={!input}>
@@ -379,7 +379,7 @@ export function SqlFormatter() {
         </div>
         <div className="flex flex-wrap gap-2">
           <CopyButton value={output} label="Copy SQL" copiedLabel="Copied" />
-          <Button variant="secondary" size="sm" onClick={() => downloadFile(output, "toolora-query.sql", "application/sql")} disabled={!output}>
+          <Button variant="secondary" size="sm" onClick={() => downloadFile(output, "toolsy-query.sql", "application/sql")} disabled={!output}>
             <Icon name="download" size={14} /> Download .sql
           </Button>
           <Button variant="ghost" size="sm" className="ml-auto" onClick={() => setInput("")} disabled={!input}>
@@ -462,7 +462,7 @@ function stripJsComments(source: string): { output: string; removed: number } {
 }
 
 export function JsMinifier() {
-  const [input, setInput] = useState("// Example utility\nfunction greet(name) {\n  const message = `Hello, ${name}!`;\n  return message;\n}\n\n/* main */\nconsole.log(greet('Toolora'));");
+  const [input, setInput] = useState("// Example utility\nfunction greet(name) {\n  const message = `Hello, ${name}!`;\n  return message;\n}\n\n/* main */\nconsole.log(greet('Toolsy'));");
   const [stripComments, setStripComments] = useState(true);
   const [collapseSpaces, setCollapseSpaces] = useState(true);
   const [keepLines, setKeepLines] = useState(true);
@@ -514,7 +514,7 @@ export function JsMinifier() {
 
         <div className="flex flex-wrap gap-2">
           <CopyButton value={result.output} label="Copy JavaScript" copiedLabel="Copied" />
-          <Button variant="secondary" size="sm" onClick={() => downloadFile(result.output, "toolora-script.min.js", "text/javascript")} disabled={!result.output}>
+          <Button variant="secondary" size="sm" onClick={() => downloadFile(result.output, "toolsy-script.min.js", "text/javascript")} disabled={!result.output}>
             <Icon name="download" size={14} /> Download .js
           </Button>
           <Button variant="ghost" size="sm" className="ml-auto" onClick={() => setInput("")} disabled={!input}>

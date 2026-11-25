@@ -73,7 +73,8 @@ export type IconName =
   | "contrast"
   | "gradient"
   | "terminal"
-  | "history";
+  | "history"
+  | "chess";
 
 const iconPaths: Record<IconName, ReactNode> = {
   search: (
@@ -403,6 +404,12 @@ const iconPaths: Record<IconName, ReactNode> = {
     <>
       <path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3 8.6" />
       <path d="M3 3.5v5.2h5.2M12 7.5V12l3.2 1.9" />
+    </>
+  ),
+  chess: (
+    <>
+      <path d="M9 20.5h9.5v-2.6c0-2.5-.8-4.4-2.3-5.8-.8-.7-1-1.5-.7-2.3l-2.1 1-.5-2.4-2.3 1.7c-1.7 1.3-2.3 3.2-1.6 4.9.4.9 1.1 1.5 2 1.8l-2.3 1.2c-.2.7.2 1.4 1 1.7" />
+      <path d="M6.5 20.5h12" />
     </>
   ),
 };

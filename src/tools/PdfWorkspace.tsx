@@ -139,7 +139,7 @@ export function PdfCompressor() {
                 {busy ? `Compressing ${progress.done}/${progress.total}…` : "Compress PDF"}
               </Button>
               {result && (
-                <Button variant="primary" size="sm" onClick={() => downloadBytes(result.bytes, "toolora-compressed.pdf")}>
+                <Button variant="primary" size="sm" onClick={() => downloadBytes(result.bytes, "toolsy-compressed.pdf")}>
                   <Icon name="download" size={14} /> Download {formatBytes(result.bytes.length)}
                 </Button>
               )}
@@ -295,7 +295,7 @@ export function ImagesToPdf() {
           page.drawImage(image, { x: (width - drawWidth) / 2, y: (height - drawHeight) / 2, width: drawWidth, height: drawHeight });
         }
       }
-      downloadBytes(await pdf.save(), "toolora-images.pdf");
+      downloadBytes(await pdf.save(), "toolsy-images.pdf");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not build the PDF. One image may be unsupported.");
     } finally { setBusy(false); }
@@ -399,7 +399,7 @@ export function PdfOrganizer() {
         copied.setRotation({ type: "degrees" as never, angle: page.rotation as 0 | 90 | 180 | 270 });
         output.addPage(copied);
       }
-      downloadBytes(await output.save(), "toolora-organised.pdf");
+      downloadBytes(await output.save(), "toolsy-organised.pdf");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not export this PDF.");
     } finally { setBusy(false); }
@@ -554,7 +554,7 @@ export function PdfToText() {
 
   function download() {
     if (!text) return;
-    downloadBlob(new Blob([text], { type: "text/plain;charset=utf-8" }), "toolora-extracted.txt");
+    downloadBlob(new Blob([text], { type: "text/plain;charset=utf-8" }), "toolsy-extracted.txt");
   }
 
   return (
@@ -570,7 +570,7 @@ export function PdfToText() {
               {text && <Button variant="secondary" size="sm" onClick={download}><Icon name="download" size={14} /> Download .txt</Button>}
               {text && <CopyButton value={text} label="Copy text" copiedLabel="Copied" />}
             </div>
-            {emptyPages > 0 && <Note tone="warn" title={`${emptyPages} page${emptyPages === 1 ? " has" : "s have"} no text layer`}>This PDF likely contains scanned images. OCR is required to read those pages, and Toolora does not perform OCR in this tool. Nothing is guessed or invented.</Note>}
+            {emptyPages > 0 && <Note tone="warn" title={`${emptyPages} page${emptyPages === 1 ? " has" : "s have"} no text layer`}>This PDF likely contains scanned images. OCR is required to read those pages, and Toolsy does not perform OCR in this tool. Nothing is guessed or invented.</Note>}
             {text && <textarea readOnly value={text} rows={14} className="field-input min-h-[260px] resize-y bg-ink-950/50 font-mono text-[11.5px] leading-relaxed" aria-label="Extracted PDF text" />}
           </>
         )}

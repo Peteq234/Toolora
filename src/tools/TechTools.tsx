@@ -104,7 +104,7 @@ export function InternetSpeedGuide() {
   return (
     <Workspace slug="internet-speed-guide">
       <div className="space-y-6">
-        <Note tone="warn" title="Toolora does not run a speed test">
+        <Note tone="warn" title="Toolsy does not run a speed test">
           We won't show you invented numbers. Accurate testing needs dedicated servers and large
           transfers. This page gives you the maths, vocabulary and links to real measurement tools.
         </Note>

@@ -1,4 +1,4 @@
-/* Toolora service worker: caches the app shell only.
+/* Toolsy service worker: caches the app shell only.
    File tools work offline after the first load; anything that calls /api
    (admin, feedback, anonymous analytics, optional IP geolocation) needs network. */
 const VERSION = "toolora-shell-v1";

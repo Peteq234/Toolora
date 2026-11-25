@@ -182,7 +182,7 @@ function CommandPalette({ open, onClose }: { open: boolean; onClose: () => void 
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Search Toolora tools"
+        aria-label="Search Toolsy tools"
         className="animate-pop-in relative w-full max-w-xl overflow-hidden rounded-2xl border border-white/[0.12] bg-ink-850 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.9)]"
       >
         <div className="flex items-center gap-3 border-b border-white/[0.07] px-4">
@@ -447,7 +447,7 @@ function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-xl px-3 py-2.5 text-[14px] font-medium text-mist-200 transition hover:bg-white/[0.05]"
+                  className="flex min-h-11 items-center rounded-xl px-3 py-2.5 text-[14px] font-medium text-mist-200 transition hover:bg-white/[0.05]"
                 >
                   {item.label}
                 </Link>
@@ -465,6 +465,11 @@ function Header() {
                 <Icon name="search" size={16} />
                 Search the toolkit
               </button>
+              <div className="mt-2 flex items-center justify-between gap-3 rounded-xl px-3 py-2">
+                <span className="text-[12px] font-medium text-mist-400">{t("nav.language")}</span>
+                <LanguageSwitch />
+              </div>
+              <PwaInstall />
             </div>
           </Container>
         </div>
@@ -505,7 +510,7 @@ function Footer() {
             </div>
             <p className="mt-4 text-[12px] text-mist-500">
               Questions or a tool idea?{" "}
-              <Link href="/contact" className="text-mist-300 underline decoration-white/20 underline-offset-2 hover:text-brand-300">
+              <Link href="/contact" className="inline-flex min-h-9 items-center text-mist-300 underline decoration-white/20 underline-offset-2 hover:text-brand-300">
                 Get in touch
               </Link>
             </p>
@@ -523,7 +528,7 @@ function Footer() {
                   <li key={slug}>
                     <Link
                       href={`/tools/${slug}`}
-                      className="text-[13px] text-mist-400 transition hover:text-mist-50"
+                      className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50"
                     >
                       {tool.name}
                     </Link>
@@ -542,7 +547,7 @@ function Footer() {
                 <li key={category.id}>
                   <Link
                     href={`/tools?category=${category.id}`}
-                    className="text-[13px] text-mist-400 transition hover:text-mist-50"
+                    className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50"
                   >
                     {category.name}
                   </Link>
@@ -553,46 +558,46 @@ function Footer() {
 
           <nav aria-label="Company and legal" className="lg:col-span-3">
             <h2 className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-mist-500">
-              Toolora
+              Toolsy
             </h2>
             <ul className="mt-4 space-y-2.5">
               <li>
-                <Link href="/tools" className="text-[13px] text-mist-400 transition hover:text-mist-50">
+                <Link href="/tools" className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50">
                   All tools
                 </Link>
               </li>
               <li>
-                <Link href="/favorites" className="text-[13px] text-mist-400 transition hover:text-mist-50">
+                <Link href="/favorites" className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50">
                   Your favorites
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-[13px] text-mist-400 transition hover:text-mist-50">
+                <Link href="/about" className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50">
                   About & principles
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-[13px] text-mist-400 transition hover:text-mist-50">
+                <Link href="/contact" className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/contact?topic=advertising" className="text-[13px] text-mist-400 transition hover:text-mist-50">
+                <Link href="/contact?topic=advertising" className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50">
                   Advertise with us
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-[13px] text-mist-400 transition hover:text-mist-50">
+                <Link href="/privacy" className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50">
                   {t("footer.privacy")}
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-[13px] text-mist-400 transition hover:text-mist-50">
+                <Link href="/terms" className="inline-flex min-h-9 items-center py-0.5 text-[13px] text-mist-400 transition hover:text-mist-50">
                   {t("footer.terms")}
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="inline-flex items-center gap-1.5 text-[13px] text-mist-500 transition hover:text-brand-200">
+                <Link href="/admin" className="inline-flex min-h-9 items-center gap-1.5 text-[13px] text-mist-500 transition hover:text-brand-200">
                   <Icon name="lock" size={11} />
                   {t("footer.admin")}
                 </Link>
@@ -605,7 +610,7 @@ function Footer() {
           <div className="flex items-center gap-2.5">
             <LogoMark className="size-6 rounded-md" />
             <p className="text-[11.5px] text-mist-500">
-              © {year} Toolora. Free tools, built with restraint.
+              © {year} Toolsy. Free tools, built with restraint.
             </p>
           </div>
           <div className="flex items-center gap-3">

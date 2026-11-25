@@ -6,7 +6,12 @@ let configured = false;
 /** PDF.js needs its worker served from the public folder. Load it lazily. */
 export function pdfjsLib() {
   if (!configured) {
-    pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+    // Opened from disk: resolve next to index.html (file:// has no origin root).
+    // Served: use the origin root so deep routes such as /tools/... still find it.
+    pdfjs.GlobalWorkerOptions.workerSrc =
+      window.location.protocol === "file:"
+        ? new URL("pdf.worker.min.mjs", document.baseURI).href
+        : `${window.location.origin}/pdf.worker.min.mjs`;
     configured = true;
   }
   return pdfjs;
@@ -18,6 +23,11 @@ export async function openPdf(bytes: ArrayBuffer): Promise<PDFDocumentProxy> {
 }
 
 export async function withPdf<T>(file: File, action: (pdf: PDFDocumentProxy) => Promise<T>): Promise<T> {
+  if (typeof window !== "undefined" && window.location.protocol === "file:") {
+    throw new Error(
+      "PDF tools require the site to be served over http(s); browsers block the PDF worker on file://. Deploy the site or run “npm run dev”. All other Toolsy tools work from this file."
+    );
+  }
   if (!file.name.toLowerCase().endsWith(".pdf") && file.type !== "application/pdf") {
     throw new Error(`${file.name} is not a PDF file.`);
   }
@@ -27,6 +37,11 @@ export async function withPdf<T>(file: File, action: (pdf: PDFDocumentProxy) => 
   try {
     pdf = await openPdf(bytes);
   } catch {
+    if (typeof window !== "undefined" && window.location.protocol === "file:") {
+      throw new Error(
+        "PDF processing needs the site to be served over http(s). Browsers block the PDF engine's worker when index.html is opened directly from disk. Open the published site, or run “npm run dev” locally; every other tool works offline."
+      );
+    }
     throw new Error("This PDF could not be opened. Password-protected or damaged files are not supported.");
   }
   return action(pdf);

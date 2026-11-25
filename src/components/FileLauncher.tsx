@@ -51,7 +51,7 @@ export function FileLauncher() {
         className={`mt-3 rounded-xl border border-dashed px-4 py-5 text-center transition ${active ? "border-brand-400/60 bg-brand-400/[0.06]" : "border-white/[0.12] bg-white/[0.012]"}`}
       >
         <p className="text-[11.5px] text-mist-400">Drag a file here, or</p>
-        <label className="mt-1 inline-flex cursor-pointer items-center gap-1.5 text-[11.5px] font-semibold text-brand-300 hover:text-brand-200">
+        <label className="mt-1 inline-flex min-h-9 cursor-pointer items-center gap-1.5 px-1 text-[11.5px] font-semibold text-brand-300 hover:text-brand-200">
           choose a file to detect its type
           <input type="file" className="sr-only" onChange={(event) => { inspect([...event.target.files ?? []]); event.target.value = ""; }} />
         </label>
@@ -66,7 +66,7 @@ export function FileLauncher() {
               const tool = getTool(slug);
               if (!tool) return null;
               return (
-                <Link key={slug} href={`/tools/${slug}`} className="group inline-flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.025] px-2.5 py-1.5 text-[11px] text-mist-300 transition hover:border-brand-400/30 hover:text-mist-50">
+                <Link key={slug} href={`/tools/${slug}`} className="group inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.025] px-2.5 py-1.5 text-[11px] text-mist-300 transition hover:border-brand-400/30 hover:text-mist-50">
                   <Icon name={tool.icon} size={11} className="text-mist-500 group-hover:text-brand-300" />
                   {tool.shortName}
                   <Icon name="arrowUpRight" size={10} className="text-mist-600" />

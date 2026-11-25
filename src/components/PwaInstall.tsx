@@ -34,7 +34,7 @@ export function PwaInstall({ compact = false }: { compact?: boolean }) {
         className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-brand-200 hover:text-brand-100"
       >
         <Icon name="download" size={12} />
-        Install Toolora
+        Install Toolsy
       </button>
       <button
         type="button"

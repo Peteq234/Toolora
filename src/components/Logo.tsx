@@ -21,13 +21,13 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link
       href="/"
-      aria-label="Toolora home"
+      aria-label="Toolsy home"
       className="group flex items-center gap-2.5 rounded-xl focus-visible:outline-brand-400"
     >
       <LogoMark className="size-9 transition-transform duration-300 group-hover:-rotate-3" />
       {!compact && (
         <span className="text-[19px] font-extrabold tracking-[-0.035em] text-mist-50">
-          Toolora<span className="text-brand-400">.</span>
+          Toolsy<span className="text-brand-400">.</span>
         </span>
       )}
     </Link>

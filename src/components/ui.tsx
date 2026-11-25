@@ -17,7 +17,7 @@ import { Link } from "@/lib/router";
 
 export function Container({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn("mx-auto w-full max-w-[1220px] px-5 sm:px-7 lg:px-8", className)}>{children}</div>
+    <div className={cn("mx-auto w-full max-w-[1220px] min-w-0 px-4 sm:px-6 lg:px-8", className)}>{children}</div>
   );
 }
 
@@ -494,7 +494,7 @@ export function Workspace({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-[22px] border border-white/8 bg-ink-850 shadow-[0_35px_90px_-45px_rgba(0,0,0,0.95)]",
+        "min-w-0 overflow-hidden rounded-[18px] border border-white/8 bg-ink-850 shadow-[0_35px_90px_-45px_rgba(0,0,0,0.95)] sm:rounded-[22px]",
         className
       )}
     >
@@ -505,14 +505,27 @@ export function Workspace({
           <span className="size-2 rounded-full bg-brand-400/50" />
         </span>
         <span className="truncate font-mono text-[10px] tracking-wide text-mist-500">
-          toolora / {slug}
+          toolsy / {slug}
         </span>
         <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-brand-300/85">
           <span className="size-1.5 rounded-full bg-brand-400" />
           local
         </span>
       </div>
-      <div className="p-4 sm:p-6 lg:p-7">{children}</div>
+      <div className="min-w-0 p-3 sm:p-5 lg:p-6">
+        {slug.startsWith("pdf") && typeof window !== "undefined" && window.location.protocol === "file:" && (
+          <div role="status" className="mb-4 flex gap-2 rounded-xl border border-amber-400/25 bg-amber-400/[0.06] p-3 text-[11.5px] leading-relaxed text-amber-100/80">
+            <span aria-hidden="true" className="mt-0.5 shrink-0">⚠</span>
+            <span>
+              <strong className="font-semibold text-amber-100">PDF processing needs a hosted copy.</strong>{" "}
+              You are viewing <code className="break-all font-mono">index.html</code> directly from disk, and browsers
+              block the PDF engine&apos;s worker on <code className="font-mono">file://</code>. Open the deployed site or
+              run <code className="font-mono">npm run dev</code>. Other tools work normally.
+            </span>
+          </div>
+        )}
+        {children}
+      </div>
     </div>
   );
 }
@@ -542,7 +555,7 @@ export function FavoriteButton({
       title={active ? "Remove from favorites" : "Save to favorites"}
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-xl border transition-all duration-200",
-        withLabel ? "h-10 px-3.5 text-[13px] font-semibold" : "size-9",
+        withLabel ? "min-h-10 px-3.5 text-[13px] font-semibold" : "size-9 sm:size-9",
         active
           ? "border-brand-400/30 bg-brand-400/10 text-brand-300 hover:bg-brand-400/15"
           : "border-white/10 bg-white/[0.025] text-mist-400 hover:border-white/20 hover:text-mist-100",
@@ -571,7 +584,7 @@ export function AdSlot({ className }: { className?: string }) {
       </div>
       <div className="grid min-h-[84px] place-items-center rounded-xl border border-dashed border-white/[0.09] bg-white/[0.012] px-5 py-5 text-center">
         <p className="max-w-md text-[11.5px] leading-relaxed text-mist-500">
-          This placement is reserved for a future, clearly labelled ad. Toolora shows no ads today —
+          This placement is reserved for a future, clearly labelled ad. Toolsy shows no ads today —
           and will never disguise one as a tool or a result.
         </p>
       </div>
@@ -610,7 +623,7 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
           <li key={`${item.label}-${index}`} className="flex items-center gap-1.5">
             {index > 0 && <Icon name="chevronRight" size={12} className="text-mist-600" />}
             {item.href ? (
-              <Link href={item.href} className="rounded transition-colors hover:text-mist-200">
+              <Link href={item.href} className="-my-1 inline-flex min-h-8 items-center rounded py-1 transition-colors hover:text-mist-200">
                 {item.label}
               </Link>
             ) : (

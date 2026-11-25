@@ -114,7 +114,7 @@ export function VatCalculator() {
             <p className="font-mono text-[10px] leading-relaxed text-mist-500">{mode === "add" ? "Gross = net × (1 + rate/100)" : "VAT = gross × rate ÷ (100 + rate) — not rate% of the gross figure"}</p>
           </>
         )}
-        <Note tone="warn">Rates are entered by you. Toolora does not embed statutory VAT rates, exemptions or territory rules; confirm the correct treatment with a qualified tax adviser. This is arithmetic, not tax advice.</Note>
+        <Note tone="warn">Rates are entered by you. Toolsy does not embed statutory VAT rates, exemptions or territory rules; confirm the correct treatment with a qualified tax adviser. This is arithmetic, not tax advice.</Note>
       </div>
     </Workspace>
   );
@@ -399,7 +399,7 @@ export function WorkingDaysCalculator() {
             </div>
           </>
         )}
-        <Note tone="info">Assumes a Monday–Friday working week. Holidays are only those you enter; Toolora does not embed any country's public holiday calendar. This is not payroll or legal advice.</Note>
+        <Note tone="info">Assumes a Monday–Friday working week. Holidays are only those you enter; Toolsy does not embed any country's public holiday calendar. This is not payroll or legal advice.</Note>
       </div>
     </Workspace>
   );

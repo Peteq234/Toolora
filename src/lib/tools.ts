@@ -11,7 +11,8 @@ export type CategoryId =
   | "calculators"
   | "time"
   | "design"
-  | "tech";
+  | "tech"
+  | "learning";
 
 export type Category = {
   id: CategoryId;
@@ -74,6 +75,12 @@ export const categories: Category[] = [
     icon: "heart",
   },
   {
+    id: "learning",
+    name: "Learning & reference",
+    description: "Explore and practise — from chess openings to study aids.",
+    icon: "chess",
+  },
+  {
     id: "calculators",
     name: "Calculators",
     description: "Everyday maths, unit conversions and health estimates.",
@@ -107,13 +114,13 @@ const baseTools: Tool[] = [
     category: "generators",
     icon: "key",
     tagline: "Strong, random passwords with full control over length and characters.",
-    metaTitle: "Password Generator — Strong Random Passwords | Toolora",
+    metaTitle: "Password Generator — Strong Random Passwords | Toolsy",
     metaDescription:
       "Create a strong random password in your browser. Set the length, mix upper and lower case letters, numbers and symbols. Nothing is uploaded or stored.",
     intro:
       "Build a password with real cryptographic randomness — generated on your device and never sent to a server.",
     about: [
-      "Toolora's password generator runs entirely in your browser. Each character is selected with the Web Crypto API's secure random number generator, then shuffled so the required character types are guaranteed. Nothing you generate is transmitted, logged or saved.",
+      "Toolsy's password generator runs entirely in your browser. Each character is selected with the Web Crypto API's secure random number generator, then shuffled so the required character types are guaranteed. Nothing you generate is transmitted, logged or saved.",
       "Length is the single biggest factor in password strength. Every extra character multiplies the number of possible combinations, which is why the strength meter reports estimated entropy in bits instead of an arbitrary score. Pair a long, unique password with a password manager so you only need to remember your master password.",
     ],
     steps: [
@@ -125,7 +132,7 @@ const baseTools: Tool[] = [
     faqs: [
       {
         q: "Are generated passwords stored or sent anywhere?",
-        a: "No. Generation happens locally using your browser's cryptographic random source. Reloading the page clears the result. Toolora has no account system and no server endpoint that receives tool inputs.",
+        a: "No. Generation happens locally using your browser's cryptographic random source. Reloading the page clears the result. Toolsy has no account system and no server endpoint that receives tool inputs.",
       },
       {
         q: "What password length should I choose?",
@@ -151,14 +158,14 @@ const baseTools: Tool[] = [
     category: "generators",
     icon: "atSign",
     tagline: "Find a memorable username for games, social profiles and side projects.",
-    metaTitle: "Username & Nickname Generator — Free Ideas | Toolora",
+    metaTitle: "Username & Nickname Generator — Free Ideas | Toolsy",
     metaDescription:
       "Generate username and nickname ideas from a keyword you like. Choose a style, separator and numbers, then copy your favourites. Free and private.",
     intro:
       "Mix a keyword you actually like with proven name patterns to find a handle that sounds like you.",
     about: [
       "The generator blends your keyword with a curated list of adjectives, nouns and suffixes, then applies punctuation and number patterns based on the style you pick. Every combination is assembled locally, so nothing you type is uploaded.",
-      "Toolora cannot tell whether a username is available on Steam, Instagram, TikTok or anywhere else — that requires checking each platform. Treat the results as a shortlist, keep a backup or two, and review the platform's naming rules before you commit.",
+      "Toolsy cannot tell whether a username is available on Steam, Instagram, TikTok or anywhere else — that requires checking each platform. Treat the results as a shortlist, keep a backup or two, and review the platform's naming rules before you commit.",
     ],
     steps: [
       { title: "Add a keyword", text: "Try a word you enjoy: a hobby, an animal, a colour or a private in-joke. Leave it blank for fully generated names." },
@@ -168,7 +175,7 @@ const baseTools: Tool[] = [
     ],
     faqs: [
       {
-        q: "Can Toolora check whether a username is taken?",
+        q: "Can Toolsy check whether a username is taken?",
         a: "No. Availability is platform-specific and usually rate-limited, so we don't pretend to check it. Generate a few backups and search for them on the platforms you care about.",
       },
       {
@@ -190,7 +197,7 @@ const baseTools: Tool[] = [
     category: "generators",
     icon: "dice",
     tagline: "Generate unbiased random integers between any two numbers.",
-    metaTitle: "Random Number Generator — Secure & Unbiased | Toolora",
+    metaTitle: "Random Number Generator — Secure & Unbiased | Toolsy",
     metaDescription:
       "Generate random numbers between any two values. Choose how many, allow duplicates, sort the results and copy the list. Uses your browser's secure random source.",
     intro:
@@ -228,7 +235,7 @@ const baseTools: Tool[] = [
     category: "generators",
     icon: "shuffle",
     tagline: "Paste your options, press pick, and let a fair draw decide.",
-    metaTitle: "Random Choice Picker — Pick a Winner Fairly | Toolora",
+    metaTitle: "Random Choice Picker — Pick a Winner Fairly | Toolsy",
     metaDescription:
       "Paste a list of options and let the picker choose one at random. Useful for giveaways, chores, lunch or classroom decisions. Free, no sign-up.",
     intro:
@@ -248,7 +255,7 @@ const baseTools: Tool[] = [
         a: "Yes. The winner is chosen with rejection-sampled secure randomness, so no option is favoured by position, length or spelling.",
       },
       {
-        q: "Does Toolora store my list?",
+        q: "Does Toolsy store my list?",
         a: "No. Your options exist only in the page state and are gone when you reload or clear the field. Copy anything you want to keep.",
       },
       {
@@ -267,7 +274,7 @@ const baseTools: Tool[] = [
     category: "text",
     icon: "fileText",
     tagline: "Live word, character and reading-time counts as you type.",
-    metaTitle: "Word & Character Counter — Free Online Tool | Toolora",
+    metaTitle: "Word & Character Counter — Free Online Tool | Toolsy",
     metaDescription:
       "Count words, characters, sentences and paragraphs as you type. See reading and speaking time plus keyword density. Works in your browser with no sign-up.",
     intro:
@@ -292,7 +299,7 @@ const baseTools: Tool[] = [
       },
       {
         q: "Why might my word count differ from Word or Google Docs?",
-        a: "Editors disagree on how to count things like hyphens, em dashes, symbols and line breaks. Toolora counts whitespace-separated tokens containing at least one letter or number.",
+        a: "Editors disagree on how to count things like hyphens, em dashes, symbols and line breaks. Toolsy counts whitespace-separated tokens containing at least one letter or number.",
       },
     ],
     keywords: ["word counter", "character counter", "word count tool", "reading time calculator"],
@@ -306,14 +313,14 @@ const baseTools: Tool[] = [
     category: "text",
     icon: "typeCase",
     tagline: "Switch any text between ten cases, from Title Case to snake_case.",
-    metaTitle: "Case Converter — UPPERCASE, camelCase & More | Toolora",
+    metaTitle: "Case Converter — UPPERCASE, camelCase & More | Toolsy",
     metaDescription:
       "Convert text to UPPERCASE, lowercase, Title Case, sentence case, camelCase, snake_case, kebab-case and more. Copy or download the result instantly.",
     intro:
       "Ten useful transformations, applied instantly. Convert headlines, variable names or messy pasted text.",
     about: [
       "Case conversion is a small job that is tedious to do by hand. This tool handles headings, developer naming conventions and quick clean-ups of text written in caps lock. Your original text is never modified until you choose a transformation, and nothing is uploaded.",
-      "There is no universal standard for Title Case. Toolora capitalises the first letter of each word, which suits labels and product names; publications often use their own style guides with different rules for small words.",
+      "There is no universal standard for Title Case. Toolsy capitalises the first letter of each word, which suits labels and product names; publications often use their own style guides with different rules for small words.",
     ],
     steps: [
       { title: "Enter your text", text: "Type or paste anything — a headline, a list of labels or a variable name." },
@@ -344,7 +351,7 @@ const baseTools: Tool[] = [
     category: "calculators",
     icon: "percent",
     tagline: "Three percentage questions, answered with the working shown.",
-    metaTitle: "Percentage Calculator — Three Ways to Calculate % | Toolora",
+    metaTitle: "Percentage Calculator — Three Ways to Calculate % | Toolsy",
     metaDescription:
       "Calculate a percentage of a number, work out what percent one number is of another, or find percentage increase and decrease. Free, instant and private.",
     intro:
@@ -383,7 +390,7 @@ const baseTools: Tool[] = [
     category: "calculators",
     icon: "ruler",
     tagline: "Length, weight, temperature and speed — metric and imperial.",
-    metaTitle: "Unit Converter — Length, Weight, Temperature & Speed | Toolora",
+    metaTitle: "Unit Converter — Length, Weight, Temperature & Speed | Toolsy",
     metaDescription:
       "Convert length, weight, temperature and speed units instantly. Metric and imperial supported, with precise conversion factors and a quick reference table.",
     intro:
@@ -422,7 +429,7 @@ const baseTools: Tool[] = [
     category: "calculators",
     icon: "activity",
     tagline: "Body mass index with a healthy weight range and honest context.",
-    metaTitle: "BMI Calculator — Metric & Imperial | Toolora",
+    metaTitle: "BMI Calculator — Metric & Imperial | Toolsy",
     metaDescription:
       "Estimate your body mass index from height and weight in metric or imperial units. See your category and a healthy weight range, plus what BMI cannot tell you.",
     intro:
@@ -460,7 +467,7 @@ const baseTools: Tool[] = [
     category: "time",
     icon: "timer",
     tagline: "A precise stopwatch with laps and a countdown timer with an alert.",
-    metaTitle: "Online Stopwatch & Countdown Timer | Toolora",
+    metaTitle: "Online Stopwatch & Countdown Timer | Toolsy",
     metaDescription:
       "Use a precise browser stopwatch with laps, or set a countdown timer in hours, minutes and seconds. A sound alert plays when time is up. No download required.",
     intro:
@@ -499,7 +506,7 @@ const baseTools: Tool[] = [
     category: "time",
     icon: "calendar",
     tagline: "Exact age in years, months and days — plus your next birthday.",
-    metaTitle: "Age Calculator — Exact Age in Years, Months & Days | Toolora",
+    metaTitle: "Age Calculator — Exact Age in Years, Months & Days | Toolsy",
     metaDescription:
       "Calculate exact age in years, months and days from any birth date. Also see total days, weeks and hours, the weekday you were born and your next birthday.",
     intro:
@@ -538,7 +545,7 @@ const baseTools: Tool[] = [
     category: "design",
     icon: "palette",
     tagline: "Harmonious palettes from any base color, with HEX and CSS export.",
-    metaTitle: "Color Palette Generator — HEX Codes & CSS | Toolora",
+    metaTitle: "Color Palette Generator — HEX Codes & CSS | Toolsy",
     metaDescription:
       "Create harmonious color palettes from any base color. Copy HEX codes, lock colors you like, and export ready-to-use CSS variables. Free and instant.",
     intro:
@@ -563,7 +570,7 @@ const baseTools: Tool[] = [
         a: "The base color is converted to HSL. Each mode then applies a fixed hue offset or lightness step — for example, triadic uses offsets of roughly 120° and 240°.",
       },
       {
-        q: "Does Toolora save my palettes?",
+        q: "Does Toolsy save my palettes?",
         a: "No. Locked colors and the current palette live in the page until you reload. Copy the CSS or HEX values if you want to keep them.",
       },
     ],
@@ -578,13 +585,13 @@ const baseTools: Tool[] = [
     category: "design",
     icon: "qr",
     tagline: "Turn a link or short text into a downloadable, never-expiring QR code.",
-    metaTitle: "QR Code Generator — Download PNG | Toolora",
+    metaTitle: "QR Code Generator — Download PNG | Toolsy",
     metaDescription:
       "Turn a link or short text into a downloadable QR code. Choose size, error correction and colors. QR codes are generated in your browser and never expire.",
     intro:
       "Create a static QR code for a link, Wi-Fi note or short message, then download it as a crisp PNG.",
     about: [
-      "These are static QR codes: the data is encoded directly into the pattern, with no redirect service in between. That means no scan limits, no expiry and no Toolora account receiving your data. It also means you cannot edit the destination after download — generate a new code if the link changes.",
+      "These are static QR codes: the data is encoded directly into the pattern, with no redirect service in between. That means no scan limits, no expiry and no Toolsy account receiving your data. It also means you cannot edit the destination after download — generate a new code if the link changes.",
       "Error correction controls how much of the code can be damaged or obscured and still scan. Higher levels are sturdier for print but require a denser pattern. Keep strong contrast between the foreground and background and test every code on a real phone before committing to print runs.",
     ],
     steps: [
@@ -599,7 +606,7 @@ const baseTools: Tool[] = [
       },
       {
         q: "Do you track QR code scans?",
-        a: "No. Toolora does not add tracking, redirects or shorteners. If you need scan analytics, you need a dedicated dynamic-QR service and should read its privacy policy.",
+        a: "No. Toolsy does not add tracking, redirects or shorteners. If you need scan analytics, you need a dedicated dynamic-QR service and should read its privacy policy.",
       },
       {
         q: "Why won't a colored QR code scan?",
@@ -617,14 +624,14 @@ const baseTools: Tool[] = [
     category: "tech",
     icon: "wifi",
     tagline: "Understand Mbps, latency and what speed you actually need.",
-    metaTitle: "Internet Speed Guide & Download Time Calculator | Toolora",
+    metaTitle: "Internet Speed Guide & Download Time Calculator | Toolsy",
     metaDescription:
       "Understand Mbps, latency and bandwidth. Estimate download time for a file and learn how to measure your connection properly. No invented speed-test results.",
     intro:
       "An honest guide to connection speed, with a real download-time calculator and links to trusted measurement tools.",
     about: [
       "Connection speed is usually quoted in megabits per second, while files are measured in megabytes — a distinction that makes an advertised 100 Mbps line seem slower than expected when a 1 GB file doesn't arrive in ten seconds. The calculator on this page handles both units correctly.",
-      "Toolora deliberately does not display a speed-test score. A meaningful test needs a reliable nearby server, a large download and upload sample, and no other use of the connection during measurement. Instead we explain what the numbers mean and point you to established testing services.",
+      "Toolsy deliberately does not display a speed-test score. A meaningful test needs a reliable nearby server, a large download and upload sample, and no other use of the connection during measurement. Instead we explain what the numbers mean and point you to established testing services.",
     ],
     steps: [
       { title: "Learn the units", text: "Mbps measures bits per second. Divide by eight to approximate megabytes per second at ideal conditions." },
@@ -633,7 +640,7 @@ const baseTools: Tool[] = [
     ],
     faqs: [
       {
-        q: "Does Toolora run a speed test?",
+        q: "Does Toolsy run a speed test?",
         a: "No. Accurate testing requires downloading and uploading substantial data from dedicated servers. We don't show numbers we can't measure. Use a dedicated test and interpret the result with this guide.",
       },
       {
@@ -660,7 +667,7 @@ const baseTools: Tool[] = [
     category: "tech",
     icon: "cpu",
     tagline: "An approximate CPU/GPU balance check, with the caveats up front.",
-    metaTitle: "PC Bottleneck Calculator — Approximate Balance Check | Toolora",
+    metaTitle: "PC Bottleneck Calculator — Approximate Balance Check | Toolsy",
     metaDescription:
       "Estimate whether your CPU or GPU could be the limiting part of your system at 1080p, 1440p or 4K. A rough planning aid with clear limitations — not a benchmark.",
     intro:
@@ -703,7 +710,7 @@ const baseTools: Tool[] = [
     category: "developer",
     icon: "code",
     tagline: "Format, minify and validate JSON with line-accurate error messages.",
-    metaTitle: "JSON Formatter & Validator — Format, Minify & Check | Toolora",
+    metaTitle: "JSON Formatter & Validator — Format, Minify & Check | Toolsy",
     metaDescription:
       "Format, minify and validate JSON in your browser. See clear errors with line and column numbers, inspect key statistics and copy clean output. Nothing is uploaded.",
     intro:
@@ -748,7 +755,7 @@ const baseTools: Tool[] = [
     category: "developer",
     icon: "binary",
     tagline: "Encode text to Base64 or decode it back, with Unicode handled correctly.",
-    metaTitle: "Base64 Encoder & Decoder — Unicode Safe | Toolora",
+    metaTitle: "Base64 Encoder & Decoder — Unicode Safe | Toolsy",
     metaDescription:
       "Encode text to Base64 or decode Base64 to readable text. Full Unicode support, URL-safe option, byte counts and clear errors. Runs entirely in your browser.",
     intro:
@@ -792,7 +799,7 @@ const baseTools: Tool[] = [
     category: "developer",
     icon: "link",
     tagline: "Encode whole URLs or individual components, and decode them safely.",
-    metaTitle: "URL Encoder & Decoder — Percent Encoding | Toolora",
+    metaTitle: "URL Encoder & Decoder — Percent Encoding | Toolsy",
     metaDescription:
       "Percent-encode a full URL or a single component, and decode escaped strings safely. See URL parts and query parameters. No uploads, no sign-up.",
     intro:
@@ -836,7 +843,7 @@ const baseTools: Tool[] = [
     category: "developer",
     icon: "clock",
     tagline: "Convert Unix timestamps in seconds or milliseconds to human-readable dates.",
-    metaTitle: "Unix Timestamp Converter — Seconds, Milliseconds, UTC | Toolora",
+    metaTitle: "Unix Timestamp Converter — Seconds, Milliseconds, UTC | Toolsy",
     metaDescription:
       "Convert Unix timestamps to readable dates and dates back to timestamps. Supports seconds and milliseconds, UTC and local time, ISO 8601 and relative time.",
     intro:
@@ -881,7 +888,7 @@ const baseTools: Tool[] = [
     category: "developer",
     icon: "diff",
     tagline: "Compare two texts line by line and see exactly what changed.",
-    metaTitle: "Text Diff Checker — Compare Two Texts Online | Toolora",
+    metaTitle: "Text Diff Checker — Compare Two Texts Online | Toolsy",
     metaDescription:
       "Compare two blocks of text and highlight added, removed and unchanged lines. See difference statistics and switch between side-by-side and unified views.",
     intro:
@@ -926,7 +933,7 @@ const baseTools: Tool[] = [
     category: "developer",
     icon: "markdown",
     tagline: "Write Markdown and see a live, safely rendered preview.",
-    metaTitle: "Markdown Editor & Live Preview — Free Online | Toolora",
+    metaTitle: "Markdown Editor & Live Preview — Free Online | Toolsy",
     metaDescription:
       "Write Markdown with a live preview. Supports headings, lists, links, code blocks, inline code, quotes and tables. Copy or download your .md file locally.",
     intro:
@@ -970,7 +977,7 @@ const baseTools: Tool[] = [
     category: "design",
     icon: "image",
     tagline: "Shrink JPEG, PNG and WebP images locally, with a quality preview.",
-    metaTitle: "Image Compressor — Compress JPEG, PNG & WebP Locally | Toolora",
+    metaTitle: "Image Compressor — Compress JPEG, PNG & WebP Locally | Toolsy",
     metaDescription:
       "Compress images in your browser without uploading them. Adjust quality and size, compare original and compressed files, then download the result.",
     intro:
@@ -1015,7 +1022,7 @@ const baseTools: Tool[] = [
     category: "design",
     icon: "contrast",
     tagline: "Check text and background colours against WCAG AA and AAA.",
-    metaTitle: "Color Contrast Checker — WCAG AA & AAA | Toolora",
+    metaTitle: "Color Contrast Checker — WCAG AA & AAA | Toolsy",
     metaDescription:
       "Check the contrast ratio of foreground and background colours. See WCAG AA and AAA results for normal and large text, preview sample text and find a safer colour.",
     intro:
@@ -1060,7 +1067,7 @@ const baseTools: Tool[] = [
     category: "design",
     icon: "gradient",
     tagline: "Build linear and radial CSS gradients with a live preview.",
-    metaTitle: "CSS Gradient Generator — Linear & Radial | Toolora",
+    metaTitle: "CSS Gradient Generator — Linear & Radial | Toolsy",
     metaDescription:
       "Create linear or radial CSS gradients with multiple colour stops. Adjust the angle, preview in real time and copy ready-to-use CSS. No account required.",
     intro:
@@ -1104,7 +1111,7 @@ const baseTools: Tool[] = [
     category: "developer",
     icon: "terminal",
     tagline: "Test regular expressions with live match highlighting and clear errors.",
-    metaTitle: "Regex Tester — Live Matches, Flags & Errors | Toolora",
+    metaTitle: "Regex Tester — Live Matches, Flags & Errors | Toolsy",
     metaDescription:
       "Test JavaScript regular expressions against your text. Toggle common flags, highlight every match, inspect capture groups and understand invalid patterns.",
     intro:

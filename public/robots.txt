@@ -5,4 +5,4 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /favorites
 
-Sitemap: https://toolora.com/sitemap.xml
+Sitemap: https://toolsy.com/sitemap.xml

@@ -94,7 +94,7 @@ export function CsvJsonConverter() {
         {result.warnings.length > 0 && <Note tone="warn" title="Data warnings"><ul className="space-y-1">{result.warnings.slice(0, 8).map((warning) => <li key={warning}>• {warning}</li>)}</ul></Note>}
         <div className="flex flex-wrap gap-2">
           <CopyButton value={result.output} label="Copy output" copiedLabel="Copied" />
-          <Button variant="secondary" size="sm" disabled={!result.output} onClick={() => downloadText(result.output, direction === "csv-to-json" ? "toolora-data.json" : "toolora-data.csv", direction === "csv-to-json" ? "application/json" : "text/csv")}><Icon name="download" size={13} /> Download {direction === "csv-to-json" ? ".json" : ".csv"}</Button>
+          <Button variant="secondary" size="sm" disabled={!result.output} onClick={() => downloadText(result.output, direction === "csv-to-json" ? "toolsy-data.json" : "toolsy-data.csv", direction === "csv-to-json" ? "application/json" : "text/csv")}><Icon name="download" size={13} /> Download {direction === "csv-to-json" ? ".json" : ".csv"}</Button>
           <span className="ml-auto font-mono text-[9.5px] text-mist-600">{(result.output.match(/\n/g)?.length ?? 0) + (result.output ? 1 : 0)} output lines</span>
         </div>
       </div>
@@ -173,7 +173,7 @@ export function JsonXmlConverter() {
         </div>
         <div className="flex flex-wrap gap-2">
           <CopyButton value={result.output} label="Copy output" copiedLabel="Copied" />
-          <Button variant="secondary" size="sm" disabled={!result.output} onClick={() => downloadText(result.output, direction === "json-to-xml" ? "toolora-data.xml" : "toolora-data.json")}><Icon name="download" size={13} /> Download</Button>
+          <Button variant="secondary" size="sm" disabled={!result.output} onClick={() => downloadText(result.output, direction === "json-to-xml" ? "toolsy-data.xml" : "toolsy-data.json")}><Icon name="download" size={13} /> Download</Button>
         </div>
         <Note tone="info">XML attributes become keys prefixed with @. Arrays use &lt;item&gt; elements. Comments, processing instructions and mixed content have no JSON equivalent and are not preserved.</Note>
       </div>
@@ -245,7 +245,7 @@ export function CsvViewerEditor() {
             </div>
             <div className="flex flex-wrap gap-2">
               <CopyButton value={preview} label="Copy CSV" copiedLabel="Copied" />
-              <Button variant="primary" size="sm" onClick={() => downloadText(preview, "toolora-edited.csv", "text/csv")}><Icon name="download" size={13} /> Download CSV</Button>
+              <Button variant="primary" size="sm" onClick={() => downloadText(preview, "toolsy-edited.csv", "text/csv")}><Icon name="download" size={13} /> Download CSV</Button>
               <span className="ml-auto font-mono text-[9.5px] text-mist-600">{(preview.length / 1024).toFixed(1)} KB</span>
             </div>
           </>
@@ -294,7 +294,7 @@ export function CsvColumnSorter() {
             </div>
             {parsed.errors.length > 0 && <Note tone="warn">{parsed.errors[0]}</Note>}
             <textarea readOnly value={sorted} rows={8} aria-label="Sorted CSV output" className="field-input resize-y bg-ink-950/50 font-mono text-[11.5px]" />
-            <div className="flex gap-2"><CopyButton value={sorted} label="Copy sorted CSV" copiedLabel="Copied" /><Button variant="secondary" size="sm" onClick={() => downloadText(sorted, "toolora-sorted.csv", "text/csv")}><Icon name="download" size={13} /> Download</Button></div>
+            <div className="flex gap-2"><CopyButton value={sorted} label="Copy sorted CSV" copiedLabel="Copied" /><Button variant="secondary" size="sm" onClick={() => downloadText(sorted, "toolsy-sorted.csv", "text/csv")}><Icon name="download" size={13} /> Download</Button></div>
           </>
         )}
       </div>
@@ -339,7 +339,7 @@ export function CsvDuplicateRemover() {
               <StatTile label="Columns" value={String(parsed.rows[0]?.length ?? 0)} />
             </div>
             <textarea readOnly value={result.output} rows={7} aria-label="CSV without duplicates" className="field-input resize-y bg-ink-950/50 font-mono text-[11.5px]" />
-            <div className="flex gap-2"><CopyButton value={result.output} label="Copy cleaned CSV" copiedLabel="Copied" /><Button variant="secondary" size="sm" onClick={() => downloadText(result.output, "toolora-deduplicated.csv", "text/csv")}><Icon name="download" size={13} /> Download</Button></div>
+            <div className="flex gap-2"><CopyButton value={result.output} label="Copy cleaned CSV" copiedLabel="Copied" /><Button variant="secondary" size="sm" onClick={() => downloadText(result.output, "toolsy-deduplicated.csv", "text/csv")}><Icon name="download" size={13} /> Download</Button></div>
           </>
         )}
       </div>
@@ -406,7 +406,7 @@ export function XlsxPreview() {
               <StatTile label="Rows shown" value={String(Math.min(sheet.rows.length, 400))} />
               <StatTile label="Columns" value={String(width)} />
               <CopyButton value={toCsv(sheet.rows.slice(0, 500).map((row) => Array.from({ length: width }, (_, index) => row[index] ?? "")))} label="Copy as CSV" copiedLabel="Copied" />
-              <Button variant="secondary" size="sm" onClick={() => downloadText(toCsv(sheet.rows.slice(0, 500).map((row) => Array.from({ length: width }, (_, index) => row[index] ?? ""))), "toolora-sheet.csv", "text/csv")}><Icon name="download" size={13} /> Download visible rows</Button>
+              <Button variant="secondary" size="sm" onClick={() => downloadText(toCsv(sheet.rows.slice(0, 500).map((row) => Array.from({ length: width }, (_, index) => row[index] ?? ""))), "toolsy-sheet.csv", "text/csv")}><Icon name="download" size={13} /> Download visible rows</Button>
             </div>
             <Note tone="info">This is a value preview: formulas are not recalculated, and charts, images, macros and most cell formatting are not shown. Multi-sheet workbooks are limited to the first 12 sheets.</Note>
           </>

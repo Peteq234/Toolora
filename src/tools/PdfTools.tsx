@@ -221,7 +221,7 @@ export function PdfMerge() {
         {result && (
           <div className="rounded-xl border border-brand-400/20 bg-brand-400/[0.05] p-4">
             <p className="text-[12.5px] font-semibold text-mist-100">Merged PDF ready · {result.pages} pages · {formatBytes(result.bytes.length)}</p>
-            <Button className="mt-2" size="sm" onClick={() => downloadFile(result.bytes as unknown as string, "toolora-merged.pdf", "application/pdf")}>
+            <Button className="mt-2" size="sm" onClick={() => downloadFile(result.bytes as unknown as string, "toolsy-merged.pdf", "application/pdf")}>
               <Icon name="download" size={14} /> Download merged PDF
             </Button>
           </div>
@@ -429,7 +429,7 @@ export function PdfPageExtractor() {
                 {busy ? "Extracting…" : "Extract selected pages"}
               </Button>
               {result && (
-                <Button variant="primary" size="sm" onClick={() => downloadFile(result as unknown as string, "toolora-extracted-pages.pdf", "application/pdf")}>
+                <Button variant="primary" size="sm" onClick={() => downloadFile(result as unknown as string, "toolsy-extracted-pages.pdf", "application/pdf")}>
                   <Icon name="download" size={14} /> Download extracted PDF
                 </Button>
               )}

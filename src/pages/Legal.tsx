@@ -96,16 +96,16 @@ function PolicyLayout({
             <p className="mt-1 text-[12px] leading-relaxed text-mist-500">
               Email{" "}
               <a
-                href="mailto:hello@toolora.com"
-                className="text-brand-200 underline decoration-brand-400/30 underline-offset-2"
+                href="mailto:hello@toolsy.com"
+                className="inline-flex min-h-8 items-center text-brand-200 underline decoration-brand-400/30 underline-offset-2"
               >
-                hello@toolora.com
+                hello@toolsy.com
               </a>{" "}
               or use the{" "}
-              <Link href="/contact" className="text-brand-200 underline decoration-brand-400/30 underline-offset-2">
+              <Link href="/contact" className="inline-flex min-h-8 items-center text-brand-200 underline decoration-brand-400/30 underline-offset-2">
                 contact form
               </Link>
-              . This page describes the current behaviour of toolora.com and is not legal advice for
+              . This page describes the current behaviour of toolsy.com and is not legal advice for
               your own project.
             </p>
           </div>
@@ -122,11 +122,11 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     id: "short-version",
     title: "The short version",
     body: [
-      "Toolora is a free toolkit that runs most processing in your browser. You don't need an account, and we don't receive the content you type into the tools. The favorites feature stores tool names in your browser's local storage. The main information we receive is what you choose to send us by email.",
+      "Toolsy is a free toolkit that runs most processing in your browser. You don't need an account, and we don't receive the content you type into the tools. The favorites feature stores tool names in your browser's local storage. The main information we receive is what you choose to send us by email.",
       "We do not currently run analytics or advertising scripts. If that changes, this policy will be updated and any legally required consent mechanism will be added before those services are enabled.",
     ],
     bullets: [
-      "Tool inputs are processed locally, not sent to a Toolora server.",
+      "Tool inputs are processed locally, not sent to a Toolsy server.",
       "Favorites are stored in your browser, not in a user account.",
       "We don't sell personal information.",
       "No advertising is running on the site today.",
@@ -134,9 +134,9 @@ const PRIVACY_SECTIONS: PolicySection[] = [
   },
   {
     id: "controller",
-    title: "Who operates Toolora",
+    title: "Who operates Toolsy",
     body: [
-      "Toolora is an independent website available at toolora.com. In this policy, “Toolora”, “we” and “us” refer to the operator of this site. Privacy questions, access requests or deletion requests can be sent to hello@toolora.com.",
+      "Toolsy is an independent website available at toolsy.com. In this policy, “Toolsy”, “we” and “us” refer to the operator of this site. Privacy questions, access requests or deletion requests can be sent to hello@toolsy.com.",
     ],
   },
   {
@@ -144,7 +144,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     title: "What you enter into the tools",
     body: [
       "Generated passwords, pasted text, QR code content, numbers, measurements and dates are handled in your browser. There is no application endpoint that receives this data, no account history, and no server-side storage of tool inputs.",
-      "The password generator uses the browser's Web Crypto API. The timer can use the Web Audio API to play a local alert. The internet speed guide can read the Network Information API where your browser exposes it. The image compressor reads your chosen file and re-encodes it with an in-browser canvas; Markdown drafts, JSON, regex tests, diffs and other text inputs are processed in page memory. These are browser capabilities, not requests to Toolora.",
+      "The password generator uses the browser's Web Crypto API. The timer can use the Web Audio API to play a local alert. The internet speed guide can read the Network Information API where your browser exposes it. The image compressor reads your chosen file and re-encodes it with an in-browser canvas; Markdown drafts, JSON, regex tests, diffs and other text inputs are processed in page memory. These are browser capabilities, not requests to Toolsy.",
       "Copy buttons write to your clipboard only when you activate them. If a tool can download a file, the file is created locally in your browser.",
     ],
   },
@@ -152,8 +152,8 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     id: "favorites",
     title: "Favorites, recent tools and local storage",
     body: [
-      "When you star a tool, Toolora saves its identifier in your browser's localStorage under the key “toolora:favorites:v1”. When you open a tool, its identifier is also recorded under “toolora:recent:v1” so the recently used shortcut stays useful. Both lists are limited in size and remain on your device; they are not transmitted to us and are not accessible across different browsers or devices.",
-      "You can remove favorites using the star controls or the “Clear all” button on the favorites page, and clear the recent list with “Clear history”. Clearing site data in your browser also removes both lists. Toolora cannot restore them because we never receive a copy.",
+      "When you star a tool, Toolsy saves its identifier in a browser-localStorage key reserved for favorite tools. When you open a tool, its identifier is also recorded in a separate localStorage key so the recently used shortcut stays useful. Both lists are limited in size and remain on your device; they are not transmitted to us and are not accessible across different browsers or devices.",
+      "You can remove favorites using the star controls or the “Clear all” button on the favorites page, and clear the recent list with “Clear history”. Clearing site data in your browser also removes both lists. Toolsy cannot restore them because we never receive a copy.",
     ],
   },
   {
@@ -178,7 +178,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     id: "cookies",
     title: "Cookies",
     body: [
-      "At the time of writing, Toolora does not set analytics cookies or advertising cookies. The favorites feature uses localStorage, which is technically different from a cookie and does not send data with every request.",
+      "At the time of writing, Toolsy does not set analytics cookies or advertising cookies. The favorites feature uses localStorage, which is technically different from a cookie and does not send data with every request.",
       "If we introduce a service that requires cookies, this policy will identify the provider, the purpose and the choices available to you. Where consent is required by law, it will be requested before non-essential cookies are set.",
     ],
   },
@@ -186,7 +186,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     id: "advertising",
     title: "Future advertising (including Google AdSense)",
     body: [
-      "Toolora may apply for advertising programmes such as Google AdSense and display clearly labelled ads on the site. Advertising is not active today. No ad network script is currently running and no ad slots contain fabricated advertisements.",
+      "Toolsy may apply for advertising programmes such as Google AdSense and display clearly labelled ads on the site. Advertising is not active today. No ad network script is currently running and no ad slots contain fabricated advertisements.",
       "If advertising is enabled, Google and its partners may use cookies or similar technologies to serve ads based on previous visits to this or other websites. Google's own privacy policy explains how Google uses information from sites that use its services. You can review and adjust Google ad personalisation in Google's Ads Settings, and opt out of some third-party vendors' personalised advertising via industry opt-out pages such as aboutads.info.",
       "We intend to keep ad placements clearly labelled and separate from tool controls. We will not place ads that imitate results, downloads or navigation.",
     ],
@@ -197,7 +197,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
             href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-brand-200 underline decoration-brand-400/30 underline-offset-2"
+            className="inline-flex min-h-9 items-center gap-1 text-brand-200 underline decoration-brand-400/30 underline-offset-2"
           >
             Google privacy policy
             <Icon name="external" size={11} />
@@ -208,7 +208,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
             href="https://policies.google.com/technologies/ads"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-brand-200 underline decoration-brand-400/30 underline-offset-2"
+            className="inline-flex min-h-9 items-center gap-1 text-brand-200 underline decoration-brand-400/30 underline-offset-2"
           >
             How Google uses advertising data
             <Icon name="external" size={11} />
@@ -219,7 +219,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
             href="https://optout.aboutads.info/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-brand-200 underline decoration-brand-400/30 underline-offset-2"
+            className="inline-flex min-h-9 items-center gap-1 text-brand-200 underline decoration-brand-400/30 underline-offset-2"
           >
             Ad industry opt-out
             <Icon name="external" size={11} />
@@ -232,7 +232,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     id: "affiliates",
     title: "Affiliate links",
     body: [
-      "Some future links may be affiliate links, meaning Toolora could receive a commission if you buy through them, at no additional cost to you. Affiliate relationships will be disclosed near the link and will not change the editorial content of a tool or calculator.",
+      "Some future links may be affiliate links, meaning Toolsy could receive a commission if you buy through them, at no additional cost to you. Affiliate relationships will be disclosed near the link and will not change the editorial content of a tool or calculator.",
       "No affiliate links are currently placed in tool results, and nothing in a free tool requires a purchase.",
     ],
   },
@@ -247,7 +247,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     id: "children",
     title: "Children's privacy",
     body: [
-      "Toolora is a general-audience utility site and is not directed at children. We do not knowingly collect personal information from children, and there are no accounts or profiles. If you believe a child has sent us personal information by email, contact us and we will delete it where appropriate.",
+      "Toolsy is a general-audience utility site and is not directed at children. We do not knowingly collect personal information from children, and there are no accounts or profiles. If you believe a child has sent us personal information by email, contact us and we will delete it where appropriate.",
     ],
   },
   {
@@ -255,7 +255,7 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     title: "Your choices and rights",
     body: [
       "Depending on where you live, you may have rights to access, correct, delete or restrict the personal information we hold, or to object to certain processing. The only routine personal information we hold is correspondence you send us.",
-      "To make a request, email hello@toolora.com from the address you used to contact us, or identify the relevant email. We may need to verify that the request relates to you. You also have the right to complain to your local data-protection authority.",
+      "To make a request, email hello@toolsy.com from the address you used to contact us, or identify the relevant email. We may need to verify that the request relates to you. You also have the right to complain to your local data-protection authority.",
       "Local data such as favorites is under your direct control: clear it in your browser at any time.",
     ],
   },
@@ -277,24 +277,24 @@ const PRIVACY_SECTIONS: PolicySection[] = [
     id: "privacy-contact",
     title: "Contact",
     body: [
-      "Privacy questions and requests can be sent to hello@toolora.com. Please include “Privacy” in the subject line so the message is routed correctly. You can also use the contact page and select the privacy topic.",
+      "Privacy questions and requests can be sent to hello@toolsy.com. Please include “Privacy” in the subject line so the message is routed correctly. You can also use the contact page and select the privacy topic.",
     ],
   },
 ];
 
 export function PrivacyPage() {
   useSeo({
-    title: "Privacy Policy — Toolora",
+    title: "Privacy Policy — Toolsy",
     description:
-      "How Toolora handles data: local tool processing, browser-stored favorites, contact emails, hosting logs, and our approach to future advertising and cookies.",
+      "How Toolsy handles data: local tool processing, browser-stored favorites, contact emails, hosting logs, and our approach to future advertising and cookies.",
     path: "/privacy",
     schema: {
       "@type": "WebPage",
       name: "Privacy Policy",
-      url: "https://toolora.com/privacy",
+      url: "https://toolsy.com/privacy",
       description:
-        "Toolora's privacy policy covering local tool processing, local favorites, contact correspondence and future advertising.",
-      isPartOf: { "@type": "WebSite", name: "Toolora", url: "https://toolora.com" },
+        "Toolsy's privacy policy covering local tool processing, local favorites, contact correspondence and future advertising.",
+      isPartOf: { "@type": "WebSite", name: "Toolsy", url: "https://toolsy.com" },
     },
   });
 
@@ -303,7 +303,7 @@ export function PrivacyPage() {
       label="Legal · privacy"
       title="Privacy Policy"
       updated="12 February 2026"
-      intro="Toolora is built around a simple idea: a useful tool shouldn't require you to hand over more data than necessary. This page explains exactly what stays on your device, what we receive, and what changes if advertising is enabled."
+      intro="Toolsy is built around a simple idea: a useful tool shouldn't require you to hand over more data than necessary. This page explains exactly what stays on your device, what we receive, and what changes if advertising is enabled."
       sections={PRIVACY_SECTIONS}
     />
   );
@@ -316,14 +316,14 @@ const TERMS_SECTIONS: PolicySection[] = [
     id: "terms-acceptance",
     title: "Agreement to these terms",
     body: [
-      "By accessing or using toolora.com, you agree to these terms of use and to the privacy policy. If you do not agree, please do not use the site. If you use Toolora on behalf of an organisation, you confirm that you have authority to accept these terms for that organisation.",
+      "By accessing or using toolsy.com, you agree to these terms of use and to the privacy policy. If you do not agree, please do not use the site. If you use Toolsy on behalf of an organisation, you confirm that you have authority to accept these terms for that organisation.",
     ],
   },
   {
     id: "service",
     title: "The service",
     body: [
-      "Toolora provides free, browser-based utilities including text tools, generators, calculators, converters, timers and informational guides. They are provided as a convenience and for general information.",
+      "Toolsy provides free, browser-based utilities including text tools, generators, calculators, converters, timers and informational guides. They are provided as a convenience and for general information.",
       "The service is offered free of charge and without an account. We do not guarantee that any particular tool will remain available, that the catalogue will not change, or that the site will always be uninterrupted or error-free.",
     ],
   },
@@ -344,7 +344,7 @@ const TERMS_SECTIONS: PolicySection[] = [
     id: "acceptable-use",
     title: "Acceptable use",
     body: [
-      "You may use Toolora for personal, educational and commercial tasks, subject to these terms. You may not use the site in a way that is unlawful, harmful or that interferes with other people's use of it.",
+      "You may use Toolsy for personal, educational and commercial tasks, subject to these terms. You may not use the site in a way that is unlawful, harmful or that interferes with other people's use of it.",
     ],
     bullets: [
       "Do not use the QR code generator to distribute malware, phishing links or fraudulent material.",
@@ -357,7 +357,7 @@ const TERMS_SECTIONS: PolicySection[] = [
     id: "your-inputs",
     title: "Your inputs and outputs",
     body: [
-      "You keep whatever rights you have in the text, data and other content you enter into the tools. Because processing happens locally, Toolora does not claim a licence to your inputs.",
+      "You keep whatever rights you have in the text, data and other content you enter into the tools. Because processing happens locally, Toolsy does not claim a licence to your inputs.",
       "You are responsible for the content you generate, download or distribute using the tools — including links or text encoded in a QR code — and for checking that you have the rights to use it. Outputs are provided without any warranty that they are fit for a particular purpose.",
     ],
   },
@@ -365,16 +365,16 @@ const TERMS_SECTIONS: PolicySection[] = [
     id: "intellectual-property",
     title: "Intellectual property",
     body: [
-      "The Toolora name, logo, site design, written content and underlying code are protected by intellectual-property laws and remain the property of their respective owners. You receive a limited, revocable, non-exclusive licence to use the site for its intended purpose.",
-      "You may link to Toolora pages and share individual results. You may not copy substantial portions of the site, remove attribution, or present the site or its content as your own without permission, except where applicable law allows it.",
+      "The Toolsy name, logo, site design, written content and underlying code are protected by intellectual-property laws and remain the property of their respective owners. You receive a limited, revocable, non-exclusive licence to use the site for its intended purpose.",
+      "You may link to Toolsy pages and share individual results. You may not copy substantial portions of the site, remove attribution, or present the site or its content as your own without permission, except where applicable law allows it.",
     ],
   },
   {
     id: "third-party",
     title: "Third-party links, advertising and affiliates",
     body: [
-      "The site may link to third-party resources, including independent speed-test services. Those services are not controlled by Toolora and we are not responsible for their content, availability, accuracy or practices. A link does not imply endorsement.",
-      "Future advertising will be clearly labelled. Future affiliate links may earn Toolora a commission at no extra cost to you. Sponsored or affiliate content will not be presented as a neutral tool result.",
+      "The site may link to third-party resources, including independent speed-test services. Those services are not controlled by Toolsy and we are not responsible for their content, availability, accuracy or practices. A link does not imply endorsement.",
+      "Future advertising will be clearly labelled. Future affiliate links may earn Toolsy a commission at no extra cost to you. Sponsored or affiliate content will not be presented as a neutral tool result.",
     ],
   },
   {
@@ -396,7 +396,7 @@ const TERMS_SECTIONS: PolicySection[] = [
     id: "liability",
     title: "Limitation of liability",
     body: [
-      "To the maximum extent permitted by law, Toolora and its operator will not be liable for indirect, incidental, special, consequential or punitive damages, or for loss of profits, data, goodwill or opportunity arising from the use of, or inability to use, the site.",
+      "To the maximum extent permitted by law, Toolsy and its operator will not be liable for indirect, incidental, special, consequential or punitive damages, or for loss of profits, data, goodwill or opportunity arising from the use of, or inability to use, the site.",
       "Nothing in these terms excludes or limits liability that cannot lawfully be excluded or limited, including your mandatory consumer rights under applicable law.",
     ],
   },
@@ -411,24 +411,24 @@ const TERMS_SECTIONS: PolicySection[] = [
     id: "terms-contact",
     title: "Contact",
     body: [
-      "Questions about these terms can be sent to hello@toolora.com or through the contact page. Please include “Terms” in the subject line so the message is routed correctly.",
+      "Questions about these terms can be sent to hello@toolsy.com or through the contact page. Please include “Terms” in the subject line so the message is routed correctly.",
     ],
   },
 ];
 
 export function TermsPage() {
   useSeo({
-    title: "Terms of Use — Toolora",
+    title: "Terms of Use — Toolsy",
     description:
-      "The terms for using Toolora's free online tools, including acceptable use, no professional advice, approximate results, intellectual property and liability.",
+      "The terms for using Toolsy's free online tools, including acceptable use, no professional advice, approximate results, intellectual property and liability.",
     path: "/terms",
     schema: {
       "@type": "WebPage",
       name: "Terms of Use",
-      url: "https://toolora.com/terms",
+      url: "https://toolsy.com/terms",
       description:
-        "Terms of use for Toolora's free browser-based tools, including disclaimers and acceptable-use rules.",
-      isPartOf: { "@type": "WebSite", name: "Toolora", url: "https://toolora.com" },
+        "Terms of use for Toolsy's free browser-based tools, including disclaimers and acceptable-use rules.",
+      isPartOf: { "@type": "WebSite", name: "Toolsy", url: "https://toolsy.com" },
     },
   });
 
@@ -437,7 +437,7 @@ export function TermsPage() {
       label="Legal · terms"
       title="Terms of Use"
       updated="12 February 2026"
-      intro="These terms explain what you can expect from Toolora, what you can and can't do with the site, and the limits of the estimates it provides. Plain language is used where possible, but this is a legally oriented document."
+      intro="These terms explain what you can expect from Toolsy, what you can and can't do with the site, and the limits of the estimates it provides. Plain language is used where possible, but this is a legally oriented document."
       sections={TERMS_SECTIONS}
     />
   );

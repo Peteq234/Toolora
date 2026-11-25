@@ -12,7 +12,7 @@ export const extraTools: Tool[] = [
     category: "family",
     icon: "user",
     tagline: "A mid-parental height estimate for a child, with an honest uncertainty range.",
-    metaTitle: "Child Height Predictor — Mid-Parental Height | Toolora",
+    metaTitle: "Child Height Predictor — Mid-Parental Height | Toolsy",
     metaDescription:
       "Estimate a child's adult height from the mother's and father's heights using the mid-parental method. Shows the formula, a ±8.5 cm range and what genetics cannot predict.",
     intro: "A simple genetic estimate for adult height — presented with the formula and a realistic range.",
@@ -41,7 +41,7 @@ export const extraTools: Tool[] = [
     category: "family",
     icon: "activity",
     tagline: "Age- and sex-specific BMI-for-age using the official CDC 2000 LMS reference.",
-    metaTitle: "Children's BMI Calculator — CDC BMI-for-Age | Toolora",
+    metaTitle: "Children's BMI Calculator — CDC BMI-for-Age | Toolsy",
     metaDescription:
       "Calculate BMI for a child aged 2–20 and interpret it against the CDC 2000 BMI-for-age reference for their exact age and sex. Screening only, never a diagnosis.",
     intro: "BMI for children must be read against growth charts, not adult thresholds. This uses verified CDC data.",
@@ -73,7 +73,7 @@ export const extraTools: Tool[] = [
     category: "calculators",
     icon: "percent",
     tagline: "Measure percentage increase or decrease between any two values.",
-    metaTitle: "Percentage Increase & Decrease Calculator | Toolora",
+    metaTitle: "Percentage Increase & Decrease Calculator | Toolsy",
     metaDescription:
       "Calculate the percentage increase or decrease between two numbers, with the difference, multiplier and worked formula. Handles negative values sensibly.",
     intro: "See exactly how much a value grew or shrank, relative to where it started.",
@@ -102,7 +102,7 @@ export const extraTools: Tool[] = [
     category: "calculators",
     icon: "scale",
     tagline: "Work out sale prices, extra discounts and tax in one breakdown.",
-    metaTitle: "Discount Calculator — Sale Price & Savings | Toolora",
+    metaTitle: "Discount Calculator — Sale Price & Savings | Toolsy",
     metaDescription:
       "Find a discounted price from a percentage, add an extra fixed discount and sales tax, and see exactly how much you save. Free, instant and private.",
     intro: "From shelf price to final total, including that extra coupon and tax.",
@@ -132,7 +132,7 @@ export const extraTools: Tool[] = [
     category: "calculators",
     icon: "activity",
     tagline: "Mean, median, mode, range and spread for any list of numbers.",
-    metaTitle: "Average Calculator — Mean, Median, Mode & Range | Toolora",
+    metaTitle: "Average Calculator — Mean, Median, Mode & Range | Toolsy",
     metaDescription:
       "Paste numbers to get the mean, median, mode, range and population standard deviation. Accepts commas, spaces or new lines, including decimals and negatives.",
     intro: "More than one kind of average, because the mean alone can mislead.",
@@ -161,7 +161,7 @@ export const extraTools: Tool[] = [
     category: "calculators",
     icon: "calculator",
     tagline: "Weighted course grades and the score you need on the final.",
-    metaTitle: "Grade Calculator — Weighted Average & Final Grade | Toolora",
+    metaTitle: "Grade Calculator — Weighted Average & Final Grade | Toolsy",
     metaDescription:
       "Calculate a weighted course grade from component scores and weights, see a common letter grade, and work out the score needed on the final to reach your target.",
     intro: "Add your components, check your weighted grade, and plan for the final.",
@@ -191,7 +191,7 @@ export const extraTools: Tool[] = [
     category: "calculators",
     icon: "scale",
     tagline: "Cups, spoons, millilitres, grams and oven temperatures without the guesswork.",
-    metaTitle: "Cooking Measurement Converter — Cups, Grams, °C/°F | Toolora",
+    metaTitle: "Cooking Measurement Converter — Cups, Grams, °C/°F | Toolsy",
     metaDescription:
       "Convert US and metric cups, teaspoons, tablespoons, fluid ounces, millilitres, grams, ounces, pounds and butter sticks. Includes Celsius to Fahrenheit conversion.",
     intro: "Recipes in a different system? Convert exactly — including which cup your recipe means.",
@@ -221,7 +221,7 @@ export const extraTools: Tool[] = [
     category: "time",
     icon: "calendar",
     tagline: "Days, weeks, months and business days between two dates.",
-    metaTitle: "Date Difference Calculator — Days Between Dates | Toolora",
+    metaTitle: "Date Difference Calculator — Days Between Dates | Toolsy",
     metaDescription:
       "Count the days, weeks, months and business days between two dates. Optionally include the end date or exclude holidays. Uses local calendar dates, no time-zone surprises.",
     intro: "The exact gap between two calendar dates, including a working-day count.",
@@ -250,7 +250,7 @@ export const extraTools: Tool[] = [
     category: "time",
     icon: "timer",
     tagline: "Add up worked hours across entries, with breaks and overnight shifts.",
-    metaTitle: "Time Duration Calculator — Hours Between Times | Toolora",
+    metaTitle: "Time Duration Calculator — Hours Between Times | Toolsy",
     metaDescription:
       "Calculate hours between two times, deduct breaks, add multiple entries and total a timesheet in hours and decimal hours. Supports shifts that cross midnight.",
     intro: "A timesheet calculator that understands breaks and shifts ending after midnight.",
@@ -280,7 +280,7 @@ export const extraTools: Tool[] = [
     category: "text",
     icon: "list",
     tagline: "Remove repeated lines from a list, with optional case and sort rules.",
-    metaTitle: "Remove Duplicate Lines — Dedupe Text Online | Toolora",
+    metaTitle: "Remove Duplicate Lines — Dedupe Text Online | Toolsy",
     metaDescription:
       "Remove duplicate lines from any text list. Ignore case, trim whitespace, remove blanks and sort the unique output. Copy or download the result instantly.",
     intro: "Keep the first occurrence, drop the repeats, download a clean list.",
@@ -309,7 +309,7 @@ export const extraTools: Tool[] = [
     category: "text",
     icon: "arrowUpDown",
     tagline: "Alphabetical, numeric, length or random ordering for any list.",
-    metaTitle: "Sort Text Lines — Alphabetical & Numeric | Toolora",
+    metaTitle: "Sort Text Lines — Alphabetical & Numeric | Toolsy",
     metaDescription:
       "Sort lines alphabetically, numerically, by length, reversed or randomly. Ignore case, remove duplicates, number the results and copy or download the list.",
     intro: "Put a list in the order you actually need, with natural number handling.",
@@ -338,7 +338,7 @@ export const extraTools: Tool[] = [
     category: "text",
     icon: "sparkles",
     tagline: "Strip tags, invisible characters and messy spacing from pasted text.",
-    metaTitle: "Text Cleaner — Remove HTML & Extra Spaces | Toolora",
+    metaTitle: "Text Cleaner — Remove HTML & Extra Spaces | Toolsy",
     metaDescription:
       "Clean pasted text: remove HTML tags, decode entities, straighten quotes, strip zero-width characters, collapse whitespace and apply a custom regex replacement.",
     intro: "Turn text copied from the web, PDF or an email into a clean, plain draft.",
@@ -368,7 +368,7 @@ export const extraTools: Tool[] = [
     category: "text",
     icon: "fileText",
     tagline: "Paragraphs, sentences or word lists for layout and mock-ups.",
-    metaTitle: "Lorem Ipsum Generator — Placeholder Text | Toolora",
+    metaTitle: "Lorem Ipsum Generator — Placeholder Text | Toolsy",
     metaDescription:
       "Generate lorem ipsum paragraphs, sentences, word counts or list items. Optional HTML tags for mock-ups. Copy or download placeholder text instantly.",
     intro: "Neutral placeholder copy so a layout can be judged without distracting content.",
@@ -383,7 +383,7 @@ export const extraTools: Tool[] = [
     ],
     faqs: [
       { q: "Is lorem ipsum real Latin?", a: "It is adapted from a Latin passage by Cicero but is intentionally scrambled and contains invented words. Do not use it as a translation or as meaningful content." },
-      { q: "Can I use generated lorem ipsum commercially?", a: "It is placeholder text, not protected content produced by Toolora. You still need to replace it with your own final copy before publishing a live page." },
+      { q: "Can I use generated lorem ipsum commercially?", a: "It is placeholder text, not protected content produced by Toolsy. You still need to replace it with your own final copy before publishing a live page." },
       { q: "Does the generator store my settings?", a: "No. Settings live only on this page; reloading resets them." },
     ],
     keywords: ["lorem ipsum generator", "placeholder text", "dummy text", "mockup copy"],
@@ -397,7 +397,7 @@ export const extraTools: Tool[] = [
     category: "text",
     icon: "clock",
     tagline: "Estimate reading and speaking time from any piece of text.",
-    metaTitle: "Reading Time Calculator — Words to Minutes | Toolora",
+    metaTitle: "Reading Time Calculator — Words to Minutes | Toolsy",
     metaDescription:
       "Estimate how long text takes to read or speak. Adjust words per minute, see sentence statistics and get planning estimates at slow and fast reading speeds.",
     intro: "Plan an article, presentation or voice-over from its actual word count.",
@@ -426,7 +426,7 @@ export const extraTools: Tool[] = [
     category: "text",
     icon: "shuffle",
     tagline: "Reverse characters, words or line order — including per-line options.",
-    metaTitle: "Text Reverser — Reverse Text, Words & Lines | Toolora",
+    metaTitle: "Text Reverser — Reverse Text, Words & Lines | Toolsy",
     metaDescription:
       "Reverse all characters, the order of words, line order, or letters within each word. Options to strip punctuation. Copy the result instantly.",
     intro: "Six ways to flip text, useful for puzzles, testing and mirrored layouts.",
@@ -455,7 +455,7 @@ export const extraTools: Tool[] = [
     category: "files",
     icon: "image",
     tagline: "Resize images to exact pixel dimensions, locally and without uploads.",
-    metaTitle: "Image Resizer — Resize Photos in Your Browser | Toolora",
+    metaTitle: "Image Resizer — Resize Photos in Your Browser | Toolsy",
     metaDescription:
       "Resize JPEG, PNG and WebP images to exact width and height with an optional locked aspect ratio. Preview before and after and download the result — files never leave your device.",
     intro: "Exact pixel dimensions for a profile photo, banner or upload limit.",
@@ -469,7 +469,7 @@ export const extraTools: Tool[] = [
       { title: "Resize and review", text: "Compare the preview, then download the result as PNG or JPEG." },
     ],
     faqs: [
-      { q: "Are my photos uploaded?", a: "No. The image is read with a local object URL, drawn to a canvas in your browser and exported there. Nothing is sent to Toolora." },
+      { q: "Are my photos uploaded?", a: "No. The image is read with a local object URL, drawn to a canvas in your browser and exported there. Nothing is sent to Toolsy." },
       { q: "Does resizing reduce file size?", a: "Usually, because there are fewer pixels. It does not optimise compression quality. Use the Image Compressor for a dedicated quality and file-size workflow." },
       { q: "What is the largest output?", a: "The tool allows up to 10,000 pixels on a side, limited by browser memory. Very large canvases can fail on mobile devices, so work in steps for huge outputs." },
     ],
@@ -484,7 +484,7 @@ export const extraTools: Tool[] = [
     category: "files",
     icon: "image",
     tagline: "Crop precisely with numeric coordinates and common aspect ratios.",
-    metaTitle: "Image Cropper — Crop Photos Locally | Toolora",
+    metaTitle: "Image Cropper — Crop Photos Locally | Toolsy",
     metaDescription:
       "Crop JPEG, PNG and WebP images with exact coordinates or common aspect ratios such as 1:1 and 16:9. See the crop overlay and download the result locally.",
     intro: "Precise, repeatable crops with coordinates you can note down and reuse.",
@@ -513,7 +513,7 @@ export const extraTools: Tool[] = [
     category: "files",
     icon: "refresh",
     tagline: "Convert between PNG, JPEG and WebP without sending files anywhere.",
-    metaTitle: "Image Converter — PNG, JPEG & WebP | Toolora",
+    metaTitle: "Image Converter — PNG, JPEG & WebP | Toolsy",
     metaDescription:
       "Convert images between PNG, JPEG and WebP in your browser. Adjust quality for JPEG and WebP, compare file sizes and download the converted image.",
     intro: "Move between formats with control over quality and transparency.",
@@ -542,7 +542,7 @@ export const extraTools: Tool[] = [
     category: "files",
     icon: "binary",
     tagline: "Turn a local image into a data URL or raw Base64 string.",
-    metaTitle: "Image to Base64 Converter — Data URL | Toolora",
+    metaTitle: "Image to Base64 Converter — Data URL | Toolsy",
     metaDescription:
       "Convert an image to a Base64 data URL or raw Base64 string in your browser. See the encoded size and MIME type, then copy the result. Files are never uploaded.",
     intro: "Inline small images in CSS or HTML without a separate asset request.",
@@ -571,7 +571,7 @@ export const extraTools: Tool[] = [
     category: "files",
     icon: "layers",
     tagline: "Combine several PDFs into one, in the order you choose.",
-    metaTitle: "PDF Merge — Combine PDF Files Locally | Toolora",
+    metaTitle: "PDF Merge — Combine PDF Files Locally | Toolsy",
     metaDescription:
       "Merge multiple PDF files into one document in your browser. Reorder the files, see page counts and download the combined PDF. Nothing is uploaded.",
     intro: "Join contracts, scans or reports into one file without uploading them.",
@@ -601,7 +601,7 @@ export const extraTools: Tool[] = [
     category: "files",
     icon: "diff",
     tagline: "Split a PDF into halves or one file per page, locally.",
-    metaTitle: "PDF Split — Separate PDF Pages in Browser | Toolora",
+    metaTitle: "PDF Split — Separate PDF Pages in Browser | Toolsy",
     metaDescription:
       "Split a PDF into two documents or separate each page into its own PDF. Runs locally with pdf-lib; files are never uploaded. Encrypted PDFs are clearly rejected.",
     intro: "Break a large PDF into manageable parts without an upload step.",
@@ -630,7 +630,7 @@ export const extraTools: Tool[] = [
     category: "files",
     icon: "fileText",
     tagline: "Extract exactly the pages you need from a PDF, in your order.",
-    metaTitle: "Extract PDF Pages — Custom Ranges | Toolora",
+    metaTitle: "Extract PDF Pages — Custom Ranges | Toolsy",
     metaDescription:
       "Extract specific pages or ranges from a PDF and save them as a new document. Supports input like 1-3, 7, 10-12 and runs entirely in your browser.",
     intro: "Keep pages 1–3 and 12, drop the rest, and download a clean new PDF.",
@@ -646,7 +646,7 @@ export const extraTools: Tool[] = [
     faqs: [
       { q: "Can I reorder pages?", a: "The output follows ascending page order. To place pages in a custom sequence, extract them individually or use a desktop PDF editor." },
       { q: "What happens to pages outside the range?", a: "They are not copied into the new file. The original PDF on your device is never modified." },
-      { q: "Is this suitable for confidential documents?", a: "Processing happens in your browser, so no file is uploaded to Toolora. Keep in mind that browser extensions or a compromised device can still see local files." },
+      { q: "Is this suitable for confidential documents?", a: "Processing happens in your browser, so no file is uploaded to Toolsy. Keep in mind that browser extensions or a compromised device can still see local files." },
     ],
     keywords: ["pdf page extractor", "extract pdf pages", "pdf range extract", "save pdf pages"],
     updated: "February 2026",
@@ -659,13 +659,13 @@ export const extraTools: Tool[] = [
     category: "developer",
     icon: "wifi",
     tagline: "Let guests join your Wi-Fi by scanning one code.",
-    metaTitle: "Wi-Fi QR Code Generator — Share Network | Toolora",
+    metaTitle: "Wi-Fi QR Code Generator — Share Network | Toolsy",
     metaDescription:
       "Create a scannable QR code containing your Wi-Fi network name, password and security type. Download the PNG. Generated locally; the password is never sent to a server.",
     intro: "A printed QR code for the guest network, without typing a long password.",
     about: [
       "The QR code follows the widely used Wi-Fi QR payload format: WIFI:T:WPA;S:network;P:password;;. Phones that support the format offer to join the network when the code is scanned. Special characters in the name or password are escaped so the payload stays parseable.",
-      "The password is embedded in the image itself. That is the point of the tool, but it means anyone who can see and scan the code can join the network. Toolora does not receive the details, yet the downloaded file does contain them. Print it only for networks where that trade-off is acceptable, and change the password if the code is exposed unintentionally.",
+      "The password is embedded in the image itself. That is the point of the tool, but it means anyone who can see and scan the code can join the network. Toolsy does not receive the details, yet the downloaded file does contain them. Print it only for networks where that trade-off is acceptable, and change the password if the code is exposed unintentionally.",
     ],
     steps: [
       { title: "Enter the network name", text: "Use the exact SSID, including letter case and spaces." },
@@ -674,7 +674,7 @@ export const extraTools: Tool[] = [
     ],
     faqs: [
       { q: "Does this work on iPhone and Android?", a: "Most modern iOS and Android camera apps understand the standard Wi-Fi QR format. Older devices may need a dedicated scanner app." },
-      { q: "Is my Wi-Fi password uploaded?", a: "No. The QR code is generated locally with the qrcode library. The password is not sent to a Toolora server, but it is encoded into the PNG you download." },
+      { q: "Is my Wi-Fi password uploaded?", a: "No. The QR code is generated locally with the qrcode library. The password is not sent to a Toolsy server, but it is encoded into the PNG you download." },
       { q: "Why doesn't the network appear?", a: "Check the hidden-network flag, the exact SSID and the security type. Some enterprise networks (WPA2-Enterprise) require a username and certificate and are not supported by this simple payload." },
     ],
     keywords: ["wifi qr code", "share wifi password qr", "guest wifi qr", "network qr generator"],
@@ -689,7 +689,7 @@ export const extraTools: Tool[] = [
     category: "developer",
     icon: "code",
     tagline: "Indent and tidy HTML, with warnings for mismatched tags.",
-    metaTitle: "HTML Formatter & Minifier — Tidy Markup | Toolora",
+    metaTitle: "HTML Formatter & Minifier — Tidy Markup | Toolsy",
     metaDescription:
       "Format HTML with configurable indentation or minify it by removing comments and redundant whitespace. See mismatched-tag warnings and copy or download the result.",
     intro: "Make pasted markup readable, or compress it for delivery.",
@@ -718,7 +718,7 @@ export const extraTools: Tool[] = [
     category: "developer",
     icon: "code",
     tagline: "Check well-formedness and indent XML with confidence.",
-    metaTitle: "XML Formatter & Validator — Well-Formed XML | Toolora",
+    metaTitle: "XML Formatter & Validator — Well-Formed XML | Toolsy",
     metaDescription:
       "Format and validate XML in your browser using the native parser. See clear errors for malformed documents and copy or download the indented result.",
     intro: "Catch malformed XML before an integration does.",
@@ -747,7 +747,7 @@ export const extraTools: Tool[] = [
     category: "developer",
     icon: "code",
     tagline: "Readable, consistently indented SQL with optional keyword case.",
-    metaTitle: "SQL Formatter — Tidy Queries Online | Toolora",
+    metaTitle: "SQL Formatter — Tidy Queries Online | Toolsy",
     metaDescription:
       "Format SQL with clauses on separate lines, consistent indentation and optional uppercase keywords. Works on common SELECT, INSERT, UPDATE and DELETE statements.",
     intro: "Put each clause on its own line so a long query can be reviewed.",
@@ -776,7 +776,7 @@ export const extraTools: Tool[] = [
     category: "developer",
     icon: "code",
     tagline: "Conservatively strip comments and indentation without rewriting code.",
-    metaTitle: "JavaScript Minifier — Comments & Whitespace | Toolora",
+    metaTitle: "JavaScript Minifier — Comments & Whitespace | Toolsy",
     metaDescription:
       "Reduce JavaScript size by removing comments and redundant indentation while preserving strings, template literals and most regex literals. Conservative and transparent about limits.",
     intro: "A cautious first pass that never renames variables or inlines functions.",
@@ -805,7 +805,7 @@ export const extraTools: Tool[] = [
     category: "tech",
     icon: "globe",
     tagline: "Find what an HTTP status code means and where it is used.",
-    metaTitle: "HTTP Status Codes Explained — 4xx & 5xx | Toolora",
+    metaTitle: "HTTP Status Codes Explained — 4xx & 5xx | Toolsy",
     metaDescription:
       "Look up HTTP status codes such as 200, 301, 403, 404, 429 and 503. Search by code or meaning and see plain-English explanations for each category.",
     intro: "A searchable reference for the numbers in server logs and network tabs.",
@@ -834,7 +834,7 @@ export const extraTools: Tool[] = [
     category: "tech",
     icon: "terminal",
     tagline: "Decode a User-Agent string into browser, OS and device hints.",
-    metaTitle: "User Agent Parser — Decode UA Strings | Toolora",
+    metaTitle: "User Agent Parser — Decode UA Strings | Toolsy",
     metaDescription:
       "Parse a User-Agent string to identify the browser, version, operating system, device class and engine. Paste any string or use your current browser's. Runs locally.",
     intro: "Understand what a browser is claiming about itself, with appropriate scepticism.",
@@ -850,7 +850,7 @@ export const extraTools: Tool[] = [
     faqs: [
       { q: "How reliable is User-Agent detection?", a: "Moderately useful, never authoritative. Strings are user-controlled, browsers reduce their detail for privacy, and new versions can appear before parsers update. Prefer feature detection for behaviour." },
       { q: "Why does my browser show an old operating system?", a: "Some browsers freeze or reduce OS version information in the User-Agent string to prevent fingerprinting. This is a deliberate privacy feature, not a parsing error." },
-      { q: "Is my User-Agent stored?", a: "No. The field is processed locally in this page and disappears on reload. Nothing is sent to Toolora." },
+      { q: "Is my User-Agent stored?", a: "No. The field is processed locally in this page and disappears on reload. Nothing is sent to Toolsy." },
     ],
     keywords: ["user agent parser", "ua string lookup", "browser detection", "user agent checker"],
     updated: "February 2026",
@@ -863,13 +863,13 @@ export const extraTools: Tool[] = [
     category: "tech",
     icon: "globe",
     tagline: "Analyse IPv4/IPv6 offline, with an optional consented geo lookup.",
-    metaTitle: "IP Address Lookup — IPv4 & IPv6 Analysis | Toolora",
+    metaTitle: "IP Address Lookup — IPv4 & IPv6 Analysis | Toolsy",
     metaDescription:
       "Check whether an IP is public, private, loopback, multicast or documentation, for IPv4 and IPv6. Optional third-party geolocation runs only after you press the button.",
     intro: "Offline address analysis first; third-party geolocation only when you ask.",
     about: [
       "The offline stage validates the address and classifies it using reserved ranges: RFC 1918 private IPv4 space, loopback, link-local, multicast, shared carrier-grade NAT space, documentation ranges and IPv6 unique-local and link-local prefixes. That is usually enough to tell whether an address belongs to a local network or is publicly routable.",
-      "Geolocation requires an external database. The optional lookup sends the address you entered to ipapi.co only after you press the button, and Toolora does not receive or store the result. Geolocation is approximate: ISP allocation points, VPNs, mobile carriers and CGNAT can all place an address far from the actual device. Never use it to identify a person.",
+      "Geolocation requires an external database. The optional lookup sends the address you entered to ipapi.co only after you press the button, and Toolsy does not receive or store the result. Geolocation is approximate: ISP allocation points, VPNs, mobile carriers and CGNAT can all place an address far from the actual device. Never use it to identify a person.",
     ],
     steps: [
       { title: "Enter an address", text: "IPv4 or IPv6. Analysis is immediate and entirely local." },
@@ -877,7 +877,7 @@ export const extraTools: Tool[] = [
       { title: "Optionally request geolocation", text: "Pressing the button sends only the entered address to a third-party service with its own privacy policy." },
     ],
     faqs: [
-      { q: "Does Toolora know my IP address?", a: "This tool does not fetch or display your current address automatically. If you type your own address and press the geolocation button, that address is sent to ipapi.co. The static site is delivered by a hosting provider that processes normal request logs." },
+      { q: "Does Toolsy know my IP address?", a: "This tool does not fetch or display your current address automatically. If you type your own address and press the geolocation button, that address is sent to ipapi.co. The static site is delivered by a hosting provider that processes normal request logs." },
       { q: "Is IP geolocation accurate?", a: "It is approximate and can be wrong by a city or much more, especially with VPNs, mobile networks and carrier NAT. It is not suitable for identifying people or precise locations." },
       { q: "Which ranges are private?", a: "IPv4: 10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16. IPv6 unique-local addresses use fc00::/7. Loopback and link-local ranges are also not publicly routable." },
     ],

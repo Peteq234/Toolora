@@ -114,7 +114,7 @@ export function UuidGenerator() {
           <CopyButton value={list.join("\n")} label="Copy all" copiedLabel="Copied" />
           <Button variant="secondary" size="sm" onClick={() => {
             const blob = new Blob([list.join("\n")], { type: "text/plain" });
-            const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = "toolora-uuids.txt"; a.click(); URL.revokeObjectURL(url);
+            const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = "toolsy-uuids.txt"; a.click(); URL.revokeObjectURL(url);
           }}><Icon name="download" size={13} /> Download .txt</Button>
         </div>
         <Note tone="warn">UUIDs are identifiers, not secrets. For password-reset links or API keys, use the Secure Token Generator. Generation uses the browser's cryptographic random source.</Note>
@@ -160,7 +160,7 @@ export function SecureTokenGenerator() {
             <div className="mt-1.5 space-y-1">{history.slice(1).map((item, index) => <p key={index} className="truncate rounded border border-white/[0.05] px-2 py-1 font-mono text-[10px] text-mist-500">{item}</p>)}</div>
           </div>
         )}
-        <Note tone="warn" title="Treat this as a secret">Bytes come from crypto.getRandomValues. Toolora neither transmits nor stores tokens, so you must copy it now. Store it in a secret manager and rotate it if exposed.</Note>
+        <Note tone="warn" title="Treat this as a secret">Bytes come from crypto.getRandomValues. Toolsy neither transmits nor stores tokens, so you must copy it now. Store it in a secret manager and rotate it if exposed.</Note>
       </div>
     </Workspace>
   );

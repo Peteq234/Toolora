@@ -1,4 +1,4 @@
--- Toolora admin schema, security policies and seed data.
+-- Toolsy admin schema, security policies and seed data.
 -- Run this in the Supabase SQL editor for a new project, then follow docs/ADMIN_SETUP.md.
 -- It contains no passwords, keys or personal data.
 
@@ -219,7 +219,7 @@ insert into public.tool_settings (slug, enabled) values
 on conflict (slug) do nothing;
 
 insert into public.site_settings (key, value) values
-  ('site_name', '"Toolora"'::jsonb),
+  ('site_name', '"Toolsy"'::jsonb),
   ('allow_indexing', 'true'::jsonb)
 on conflict (key) do nothing;
 

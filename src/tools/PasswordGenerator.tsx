@@ -207,7 +207,7 @@ export function PasswordGenerator() {
 
         <Note tone="brand" icon>
           Passwords are created with <span className="text-mist-200">crypto.getRandomValues</span> on
-          your device. Toolora has no server endpoint that receives them, and reloading clears this
+          your device. Toolsy has no server endpoint that receives them, and reloading clears this
           one.
         </Note>
       </div>

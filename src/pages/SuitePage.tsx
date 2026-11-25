@@ -29,7 +29,7 @@ function SuiteSwitcher({ activeSlug }: { activeSlug: string }) {
             href={`/toolkits/${item.slug}`}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] transition",
+              "inline-flex min-h-9 items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] transition",
               active
                 ? "border-brand-400/35 bg-brand-400/10 font-semibold text-brand-200"
                 : "border-white/[0.07] bg-white/[0.02] text-mist-400 hover:border-white/20 hover:text-mist-100"
@@ -53,16 +53,16 @@ function ToolOverviewCard({ suiteSlug, tool, keepSeparate }: { suiteSlug: string
         <span className={cn("grid size-9 place-items-center rounded-xl border", categoryAccent[category])}>
           <Icon name={tool.icon} size={16} />
         </span>
-        <FavoriteButton slug={tool.slug} name={toolName(tool)} iconSize={12} className="size-7" />
+        <FavoriteButton slug={tool.slug} name={toolName(tool)} iconSize={13} className="size-9" />
       </div>
       <h3 className="mt-3 text-[14px] font-semibold leading-snug text-mist-50">{toolName(tool)}</h3>
       <p className="mt-1 text-[11.5px] leading-relaxed text-mist-400">{toolDescription(tool)}</p>
       <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 pt-3">
-        <Link href={keepSeparate ? `/tools/${tool.slug}` : `/toolkits/${suiteSlug}?tool=${tool.slug}`} className="inline-flex items-center gap-1 text-[11.5px] font-semibold text-brand-300 hover:text-brand-200">
+        <Link href={keepSeparate ? `/tools/${tool.slug}` : `/toolkits/${suiteSlug}?tool=${tool.slug}`} className="inline-flex min-h-9 items-center gap-1 px-0.5 text-[11.5px] font-semibold text-brand-300 hover:text-brand-200">
           {keepSeparate ? "Open tool" : "Use here"}
           <Icon name="arrowRight" size={11} />
         </Link>
-        <Link href={`/tools/${tool.slug}`} className="inline-flex items-center gap-1 text-[10.5px] text-mist-500 transition hover:text-mist-200">
+        <Link href={`/tools/${tool.slug}`} className="inline-flex min-h-9 items-center gap-1 px-0.5 text-[10.5px] text-mist-500 transition hover:text-mist-200">
           Full page
           <Icon name="arrowUpRight" size={10} />
         </Link>
@@ -87,7 +87,7 @@ export function SuitePage({ suiteSlug }: { suiteSlug: string }) {
   const seo = activeTool
     ? seoFor(activeTool.slug, { title: activeTool.metaTitle, description: activeTool.metaDescription })
     : {
-        title: suite?.metaTitle ?? "Tool suite — Toolora",
+        title: suite?.metaTitle ?? "Tool suite — Toolsy",
         description: suite?.metaDescription ?? "Related browser-based tools grouped in one organised suite.",
       };
   const path = activeTool ? `/tools/${activeTool.slug}` : `/toolkits/${suiteSlug}`;
@@ -277,7 +277,7 @@ export function SuitePage({ suiteSlug }: { suiteSlug: string }) {
                 type="button"
                 onClick={() => navigate(`/toolkits/${suite.slug}?tool=${suiteItems[Math.max(0, activeIndex - 1)].slug}`)}
                 disabled={activeIndex <= 0}
-                className="inline-flex items-center gap-1 text-[11.5px] font-medium text-mist-400 transition hover:text-mist-100 disabled:opacity-30"
+                className="inline-flex min-h-9 items-center gap-1 px-1 text-[11.5px] font-medium text-mist-400 transition hover:text-mist-100 disabled:opacity-30"
               >
                 <Icon name="arrowLeft" size={12} /> Previous tool
               </button>
@@ -286,7 +286,7 @@ export function SuitePage({ suiteSlug }: { suiteSlug: string }) {
                 type="button"
                 onClick={() => navigate(`/toolkits/${suite.slug}?tool=${suiteItems[Math.min(suiteItems.length - 1, activeIndex + 1)].slug}`)}
                 disabled={activeIndex >= suiteItems.length - 1}
-                className="inline-flex items-center gap-1 text-[11.5px] font-medium text-mist-400 transition hover:text-mist-100 disabled:opacity-30"
+                className="inline-flex min-h-9 items-center gap-1 px-1 text-[11.5px] font-medium text-mist-400 transition hover:text-mist-100 disabled:opacity-30"
               >
                 Next tool <Icon name="arrowRight" size={12} />
               </button>
@@ -324,7 +324,7 @@ export function SuitePage({ suiteSlug }: { suiteSlug: string }) {
                     onClick={() => navigate(`/toolkits/${suite.slug}?tool=${tool.slug}`)}
                     disabled={!isToolEnabled(tool.slug)}
                     className={cn(
-                      "flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-[11.5px] transition disabled:opacity-40",
+                      "flex min-h-10 w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-[11.5px] transition disabled:opacity-40",
                       tool.slug === activeTool.slug ? "bg-brand-400/10 font-semibold text-brand-200" : "text-mist-400 hover:bg-white/[0.04] hover:text-mist-100"
                     )}
                   >
@@ -338,7 +338,7 @@ export function SuitePage({ suiteSlug }: { suiteSlug: string }) {
               <Icon name="shield" size={16} className="text-brand-300" />
               <p className="mt-2 text-[12px] font-semibold text-mist-100">Local by default</p>
               <p className="mt-1 text-[11px] leading-relaxed text-mist-400">Inputs are processed in this tab. Images and PDFs are not uploaded. See the privacy policy for the few optional services.</p>
-              <Link href="/privacy" className="mt-2 inline-block text-[11px] font-medium text-mist-300 underline decoration-white/20 underline-offset-2 hover:text-brand-200">Privacy policy</Link>
+              <Link href="/privacy" className="mt-2 inline-flex min-h-9 items-center text-[11px] font-medium text-mist-300 underline decoration-white/20 underline-offset-2 hover:text-brand-200">Privacy policy</Link>
             </div>
           </aside>
         </div>
@@ -377,7 +377,7 @@ export function SuitePage({ suiteSlug }: { suiteSlug: string }) {
       <section className="mt-10 border-t border-white/[0.07] pt-6">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="text-[16px] font-semibold text-mist-50">Other suites</h2>
-          <Link href="/tools" className="text-[11.5px] font-medium text-mist-500 transition hover:text-mist-200">All tools and suites →</Link>
+          <Link href="/tools" className="inline-flex min-h-9 items-center text-[11.5px] font-medium text-mist-500 transition hover:text-mist-200">All tools and suites →</Link>
         </div>
         <div className="mt-3"><SuiteSwitcher activeSlug={suite.slug} /></div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

@@ -68,7 +68,13 @@ export function PlatformProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let active = true;
-    fetch("/api/public/config", { headers: { Accept: "application/json" } })
+    // Opening dist/index.html directly from disk has no server: skip the
+    // optional config request instead of logging a CORS/network error.
+    if (typeof window !== "undefined" && window.location.protocol === "file:") {
+      setReady(true);
+      return () => { active = false; };
+    }
+    fetch(`${window.location.origin}/api/public/config`, { headers: { Accept: "application/json" } })
       .then((response) => (response.ok ? response.json() : null))
       .then((data) => {
         if (!active || !data) return;

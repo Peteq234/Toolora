@@ -104,7 +104,7 @@ export function WordCounter() {
             <Button
               variant="secondary"
               size="sm"
-              onClick={() => downloadFile(text, "toolora-text.txt")}
+              onClick={() => downloadFile(text, "toolsy-text.txt")}
               disabled={!text}
             >
               <Icon name="download" size={14} />
@@ -262,7 +262,7 @@ const CASE_ACTIONS: CaseAction[] = [
   { id: "inverse", label: "InVeRsE", preview: "dESIGN tOOLS", transform: inverseCase },
 ];
 
-const SAMPLE_TEXT = "Toolora keeps everyday tools simple, fast, and private.";
+const SAMPLE_TEXT = "Toolsy keeps everyday tools simple, fast, and private.";
 
 export function CaseConverter() {
   const [text, setText] = useState(SAMPLE_TEXT);
@@ -339,7 +339,7 @@ export function CaseConverter() {
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => downloadFile(text, "toolora-text.txt")}
+            onClick={() => downloadFile(text, "toolsy-text.txt")}
             disabled={!text}
           >
             <Icon name="download" size={14} />

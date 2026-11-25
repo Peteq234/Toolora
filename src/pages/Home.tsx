@@ -41,7 +41,7 @@ const VALUES = [
   {
     icon: "shield" as const,
     title: "Private by default",
-    text: "Tool inputs are processed in your browser. There is no Toolora account and no server-side history of what you calculate or generate.",
+    text: "Tool inputs are processed in your browser. There is no Toolsy account and no server-side history of what you calculate or generate.",
   },
   {
     icon: "sparkles" as const,
@@ -56,14 +56,14 @@ const VALUES = [
   {
     icon: "heart" as const,
     title: "Honest funding",
-    text: "Toolora is free today. If ads or affiliate links arrive, they will be clearly labelled and kept away from the working part of each tool.",
+    text: "Toolsy is free today. If ads or affiliate links arrive, they will be clearly labelled and kept away from the working part of each tool.",
   },
 ];
 
 const HOME_FAQS = [
   {
-    q: "Are Toolora's tools really free?",
-    a: "Yes. There is no paywall, no trial and no account requirement. Toolora aims to cover its costs through clearly labelled advertising and, where relevant, affiliate links in the future. We do not sell tool inputs.",
+    q: "Are Toolsy's tools really free?",
+    a: "Yes. There is no paywall, no trial and no account requirement. Toolsy aims to cover its costs through clearly labelled advertising and, where relevant, affiliate links in the future. We do not sell tool inputs.",
   },
   {
     q: "Do you store what I type or generate?",
@@ -74,11 +74,11 @@ const HOME_FAQS = [
     a: "No. Every tool works without registration. Favorites are kept in your browser's local storage, so the star system works without a login — it simply won't follow you to a new device.",
   },
   {
-    q: "How is Toolora funded?",
+    q: "How is Toolsy funded?",
     a: "Today it isn't — there are no ads running. The plan is to fund the toolkit with clearly labelled, respectful ad placements and relevant affiliate links. We will never disguise an advertisement as a tool result, and no funding approach is guaranteed to succeed.",
   },
   {
-    q: "Can I use Toolora on my phone?",
+    q: "Can I use Toolsy on my phone?",
     a: "Yes. Each tool is designed to work on mobile and desktop, with large touch targets and no hover-only functionality for essential actions.",
   },
 ];
@@ -203,7 +203,7 @@ function HeroPanel() {
             type="button"
             onClick={openSearch}
             aria-label="Open quick search"
-            className="flex items-center gap-1 rounded-md border border-white/10 bg-white/[0.03] px-1.5 py-1 font-mono text-[9px] text-mist-500 transition hover:border-white/20 hover:text-mist-200"
+            className="flex min-h-8 items-center gap-1 rounded-md border border-white/10 bg-white/[0.03] px-2 py-1 font-mono text-[9px] text-mist-500 transition hover:border-white/20 hover:text-mist-200"
           >
             <Icon name="command" size={10} />
             K
@@ -214,7 +214,7 @@ function HeroPanel() {
           <button
             type="button"
             onClick={openSearch}
-            className="flex w-full items-center gap-2 border-b border-white/[0.06] px-3.5 py-3 text-left transition hover:bg-white/[0.025]"
+            className="flex min-h-11 w-full items-center gap-2 border-b border-white/[0.06] px-3.5 py-3 text-left transition hover:bg-white/[0.025]"
           >
             <Icon name="search" size={14} className="shrink-0 text-mist-500" />
             <span className="flex-1 text-[12px] text-mist-500">Search {tools.length} tools…</span>
@@ -286,7 +286,7 @@ export function Home() {
   const { openSearch } = useSearch();
 
   useSeo({
-    title: `Toolora — ${tools.length} Free Online Tools in ${suites.length} Suites`,
+    title: `Toolsy — ${tools.length} Free Online Tools in ${suites.length} Suites`,
     description:
       "Free online tools organised into suites: Calculator Hub, Text Studio, Image Studio, Developer Toolkit, PDF, QR and Family & Growth. Private, browser-based, no account.",
     path: "/",
@@ -301,7 +301,7 @@ export function Home() {
       },
       {
         "@type": "ItemList",
-        name: "Toolora online tools",
+        name: "Toolsy online tools",
         numberOfItems: tools.length,
         itemListElement: tools.map((tool, index) => ({
           "@type": "ListItem",
@@ -365,7 +365,7 @@ export function Home() {
                   <Link
                     key={tool.slug}
                     href={`/tools/${tool.slug}`}
-                    className="group inline-flex items-center gap-1.5 rounded-full border border-white/[0.07] bg-white/[0.02] py-1 pl-2.5 pr-2 text-[11px] text-mist-400 transition hover:border-white/20 hover:text-mist-100"
+                    className="group inline-flex min-h-9 items-center gap-1.5 rounded-full border border-white/[0.07] bg-white/[0.02] py-1.5 pl-3 pr-2.5 text-[11.5px] text-mist-400 transition hover:border-white/20 hover:text-mist-100"
                   >
                     {tool.shortName}
                     <Icon
@@ -412,16 +412,14 @@ export function Home() {
       </Container>
 
       {/* Toolkit */}
-      <Container className="pt-16 sm:pt-20">
-        <Reveal>
-          <ToolBrowser
-            query={query}
-            onQueryChange={setQuery}
-            showSearch={false}
-            heading="The whole toolkit"
-            description={`${tools.length} focused tools in ${suites.length} suites, with no sign-up screens, no uploads and no upsells hiding behind the download button.`}
-          />
-        </Reveal>
+      <Container className="pt-14 sm:pt-20">
+        <ToolBrowser
+          query={query}
+          onQueryChange={setQuery}
+          showSearch={false}
+          heading="The whole toolkit"
+          description={`${tools.length} focused tools in ${suites.length} suites, with no sign-up screens, no uploads and no upsells hiding behind the download button.`}
+        />
       </Container>
 
       <Container className="pt-12">
@@ -436,11 +434,11 @@ export function Home() {
       </Container>
 
       {/* Values */}
-      <section className="mt-20 border-y border-white/[0.07] bg-[linear-gradient(180deg,rgba(255,255,255,0.022),transparent_60%)]">
+      <section className="cv-auto mt-16 border-y border-white/[0.07] bg-[linear-gradient(180deg,rgba(255,255,255,0.022),transparent_60%)] sm:mt-20">
         <Container className="py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
             <Reveal>
-              <Eyebrow>Why Toolora</Eyebrow>
+              <Eyebrow>Why Toolsy</Eyebrow>
               <h2 className="mt-3 text-[30px] font-semibold leading-[1.08] tracking-[-0.035em] text-mist-50 sm:text-[38px]">
                 Built to be used,
                 <br />
@@ -452,7 +450,7 @@ export function Home() {
               </p>
               <Link
                 href="/about"
-                className="mt-5 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-mist-200 transition hover:text-brand-300"
+                className="mt-5 inline-flex min-h-9 items-center gap-1.5 text-[12.5px] font-semibold text-mist-200 transition hover:text-brand-300"
               >
                 Read our principles
                 <Icon name="arrowRight" size={14} />
@@ -492,7 +490,7 @@ export function Home() {
             </div>
             <Link
               href="/tools"
-              className="inline-flex items-center gap-1.5 self-start text-[12px] font-semibold text-mist-300 transition hover:text-brand-300 sm:self-auto"
+              className="inline-flex min-h-9 items-center gap-1.5 self-start text-[12px] font-semibold text-mist-300 transition hover:text-brand-300 sm:self-auto"
             >
               Browse all {tools.length}
               <Icon name="arrowRight" size={13} />
@@ -536,7 +534,7 @@ export function Home() {
       </Container>
 
       {/* FAQ */}
-      <Container className="pt-16 sm:pt-20">
+      <Container className="cv-auto pt-16 sm:pt-20">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div>
             <Eyebrow>Good to know</Eyebrow>
@@ -552,12 +550,12 @@ export function Home() {
                 href="/contact"
                 className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] px-3 text-[12px] font-semibold text-mist-200 transition hover:border-white/20 hover:bg-white/[0.06]"
               >
-                Contact Toolora
+                Contact Toolsy
                 <Icon name="arrowRight" size={13} />
               </Link>
               <Link
                 href="/privacy"
-                className="inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-[12px] font-medium text-mist-400 transition hover:bg-white/[0.04] hover:text-mist-100"
+                className="inline-flex h-10 items-center gap-1.5 rounded-lg px-3 text-[12px] font-medium text-mist-400 transition hover:bg-white/[0.04] hover:text-mist-100"
               >
                 Privacy policy
               </Link>

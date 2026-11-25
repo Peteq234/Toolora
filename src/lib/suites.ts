@@ -29,7 +29,7 @@ export const suites: Suite[] = [
     tagline: "Everyday maths, money, dates and kitchen measurements in one place.",
     description:
       "Seventeen practical calculators with shared navigation: percentages and discounts, averages and grades, loans and mortgages, VAT, tips, fuel, electricity, unit and cooking conversions, dates and time zones.",
-    metaTitle: "Calculator Hub — Everyday Online Calculators | Toolora",
+    metaTitle: "Calculator Hub — Everyday Online Calculators | Toolsy",
     metaDescription:
       "Use ten everyday calculators in one organised hub: percentage change, discounts, averages, grades, age, date difference, work hours, unit and cooking conversions.",
     icon: "calculator",
@@ -66,7 +66,7 @@ export const suites: Suite[] = [
     tagline: "Count, clean, compare and reshape writing without leaving the page.",
     description:
       "Word and character counting, case conversion, cleaning, de-duplication, sorting, reversing, placeholder copy, reading time and a line-by-line diff.",
-    metaTitle: "Text Studio — Count, Clean & Compare Text | Toolora",
+    metaTitle: "Text Studio — Count, Clean & Compare Text | Toolsy",
     metaDescription:
       "An organised text workspace: word and character counter, case converter, text cleaner, duplicate remover, line sorter, reverser, lorem ipsum, reading time and diff checker.",
     icon: "fileText",
@@ -95,14 +95,14 @@ export const suites: Suite[] = [
     tagline: "Compress, resize, crop, convert and inline images — locally.",
     description:
       "Ten image utilities with one consistent workspace, including batch processing with ZIP download, social presets, favicons, dimensions and EXIF inspection. Files are never uploaded.",
-    metaTitle: "Image Studio — Compress, Resize, Crop & Convert | Toolora",
+    metaTitle: "Image Studio — Compress, Resize, Crop & Convert | Toolsy",
     metaDescription:
       "Compress, resize, crop and convert JPEG, PNG and WebP images, or turn an image into Base64. All processing happens locally — no uploads, no account.",
     icon: "image",
     accent: "cyan",
     about: [
       "Image Studio brings the image workflows together without merging them into one confusing form. Compression, resizing, cropping, format conversion and Base64 encoding each keep a focused interface and a dedicated page.",
-      "Images are read with local object URLs, drawn onto an in-browser canvas and exported as a new download. Nothing is transmitted to Toolora, which matters for personal photos and confidential screenshots.",
+      "Images are read with local object URLs, drawn onto an in-browser canvas and exported as a new download. Nothing is transmitted to Toolsy, which matters for personal photos and confidential screenshots.",
     ],
     toolSlugs: [
       "image-compressor",
@@ -125,7 +125,7 @@ export const suites: Suite[] = [
     tagline: "Format, encode, test and look up the things you debug daily.",
     description:
       "Thirteen developer utilities: JSON, HTML, XML and SQL formatting, JavaScript minification, Base64, URL encoding, timestamps, regex, user agents, HTTP status codes and CSS colour tools.",
-    metaTitle: "Developer Toolkit — JSON, Regex & Formatting | Toolora",
+    metaTitle: "Developer Toolkit — JSON, Regex & Formatting | Toolsy",
     metaDescription:
       "A browser-based developer toolkit: JSON/HTML/XML/SQL formatters, JavaScript minifier, Base64 and URL encoding, timestamp converter, regex tester, HTTP status codes and accessibility colour tools.",
     icon: "code",
@@ -148,6 +148,13 @@ export const suites: Suite[] = [
       "http-status-code-lookup",
       "css-gradient-generator",
       "color-contrast-checker",
+      "javascript-formatter",
+      "yaml-formatter",
+      "hash-generator",
+      "jwt-decoder",
+      "cron-expression-helper",
+      "unix-permissions-calculator",
+      "number-base-converter",
     ],
     popular: true,
   },
@@ -158,7 +165,7 @@ export const suites: Suite[] = [
     tagline: "Compress, convert, organise and extract PDFs — without uploading them.",
     description:
       "Nine PDF tools in one workspace: compress, export pages as images, build a PDF from pictures, reorder/rotate/delete pages, inspect metadata, extract text, merge, split and extract ranges.",
-    metaTitle: "PDF Workspace — Compress, Convert & Organise PDFs | Toolora",
+    metaTitle: "PDF Workspace — Compress, Convert & Organise PDFs | Toolsy",
     metaDescription:
       "A browser-based PDF workspace: compress PDFs, convert to JPG/PNG, images to PDF, reorder, rotate or delete pages, read metadata, extract text, merge, split and extract ranges. Files never uploaded.",
     icon: "layers",
@@ -176,13 +183,13 @@ export const suites: Suite[] = [
     tagline: "Create link, text and Wi-Fi QR codes that never expire.",
     description:
       "Two QR generators: one for links and short text, one for guest Wi-Fi details. Static codes, generated locally, downloadable as PNG.",
-    metaTitle: "QR Toolkit — Link & Wi-Fi QR Codes | Toolora",
+    metaTitle: "QR Toolkit — Link & Wi-Fi QR Codes | Toolsy",
     metaDescription:
       "Generate static QR codes for links or text, and scannable Wi-Fi QR codes with network name and password. Downloadable PNGs, generated locally with no redirects or expiry.",
     icon: "qr",
     accent: "pink",
     about: [
-      "Both generators create static QR codes: the data is encoded directly into the pattern, with no shortener or redirect. Codes never expire and scans cannot be tracked by Toolora.",
+      "Both generators create static QR codes: the data is encoded directly into the pattern, with no shortener or redirect. Codes never expire and scans cannot be tracked by Toolsy.",
       "Wi-Fi codes contain the network password in scannable form. That is their purpose, but it means anyone who can see the code can join — print guest-network codes carefully.",
     ],
     toolSlugs: ["qr-code-generator", "wifi-qr-code-generator"],
@@ -194,7 +201,7 @@ export const suites: Suite[] = [
     tagline: "Two separate, reference-based growth estimates for children.",
     description:
       "A mid-parental adult-height estimate and a CDC BMI-for-age screening calculator. Deliberately kept as two separate tools with separate results.",
-    metaTitle: "Family & Growth — Child Height & BMI Tools | Toolora",
+    metaTitle: "Family & Growth — Child Height & BMI Tools | Toolsy",
     metaDescription:
       "Estimate a child's adult height with the mid-parental method, or screen BMI-for-age using the CDC reference. Two separate tools with clear limits, not a diagnosis.",
     icon: "heart",
@@ -213,7 +220,7 @@ export const suites: Suite[] = [
     tagline: "Move data between CSV, JSON, XML and spreadsheets — safely.",
     description:
       "Seven data tools: CSV ↔ JSON, JSON ↔ XML, a CSV viewer/editor, column sorter, duplicate remover, XLSX preview and a file size converter. Nothing is silently discarded.",
-    metaTitle: "File Converter — CSV, JSON, XML & XLSX Tools | Toolora",
+    metaTitle: "File Converter — CSV, JSON, XML & XLSX Tools | Toolsy",
     metaDescription:
       "Convert CSV to JSON and back, JSON to XML and back, view or edit CSV, sort and deduplicate rows, preview XLSX workbooks and convert file sizes. Local, with explicit data warnings.",
     icon: "code",
@@ -232,13 +239,13 @@ export const suites: Suite[] = [
     tagline: "Passwords, passphrases, tokens, UUIDs and fair random draws.",
     description:
       "Eight generators using cryptographically secure browser randomness. Generated secrets are never transmitted, logged or saved automatically.",
-    metaTitle: "Security & Generators — Passwords, Tokens & UUIDs | Toolora",
+    metaTitle: "Security & Generators — Passwords, Tokens & UUIDs | Toolsy",
     metaDescription:
       "Generate strong passwords, memorable passphrases, API tokens, UUID v4 identifiers, random numbers, fair picks and balanced teams with secure browser randomness. Nothing is uploaded.",
     icon: "shield",
     accent: "violet",
     about: [
-      "All secrets are generated in the page with crypto.getRandomValues. Toolora has no endpoint that receives passwords or tokens, and generated values disappear when you reload. Copy them into a password manager or secret store immediately.",
+      "All secrets are generated in the page with crypto.getRandomValues. Toolsy has no endpoint that receives passwords or tokens, and generated values disappear when you reload. Copy them into a password manager or secret store immediately.",
       "Choose length and randomness appropriate to the job: a passphrase for something you must type, a long random password or token for API secrets, and UUIDs only as identifiers — never as access credentials.",
     ],
     toolSlugs: ["password-generator", "passphrase-generator", "secure-token-generator", "uuid-generator", "username-generator", "random-number-generator", "random-choice-picker", "random-team-generator"],
@@ -248,19 +255,19 @@ export const suites: Suite[] = [
     slug: "student-productivity",
     name: "Student & Productivity",
     shortName: "Student",
-    tagline: "Focus sessions, exam planning, flashcards and checklists.",
+    tagline: "Focus sessions, exam planning, flashcards, checklists and chess study.",
     description:
-      "Four tools for study and personal organisation, with local saving where it helps and no account required. Not decorative widgets: each one keeps state and works.",
-    metaTitle: "Student & Productivity — Pomodoro, Flashcards & Checklists | Toolora",
+      "Five tools for study, personal organisation and opening practice, with local saving where it helps and no account required. Not decorative widgets: each one keeps state and works.",
+    metaTitle: "Student & Productivity — Pomodoro, Flashcards & Chess | Toolsy",
     metaDescription:
-      "A Pomodoro study timer, exam countdown, flashcard study deck and checklist maker. Local saving, no account, and clear explanations of what is and is not stored.",
+      "A Pomodoro study timer, exam countdown, flashcard study deck, checklist maker and an interactive chess opening explorer. Local saving, no account, clear explanations.",
     icon: "checkCircle",
     accent: "amber",
     about: [
       "The study timer counts focus sessions for the current visit; the exam countdown, flashcard deck and checklist save locally in your browser so they survive reloads on the same device. Nothing syncs across devices and nothing is uploaded.",
-      "These tools are deliberately focused rather than a full productivity suite. Use the Text Studio for longer writing and the Markdown editor for formatted notes with preview.",
+      "The Chess Playground is a study board, not a game: explore legal moves and recognised openings against a real opening database, with no opponent, clocks or ranking. Use the Text Studio for longer writing and the Markdown editor for formatted notes with preview.",
     ],
-    toolSlugs: ["study-pomodoro-timer", "exam-countdown", "flashcard-creator", "checklist-maker"],
+    toolSlugs: ["study-pomodoro-timer", "exam-countdown", "flashcard-creator", "checklist-maker", "chess-playground"],
     popular: true,
   },
 ];

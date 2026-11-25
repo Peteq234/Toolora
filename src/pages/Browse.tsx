@@ -42,14 +42,14 @@ export function ToolsIndex() {
   }, [queryParam]);
 
   useSeo({
-    title: `All ${tools.length} Free Online Tools — Browse the Toolkit | Toolora`,
+    title: `All ${tools.length} Free Online Tools — Browse the Toolkit | Toolsy`,
     description: `Browse ${tools.length} free tools in ${suites.length} organised suites: calculators, text studio, image studio, developer toolkit, PDF, QR, family growth, plus generators and guides. Search every function instantly.`,
     path: "/tools",
     schema: {
       "@type": "CollectionPage",
-      name: "All Toolora tools",
+      name: "All Toolsy tools",
       description: `A free online toolkit of ${tools.length} browser-based utilities in ${suites.length} organised suites for developers, writers, designers and everyday tasks.`,
-      url: "https://toolora.com/tools",
+      url: "https://toolsy.com/tools",
       mainEntity: {
         "@type": "ItemList",
         numberOfItems: tools.length,
@@ -57,7 +57,7 @@ export function ToolsIndex() {
           "@type": "ListItem",
           position: index + 1,
           name: tool.name,
-          url: `https://toolora.com/tools/${tool.slug}`,
+          url: `https://toolsy.com/tools/${tool.slug}`,
         })),
       },
     },
@@ -126,7 +126,7 @@ export function ToolsIndex() {
           </div>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {popular.map((tool) => (
-              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group inline-flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.025] px-2.5 py-1.5 text-[11.5px] text-mist-300 transition hover:border-brand-400/30 hover:bg-brand-400/[0.05] hover:text-mist-50">
+              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.025] px-2.5 py-1.5 text-[11.5px] text-mist-300 transition hover:border-brand-400/30 hover:bg-brand-400/[0.05] hover:text-mist-50">
                 <Icon name={tool.icon} size={12} className="text-mist-500 group-hover:text-brand-300" />
                 {toolName(tool)}
                 <Icon name="arrowUpRight" size={10} className="text-mist-600 group-hover:text-brand-300" />
@@ -173,9 +173,9 @@ export function FavoritesPage() {
   const [confirming, setConfirming] = useState(false);
 
   useSeo({
-    title: "Your Saved Tools — Toolora Favorites",
+    title: "Your Saved Tools — Toolsy Favorites",
     description:
-      "Your saved Toolora tools, stored privately in this browser. Open a favorite or star more from the full toolkit.",
+      "Your saved Toolsy tools, stored privately in this browser. Open a favorite or star more from the full toolkit.",
     path: "/favorites",
     noindex: true,
   });

@@ -5,36 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#060709" />
     <meta name="color-scheme" content="dark" />
-    <title>Toolora — 88 Free Online Tools, No Sign-Up Required</title>
+    <title>Toolsy — 98 Free Online Tools, No Sign-Up Required</title>
     <meta
       name="description"
-      content="Toolora is a free online toolkit with 88 genuinely useful tools — JSON formatter, Base64, image and PDF tools, height and BMI calculators, JSON and markup formatters, password generator, QR codes and more. No sign-up, nothing uploaded."
+      content="Toolsy is a free online toolkit with 98 genuinely useful tools — JSON formatter, Base64, image and PDF tools, height and BMI calculators, JSON and markup formatters, password generator, QR codes and more. No sign-up, nothing uploaded."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon-192.png" />
-    <link rel="canonical" href="https://toolora.com/" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon-192.png" />
+    <link rel="canonical" href="https://toolsy.com/" />
 
-    <meta property="og:site_name" content="Toolora" />
+    <meta property="og:site_name" content="Toolsy" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Toolora — 88 Free Online Tools, No Sign-Up Required" />
+    <meta property="og:title" content="Toolsy — 98 Free Online Tools, No Sign-Up Required" />
     <meta
       property="og:description"
       content="A calm, fast toolkit for everyday tasks and development. Format JSON, compress images, generate passwords, convert, compare and clean up — all in your browser."
     />
-    <meta property="og:url" content="https://toolora.com/" />
-    <meta property="og:image" content="https://toolora.com/og-image.png" />
+    <meta property="og:url" content="https://toolsy.com/" />
+    <meta property="og:image" content="https://toolsy.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Toolora — free online tools, no account required" />
+    <meta property="og:image:alt" content="Toolsy — free online tools, no account required" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Toolora — 88 Free Online Tools" />
+    <meta name="twitter:title" content="Toolsy — 98 Free Online Tools" />
     <meta
       name="twitter:description"
-      content="88 useful tools that run privately in your browser. Free, no account required."
+      content="98 useful tools that run privately in your browser. Free, no account required."
     />
-    <meta name="twitter:image" content="https://toolora.com/og-image.png" />
+    <meta name="twitter:image" content="https://toolsy.com/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,28 +43,39 @@
       rel="stylesheet"
     />
 
+    <script>
+      /* When served, resolve relative public assets (icons, manifest) from the
+         site root so SPA deep links do not request /tools/favicon.svg. */
+      if (window.location.protocol !== "file:") {
+        document.querySelectorAll('link[rel="manifest"],link[rel="icon"],link[rel="apple-touch-icon"]').forEach(function (link) {
+          var href = link.getAttribute("href");
+          if (href && href.indexOf("./") === 0) link.setAttribute("href", "/" + href.slice(2));
+        });
+      }
+    </script>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://toolora.com/#organization",
-            "name": "Toolora",
-            "url": "https://toolora.com/",
+            "@id": "https://toolsy.com/#organization",
+            "name": "Toolsy",
+            "url": "https://toolsy.com/",
             "description": "A free online tools platform with browser-based utilities for everyday tasks and development work.",
-            "email": "hello@toolora.com",
-            "logo": "https://toolora.com/favicon.svg"
+            "email": "hello@toolsy.com",
+            "logo": "https://toolsy.com/favicon.svg"
           },
           {
             "@type": "WebSite",
-            "@id": "https://toolora.com/#website",
-            "url": "https://toolora.com/",
-            "name": "Toolora",
-            "publisher": { "@id": "https://toolora.com/#organization" },
+            "@id": "https://toolsy.com/#website",
+            "url": "https://toolsy.com/",
+            "name": "Toolsy",
+            "publisher": { "@id": "https://toolsy.com/#organization" },
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://toolora.com/tools?q={search_term_string}",
+              "target": "https://toolsy.com/tools?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           }
@@ -74,9 +85,27 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- dev-root-guard -->
+    <script>
+      /* The repository root is Vite source and needs a build/dev server.
+         If this file is opened directly from disk, hand over to the built,
+         self-contained site in ./dist/index.html instead of showing a blank page. */
+      if (window.location.protocol === "file:") {
+        var built = "./dist/index.html";
+        var notice = document.createElement("div");
+        notice.setAttribute("style", "font-family:system-ui,sans-serif;background:#060709;color:#f7f8f3;min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center");
+        notice.innerHTML =
+          '<div style="max-width:520px"><p style="color:#c7f05f;font-size:12px;letter-spacing:.18em;text-transform:uppercase">Toolsy</p>' +
+          '<h1 style="font-size:24px;margin:12px 0">Opening the built site…</h1>' +
+          '<p style="color:#9aa294;line-height:1.6">If nothing happens, run <code>npm install</code> then <code>npm run build</code>, and open <code>dist/index.html</code>.</p></div>';
+        document.body.appendChild(notice);
+        window.location.replace(built);
+      }
+    </script>
+    <!-- /dev-root-guard -->
     <noscript>
       <div style="padding: 2rem; color: #f4f5f0; background: #060709; font-family: sans-serif">
-        Toolora's tools run in your browser and need JavaScript enabled. Please enable JavaScript
+        Toolsy's tools run in your browser and need JavaScript enabled. Please enable JavaScript
         to use the toolkit.
       </div>
     </noscript>

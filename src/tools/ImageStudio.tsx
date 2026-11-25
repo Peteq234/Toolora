@@ -264,7 +264,7 @@ export function ImageResizer() {
               </Button>
               {output && (
                 <>
-                  <Button variant="secondary" size="sm" onClick={() => downloadDataUrl(output, `toolora-${width}x${height}.png`)}>
+                  <Button variant="secondary" size="sm" onClick={() => downloadDataUrl(output, `toolsy-${width}x${height}.png`)}>
                     <Icon name="download" size={14} /> Download PNG
                   </Button>
                   <span className="font-mono text-[10px] text-mist-500">{formatBytes(size)}</span>
@@ -408,7 +408,7 @@ export function ImageCropper() {
               {busy ? "Cropping…" : "Crop image"}
             </Button>
             {preview && (
-              <Button variant="secondary" size="sm" onClick={() => downloadDataUrl(preview, "toolora-cropped.png")}>
+              <Button variant="secondary" size="sm" onClick={() => downloadDataUrl(preview, "toolsy-cropped.png")}>
                 <Icon name="download" size={14} /> Download crop
               </Button>
             )}
@@ -501,7 +501,7 @@ export function ImageFormatConverter() {
             </Button>
             {result && (
               <>
-                <Button variant="secondary" size="sm" onClick={() => downloadDataUrl(result.url, `toolora-converted.${extension}`)}>
+                <Button variant="secondary" size="sm" onClick={() => downloadDataUrl(result.url, `toolsy-converted.${extension}`)}>
                   <Icon name="download" size={14} /> Download .{extension}
                 </Button>
                 <span className="font-mono text-[10px] text-mist-500">{formatBytes(image.file.size)} → {formatBytes(result.size)}</span>

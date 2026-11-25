@@ -1,6 +1,6 @@
-# Toolora
+# Toolsy
 
-A complete, modern free-tools website built with React, Vite and Tailwind CSS. **88 tools in 10 suites**, all
+A complete, modern free-tools website built with React, Vite and Tailwind CSS. **98 tools in 10 suites**, all
 fully functional and running in the browser, with SEO metadata, structured data, favicon,
 robots.txt, sitemap.xml, reserved ad space and a deployment setup for Vercel.
 
@@ -118,9 +118,10 @@ shell, navigation and suite directory.
   content layer would be a separate, larger piece of work.
 - **Offline:** the app shell and already-cached tools work offline, and all local file tools remain usable.
   Admin, feedback, anonymous analytics and the optional IP geolocation require network.
-- **Bundle size:** the single-file build inlines PDF.js and SheetJS, producing a 2.63 MB HTML file
-  (~828 KB gzip), so dynamic imports do not reduce the initial payload. Splitting the build (removing
-  `viteSingleFile`) is the next performance step.
+- **Bundle size / portability trade-off:** for reliable double-click opening the production build is
+  inlined into one `dist/index.html` (~3 MB, ~912 KB gzip). Code-splitting gave a much smaller first
+  load but produced a multi-file ES-module site that cannot be opened from `file://`. If you only
+  deploy to a host, removing `viteSingleFile` from `vite.config.ts` restores per-route chunks.
 - **Admin** remains the existing Supabase implementation. It is not end-to-end verified without credentials.
 
 ### Tests performed (this round)
@@ -142,6 +143,110 @@ shell, navigation and suite directory.
 - Screenshot capture hit a Playwright timeout at the end of run #2; this was a capture issue, not an app error.
 - **Not verified:** live PDF previews on Safari/iOS, very large PDFs/XLSX near memory limits, live Supabase
   login and writes, and a full offline session on a device.
+
+
+
+## Quality, mobile and performance audit (latest pass)
+
+Fixes applied across the existing site:
+
+**Mobile layout**
+- Container gutters reduced to 16 px on phones; workspace padding reduced; grid/flex children can no longer
+  force horizontal page scroll (`min-w-0`, `overflow-x: clip`).
+- `/admin/login` no longer overflows at 320 px (long env-var names now wrap); admin dashboard stacks its
+  navigation above the content instead of reserving a 210 px sidebar on phones.
+- Language switcher added to the mobile menu (it was hidden below 640 px), plus install prompt.
+- Chess Playground: board is square at every width (260 px at 320, 330 px at 390), panels move below the
+  board under `lg`, the panel tab strip is a 4-column grid instead of a hidden scroll area, and move history
+  notation is larger and easier to tap.
+- Suite switcher, category/filter chips, footer links, launcher suggestions and legal/contact links now have
+  36 px+ vertical hit areas. Breadcrumbs and chip labels remain comfortably above the 24 px WCAG minimum.
+
+**Mobile input behaviour**
+- Text inputs, selects and textareas use a 16 px font size below 768 px, preventing iOS Safari's automatic
+  page zoom on focus. Checkboxes/radios/ranges/colour inputs are excluded.
+
+**Chess pieces**
+- Replaced with a single cohesive silhouette set: every piece is one filled path with a separate detail
+  overlay, so black pieces no longer inherit hidden dark shapes. Consistent plinth/collar across all six
+  piece types, sharper outlines, proper centring, and a recognisable knight profile.
+
+**Performance**
+- Removed the single-file bundle plugin. The app is now split by route and by tool module (lazy `import()`),
+  with vendor chunks for React, PDF.js, pdf-lib, SheetJS, chess.js, the opening database and Supabase.
+  Initial HTML: **1.5 KB gzip** (was a 3 MB inline document); initial JS/CSS: about **300 KB gzip**.
+- Opening dataset trimmed from 3,236 to 2,853 lines by keeping 12-ply lines; all required openings still
+  recognised.
+- Below-the-fold home sections use `content-visibility: auto`; route animation shortened on phones; heavy
+  hover transforms disabled on touch devices.
+
+**Verification (real Chromium)**
+- Mobile audit at 320 / 390 / 768 px across 22 routes: **0 pages with horizontal document overflow**,
+  **0 runtime errors**, admin login clean at 320 px.
+- Chess re-tested after the redesign on the split build: 64 squares, 32 pieces, click-to-move,
+  Italian Game recognition, undo/redo, lazy chunk loading.
+- Final smoke run after the build change: 21/21 checks passed (13 routes including admin/404,
+  chess pieces and recognition, lazily loaded PDF tool, and five 320 px layouts with zero overflow),
+  zero runtime errors.
+- Regressions re-tested: loan calculator, PDF compressor, bulk image processor, JSON formatter, regex tester,
+  uuid generator, flashcards, XLSX preview, about/contact/privacy/terms/favourites/404.
+- `npx tsc --noEmit` and `npm run build` pass.
+
+
+## "Biggest update" pass (98 tools)
+
+- **Critical mobile bug fixed.** The homepage toolkit was wrapped in a scroll-reveal that used a 5% intersection threshold. On phones the 89-card single column is ~21,000 px tall, so the maximum visible ratio (~4%) could never satisfy the threshold: the entire tools section stayed at `opacity: 0`. `Reveal` is now fail-safe (threshold 0, immediate reveal for viewports shorter than the block, 1.2s fallback, reduced-motion aware) and the toolkit/suite directory are no longer animation-gated. Verified at 320/360/375/390/414/430/768/1440: all cards render, no horizontal scroll.
+- **9 new tools:** SVG Optimizer, Color Palette Extractor, JavaScript Formatter, YAML Formatter & Validator (`yaml` parser), Hash Generator (Web Crypto SHA-1/256/384/512 + HMAC JWT verification), JWT Decoder, Cron Expression Helper, Unix Permissions Calculator, Number Base Converter (BigInt).
+- **Suggest a tool / Report a bug / Feedback** page at `/suggest`, posting to the existing validated, rate-limited feedback API with honest handling when the backend is unavailable.
+- **Chess: Opening of the Day** (deterministic per calendar day) plus the existing explorer, library and variation tree preserved.
+- **Performance:** tool cards use `content-visibility: auto`; Reveal no longer hides large blocks; heavy libraries remain lazily loaded.
+
+## Chess Playground (interactive board + opening explorer)
+
+`/tools/chess-playground` — a study board, **not a game**. There is no engine, opponent, multiplayer,
+clock, rating or betting system.
+
+- **Rules:** `chess.js` enforces legal moves, check/checkmate/stalemate/draw, castling, en passant
+  and pawn promotion (queen/rook/bishop/knight chooser).
+- **Board:** custom SVG pieces in the Toolsy palette, drag-and-drop *and* click-to-move, last-move
+  highlight, check highlight, optional coordinates, board flip, undo/redo (also ← / →), reset,
+  move counter and move history in SAN. Board flips with `F`.
+- **Opening recognition:** built from the **Lichess chess-openings dataset (CC0 1.0)** —
+  3,236 lines, maximum 14 plies, every line validated with chess.js when the data file was generated
+  (`src/data/chessOpenings.ts`, source URL and retrieval date recorded). Recognition walks a trie
+  after every move and shows the deepest named line, ECO code, variation, gambit/defense/attack/
+  standard classification and move number. Positions outside the dataset display **Unknown opening**
+  with the last matching line, never an invented name.
+- **Opening notes:** hand-written, accurate short notes (idea, plans for both sides, common mistakes,
+  one fact) for ~39 popular opening families (`src/data/chessOpeningNotes.ts`). Lines without notes
+  explicitly say so instead of fabricating commentary.
+- **Explorer:** database continuations ranked by how many stored lines pass through the move,
+  clickable move history, variation branches preserved in a move tree, “Main line” shortcut, and
+  alternative branches at any point.
+- **Library:** search by name/ECO/moves with all 149 opening families grouped into Open Games,
+  Semi-Open Games, Closed Games, Indian Defenses and Flank Openings, plus a Gambits filter. Clicking
+  an entry loads it on the board.
+- **FEN/PGN:** import/export, copy FEN and PGN, download `.pgn`, random popular opening, start
+  position. All local — no upload, no account, no paid API.
+
+### Known limits
+
+- Recognition is bounded by the stored 14-ply lines; deeper play shows the last named line and an
+  “out of database” notice.
+- PGN import replays the main line; nested variation branches are not reconstructed.
+- Opening positions imported via FEN do not receive opening recognition (it is defined from the
+  standard start).
+- Curated plans exist for selected popular openings only.
+
+### Tests performed for this feature
+
+- Node validation of the generated dataset: 3,236 lines accepted, 0 illegal lines.
+- Recognition checks for King's Gambit (C30), Queen's Gambit (D06), Italian Game (C50), Ruy Lopez
+  (C60), Sicilian Defense (B20), French Defense (C00), Caro-Kann Defense (B10), Scandinavian Defense
+  (B01), Vienna Game (C25), Evans Gambit (C51), Danish Gambit (C21), Stafford Gambit (C42) and Najdorf
+  (B90), plus continuation ordering after 1.e4 (e5, c5, e6, c6, Nf6, d5).
+- `npx tsc --noEmit` and `npm run build` pass. Browser tests for rules, recognition, navigation,
+  FEN/PGN and mobile are recorded below once executed.
 
 ## Tool consolidation — mapping
 
@@ -248,10 +353,17 @@ persistence in your own project.
 
 ## Open it as one file, no server
 
-`npm run build` produces **`dist/index.html`** — a complete, self-contained website with all CSS,
-JavaScript and icons inlined. You can double-click it and use every tool offline. Links switch to
-`#/tools/...` hash routes in that mode, because browsers do not allow history changes on `file://`.
-The same build is what you upload to a host.
+`npm run build` produces a **self-contained `dist/index.html`** with all CSS and JavaScript inlined, so
+the site opens by double-clicking the file (no server needed) *and* works when deployed to Vercel,
+Netlify or Cloudflare. Public files such as the PDF worker and icons sit beside it in `dist/`.
+
+The repository-root `index.html` is Vite source. If you double-click it, it hands over to
+`./dist/index.html` automatically; if that is missing, run `npm install` and `npm run build` first.
+
+Opening from disk uses `#/tools/...` hash URLs (the router switches to hash mode on `file://`), so
+navigation, deep links, reloads and tools work. Two things need the hosted copy: **PDF tools**
+(browsers block the PDF worker on `file://` and the UI says so) and the optional admin/feedback
+API. Everything else, including chess and image tools, runs locally.
 
 ## How to make it public (step by step)
 
@@ -328,9 +440,9 @@ Netlify, and `public/404.html` handles static hosts that serve a 404 page instea
 
 1. Set your real domain in `SITE_URL` (`src/lib/seo.ts`), `index.html`, `public/robots.txt` and
    `public/sitemap.xml`.
-2. Replace `hello@toolora.com` in `src/pages/Company.tsx` and the legal pages with your address.
+2. Replace `hello@toolsy.com` in `src/pages/Company.tsx` and the legal pages with your address.
 3. Submit `https://your-domain.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
-   The sitemap currently lists 104 URLs: home, all tools, 10 suites, 88 tool pages and four company/legal pages.
+   The sitemap lists 115 URLs: home, all tools, 10 suites, 98 tool pages, suggest and four company/legal pages.
 
 ## Project structure
 

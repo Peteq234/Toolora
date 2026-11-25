@@ -146,9 +146,9 @@ export function BulkImageProcessor() {
     (async () => {
       for (const result of good) {
         const response = await fetch(result.url);
-        files[`${result.name}-toolora.${extension}`] = new Uint8Array(await response.arrayBuffer());
+        files[`${result.name}-toolsy.${extension}`] = new Uint8Array(await response.arrayBuffer());
       }
-      downloadBlob(new Blob([zipSync(files) as unknown as BlobPart], { type: "application/zip" }), "toolora-images.zip");
+      downloadBlob(new Blob([zipSync(files) as unknown as BlobPart], { type: "application/zip" }), "toolsy-images.zip");
     })().catch(() => setError("Could not build the ZIP archive. Try downloading files individually."));
   }
 
@@ -205,7 +205,7 @@ export function BulkImageProcessor() {
                     <div key={result.id} className="flex flex-wrap items-center gap-2 border-b border-white/[0.05] px-3 py-2 last:border-b-0">
                       <span className="min-w-0 flex-1 truncate font-mono text-[11px] text-mist-300">{result.name}</span>
                       <span className="font-mono text-[9.5px] text-mist-500">{formatBytes(result.original)} → {result.ok ? formatBytes(result.size) : "—"}</span>
-                      {result.ok ? <a href={result.url} download={`${result.name}-toolora`} className="inline-flex h-7 items-center gap-1 rounded border border-white/10 px-2 text-[10.5px] text-mist-200 hover:text-brand-200"><Icon name="download" size={11} /> Save</a> : <span className="text-[10px] text-amber-300">{result.reason}</span>}
+                      {result.ok ? <a href={result.url} download={`${result.name}-toolsy`} className="inline-flex h-7 items-center gap-1 rounded border border-white/10 px-2 text-[10.5px] text-mist-200 hover:text-brand-200"><Icon name="download" size={11} /> Save</a> : <span className="text-[10px] text-amber-300">{result.reason}</span>}
                     </div>
                   ))}
                 </div>
@@ -490,10 +490,10 @@ export function FaviconGenerator() {
 }
 
 function outputSnippet(): string {
-  return `<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
-<link rel="manifest" href="/site.webmanifest">`;
+  return `<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="manifest" href="site.webmanifest">`;
 }
 
 /* ----------------------------- social resizer ----------------------------- */
@@ -579,7 +579,7 @@ export function SocialImageResizer() {
                   <div><p className="mb-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-brand-300">Result · {active.width}×{active.height}</p><img src={result} alt="Resized result" className="max-h-[240px] rounded-xl border border-brand-400/25 object-contain" /></div>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <a href={result} download={`toolora-${active.id}.png`} className="inline-flex h-10 items-center gap-2 rounded-xl bg-brand-400 px-4 text-[13px] font-bold text-ink-950 hover:bg-brand-300"><Icon name="download" size={15} /> Download PNG · {formatBytes(size)}</a>
+                  <a href={result} download={`toolsy-${active.id}.png`} className="inline-flex h-10 items-center gap-2 rounded-xl bg-brand-400 px-4 text-[13px] font-bold text-ink-950 hover:bg-brand-300"><Icon name="download" size={15} /> Download PNG · {formatBytes(size)}</a>
                 </div>
               </>
             )}

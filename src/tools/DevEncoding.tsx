@@ -33,7 +33,7 @@ function formatBytes(bytes: number): string {
 
 type JsonIssue = { message: string; line: number; column: number; snippet: string };
 
-const JSON_SAMPLE = `{"project":"Toolora","version":2,"private":true,"tools":25,"categories":["generators","text","developer","design"],"settings":{"theme":"dark","localOnly":true},"author":{"name":"Toolora","url":"https://toolora.com"}}`;
+const JSON_SAMPLE = `{"project":"Toolsy","version":2,"private":true,"tools":25,"categories":["generators","text","developer","design"],"settings":{"theme":"dark","localOnly":true},"author":{"name":"Toolsy","url":"https://toolsy.com"}}`;
 
 function inspectJsonError(raw: string, error: unknown): JsonIssue {
   const fallback = error instanceof Error ? error.message : "This is not valid JSON.";
@@ -223,7 +223,7 @@ export function JsonFormatter() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => downloadFile(output, "toolora.json", "application/json")}
+            onClick={() => downloadFile(output, "toolsy.json", "application/json")}
             disabled={!output}
           >
             <Icon name="download" size={14} />
@@ -335,7 +335,7 @@ function decodeBase64(text: string): string {
 
 export function Base64Tool() {
   const [direction, setDirection] = useState<Direction>("encode");
-  const [input, setInput] = useState("Toolora — narzędzia online ✨");
+  const [input, setInput] = useState("Toolsy — narzędzia online ✨");
   const [urlSafe, setUrlSafe] = useState(false);
 
   const result = useMemo(() => {
@@ -439,7 +439,7 @@ export function Base64Tool() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => downloadFile(result.output, direction === "encode" ? "toolora-base64.txt" : "toolora-decoded.txt")}
+            onClick={() => downloadFile(result.output, direction === "encode" ? "toolsy-base64.txt" : "toolsy-decoded.txt")}
             disabled={!result.output}
           >
             <Icon name="download" size={14} />
@@ -485,7 +485,7 @@ export function UrlEncoderTool() {
   const [mode, setMode] = useState<UrlMode>("full");
   const [plusAsSpace, setPlusAsSpace] = useState(false);
   const [input, setInput] = useState(
-    "https://toolora.com/tools/url-encoder-decoder?query=free online tools&lang=pl"
+    "https://toolsy.com/tools/url-encoder-decoder?query=free online tools&lang=pl"
   );
 
   const result = useMemo(() => {

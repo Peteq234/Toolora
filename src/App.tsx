@@ -10,6 +10,7 @@ import { Home } from "@/pages/Home";
 import { FavoritesPage, ToolsIndex } from "@/pages/Browse";
 import { AboutPage, ContactPage, NotFoundPage } from "@/pages/Company";
 import { PrivacyPage, TermsPage } from "@/pages/Legal";
+import { SuggestPage } from "@/pages/Suggest";
 import { ToolPage } from "@/pages/ToolPage";
 import { SuitePage } from "@/pages/SuitePage";
 
@@ -39,6 +40,7 @@ function Routes() {
   if (pathname === "/favorites") return <FavoritesPage />;
   if (pathname === "/about") return <AboutPage />;
   if (pathname === "/contact") return <ContactPage />;
+  if (pathname === "/suggest") return <SuggestPage />;
   if (pathname === "/privacy") return <PrivacyPage />;
   if (pathname === "/terms") return <TermsPage />;
 

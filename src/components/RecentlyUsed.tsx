@@ -33,7 +33,7 @@ export function RecentTools({ className }: { className?: string }) {
         <button
           type="button"
           onClick={clearRecent}
-          className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-[11px] font-medium text-mist-500 transition hover:bg-white/[0.04] hover:text-mist-200"
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2 py-1 text-[11px] font-medium text-mist-500 transition hover:bg-white/[0.04] hover:text-mist-200"
         >
           <Icon name="trash" size={12} />
           Clear history

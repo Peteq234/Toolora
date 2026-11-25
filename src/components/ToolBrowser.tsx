@@ -25,6 +25,7 @@ export const categoryAccent: Record<CategoryId, string> = {
   developer: "border-emerald-400/20 bg-emerald-400/[0.09] text-emerald-300",
   files: "border-cyan-400/20 bg-cyan-400/[0.09] text-cyan-300",
   family: "border-rose-400/20 bg-rose-400/[0.09] text-rose-300",
+  learning: "border-indigo-400/20 bg-indigo-400/[0.09] text-indigo-300",
 };
 
 export function ToolCard({ tool }: { tool: Tool }) {
@@ -34,7 +35,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
   const displayName = toolName(tool);
   const displayDescription = toolDescription(tool);
   return (
-    <div className="group relative h-full">
+    <div className="group relative h-full [contain-intrinsic-size:auto_190px] [content-visibility:auto]">
       <Link
         href={`/tools/${tool.slug}`}
         className="relative flex h-full flex-col overflow-hidden rounded-[20px] border border-white/[0.07] bg-gradient-to-b from-white/[0.045] to-transparent bg-ink-850 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.16] hover:shadow-[0_28px_60px_-32px_rgba(0,0,0,0.95)]"
@@ -237,7 +238,7 @@ export function ToolBrowser({
             onClick={() => setCategory("all")}
             aria-pressed={category === "all"}
             className={cn(
-              "shrink-0 rounded-full border px-3 py-1.5 text-[11.5px] font-semibold transition",
+              "inline-flex min-h-9 shrink-0 items-center rounded-full border px-3 py-1.5 text-[11.5px] font-semibold transition",
               category === "all"
                 ? "border-brand-400/40 bg-brand-400 text-ink-950"
                 : "border-white/8 bg-white/[0.02] text-mist-400 hover:border-white/15 hover:text-mist-100"
@@ -252,7 +253,7 @@ export function ToolBrowser({
               onClick={() => setCategory(item.id)}
               aria-pressed={category === item.id}
               className={cn(
-                "shrink-0 rounded-full border px-3 py-1.5 text-[11.5px] font-medium transition",
+                "inline-flex min-h-9 shrink-0 items-center rounded-full border px-3 py-1.5 text-[11.5px] font-medium transition",
                 category === item.id
                   ? "border-brand-400/40 bg-brand-400 text-ink-950"
                   : "border-white/8 bg-white/[0.02] text-mist-400 hover:border-white/15 hover:text-mist-100"
@@ -293,7 +294,7 @@ export function ToolBrowser({
           <button
             type="button"
             onClick={resetFilters}
-            className="inline-flex items-center gap-1.5 text-[11.5px] font-medium text-mist-500 transition hover:text-mist-200"
+            className="inline-flex min-h-8 items-center gap-1.5 px-1 text-[11.5px] font-medium text-mist-500 transition hover:text-mist-200"
           >
             <Icon name="refresh" size={12} />
             Reset filters

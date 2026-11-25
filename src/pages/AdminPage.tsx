@@ -7,6 +7,7 @@ import { categories as baseCategories, tools } from "@/lib/tools";
 import { suiteForTool, suites } from "@/lib/suites";
 import { cn } from "@/utils/cn";
 import { Button, Field, Input } from "@/components/ui";
+import { useSeo } from "@/lib/seo";
 
 /* ------------------------------ supabase client ---------------------------- */
 
@@ -63,16 +64,16 @@ async function adminFetch<T>(session: Session, path: string, init?: RequestInit)
 
 function SetupNotice() {
   return (
-    <main className="grid min-h-screen place-items-center px-5 py-12" style={{ background: "radial-gradient(60% 50% at 50% 0%, rgba(199,240,95,0.08), transparent 70%), #060709" }}>
-      <div className="w-full max-w-2xl">
+    <main className="grid min-h-screen place-items-center overflow-x-hidden px-4 py-10 sm:px-5 sm:py-12" style={{ background: "radial-gradient(60% 50% at 50% 0%, rgba(199,240,95,0.08), transparent 70%), #060709" }}>
+      <div className="w-full min-w-0 max-w-2xl">
         <div className="flex items-center gap-3">
           <LogoMark className="size-10" />
           <div>
-            <p className="text-[16px] font-extrabold tracking-tight text-mist-50">Toolora <span className="text-brand-400">Admin</span></p>
+            <p className="text-[16px] font-extrabold tracking-tight text-mist-50">Toolsy <span className="text-brand-400">Admin</span></p>
             <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-mist-500">Private dashboard</p>
           </div>
         </div>
-        <div className="mt-6 rounded-2xl border border-amber-400/25 bg-amber-400/[0.05] p-5">
+        <div className="mt-6 min-w-0 rounded-2xl border border-amber-400/25 bg-amber-400/[0.05] p-4 sm:p-5">
           <div className="flex items-center gap-2">
             <Icon name="lock" size={16} className="text-amber-300" />
             <h1 className="text-[16px] font-semibold text-amber-100">Authentication backend is not configured</h1>
@@ -81,18 +82,18 @@ function SetupNotice() {
             The dashboard intentionally does not fake a login. Until Supabase credentials are set, there
             is no account system to authenticate against, and no admin data exists to display.
           </p>
-          <ol className="mt-4 space-y-2.5 text-[12px] leading-relaxed text-mist-300">
-            <li><span className="font-mono text-brand-300">1.</span> Create a free Supabase project, then run <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">supabase/migrations/0001_admin_schema.sql</code> in its SQL editor.</li>
+          <ol className="mt-4 min-w-0 space-y-2.5 break-words text-[12px] leading-relaxed text-mist-300 [overflow-wrap:anywhere]">
+            <li><span className="font-mono text-brand-300">1.</span> Create a free Supabase project, then run <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">supabase/migrations/0001_admin_schema.sql</code> in its SQL editor.</li>
             <li><span className="font-mono text-brand-300">2.</span> Create your account in Supabase → Authentication → Users.</li>
-            <li><span className="font-mono text-brand-300">3.</span> Add that user's UUID to <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">public.admin_users</code> using the SQL snippet at the end of the migration.</li>
-            <li><span className="font-mono text-brand-300">4.</span> In Vercel, set <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">VITE_SUPABASE_URL</code>, <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">VITE_SUPABASE_ANON_KEY</code>, <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">SUPABASE_URL</code>, <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">SUPABASE_ANON_KEY</code>, <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">SUPABASE_SERVICE_ROLE_KEY</code> and optionally <code className="rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">ADMIN_EMAILS</code>. Redeploy.</li>
+            <li><span className="font-mono text-brand-300">3.</span> Add that user's UUID to <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">public.admin_users</code> using the SQL snippet at the end of the migration.</li>
+            <li><span className="font-mono text-brand-300">4.</span> In Vercel, set <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">VITE_SUPABASE_URL</code>, <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">VITE_SUPABASE_ANON_KEY</code>, <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">SUPABASE_URL</code>, <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">SUPABASE_ANON_KEY</code>, <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">SUPABASE_SERVICE_ROLE_KEY</code> and optionally <code className="break-all rounded bg-white/5 px-1 py-0.5 font-mono text-[11px]">ADMIN_EMAILS</code>. Redeploy.</li>
           </ol>
-          <p className="mt-3 text-[11px] leading-relaxed text-mist-500">
-            Full instructions, including RLS verification steps, are in <code className="font-mono">docs/ADMIN_SETUP.md</code>. No password or service-role key belongs in frontend code or this repository.
+          <p className="mt-3 break-words text-[11px] leading-relaxed text-mist-500 [overflow-wrap:anywhere]">
+            Full instructions, including RLS verification steps, are in <code className="break-all font-mono">docs/ADMIN_SETUP.md</code>. No password or service-role key belongs in frontend code or this repository.
           </p>
         </div>
         <Button variant="secondary" className="mt-4" onClick={() => { window.location.href = "/"; }}>
-          <Icon name="arrowLeft" size={14} /> Back to Toolora
+          <Icon name="arrowLeft" size={14} /> Back to Toolsy
         </Button>
       </div>
     </main>
@@ -163,7 +164,7 @@ function LoginScreen({ onSession, supabase }: { onSession: (session: Session) =>
         <div className="flex items-center gap-3">
           <LogoMark className="size-10" />
           <div>
-            <p className="text-[17px] font-extrabold tracking-tight text-mist-50">Toolora<span className="text-brand-400">.</span></p>
+            <p className="text-[17px] font-extrabold tracking-tight text-mist-50">Toolsy<span className="text-brand-400">.</span></p>
             <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-mist-500">Administrator access</p>
           </div>
         </div>
@@ -1037,7 +1038,7 @@ function AnnouncementsSection({ session }: { session: Session }) {
 function SettingsSection({ session }: { session: Session }) {
   const [state, setState] = useState<ApiState>({ loading: true, error: "" });
   const [rows, setRows] = useState<Setting[]>([]);
-  const [siteName, setSiteName] = useState("Toolora");
+  const [siteName, setSiteName] = useState("Toolsy");
   const [indexing, setIndexing] = useState(true);
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
@@ -1155,18 +1156,18 @@ function Dashboard({ session, onSignOut, supabase }: { session: Session; onSignO
     <div className="min-h-screen bg-ink-950">
       <header className="sticky top-0 z-40 border-b border-white/[0.07] bg-ink-950/90 backdrop-blur-xl">
         <div className="mx-auto flex h-[60px] max-w-[1240px] items-center gap-3 px-4 sm:px-6">
-          <button type="button" onClick={() => setNavOpen((value) => !value)} className="grid size-9 place-items-center rounded-lg border border-white/10 text-mist-300 md:hidden" aria-label="Toggle admin navigation" aria-expanded={navOpen}>
+          <button type="button" onClick={() => setNavOpen((value) => !value)} className="grid size-10 place-items-center rounded-lg border border-white/10 text-mist-300 md:hidden" aria-label="Toggle admin navigation" aria-expanded={navOpen}>
             <Icon name={navOpen ? "close" : "menu"} size={16} />
           </button>
           <div className="flex min-w-0 items-center gap-2.5">
             <LogoMark className="size-8" />
             <div className="min-w-0">
-              <p className="truncate text-[13.5px] font-extrabold tracking-tight text-mist-50">Toolora <span className="text-brand-400">Admin</span></p>
+              <p className="truncate text-[13.5px] font-extrabold tracking-tight text-mist-50">Toolsy <span className="text-brand-400">Admin</span></p>
               <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-mist-600">{session.user.email}</p>
             </div>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <a href="/" className="hidden h-8 items-center gap-1.5 rounded-lg border border-white/10 px-2.5 text-[11px] font-medium text-mist-300 transition hover:bg-white/[0.05] sm:inline-flex">
+            <a href="/" className="hidden h-9 items-center gap-1.5 rounded-lg border border-white/10 px-2.5 text-[11px] font-medium text-mist-300 transition hover:bg-white/[0.05] sm:inline-flex">
               <Icon name="external" size={12} /> View site
             </a>
             <Button variant="secondary" size="sm" onClick={() => void signOut()}>
@@ -1176,9 +1177,9 @@ function Dashboard({ session, onSignOut, supabase }: { session: Session; onSignO
         </div>
       </header>
 
-      <div className="mx-auto flex max-w-[1240px] gap-6 px-4 py-5 sm:px-6">
-        <aside className={cn("w-[210px] shrink-0", navOpen ? "block" : "hidden md:block")}>
-          <nav aria-label="Admin sections" className="sticky top-[80px] space-y-0.5">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-4 px-4 py-4 sm:px-6 sm:py-5 md:flex-row md:gap-6">
+        <aside className={cn("w-full shrink-0 md:w-[210px]", navOpen ? "block" : "hidden md:block")}>
+          <nav aria-label="Admin sections" className="space-y-0.5 md:sticky md:top-[80px]">
             {NAV.map((item) => (
               <button
                 key={item.id}
@@ -1218,6 +1219,12 @@ function Dashboard({ session, onSignOut, supabase }: { session: Session; onSignO
 /* ---------------------------------- shell --------------------------------- */
 
 export function AdminPage() {
+  useSeo({
+    title: "Toolsy Admin — Private Dashboard",
+    description: "Private administrator access for Toolsy. Not indexed by search engines.",
+    path: "/admin",
+    noindex: true,
+  });
   const [session, setSession] = useState<Session | null>(null);
   const [checking, setChecking] = useState(CONFIGURED);
   const [supabase, setSupabase] = useState<SupabaseClient | null>(null);

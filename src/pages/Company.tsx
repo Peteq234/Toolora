@@ -49,7 +49,7 @@ const CONTACT_TOPICS = [
   { value: "privacy", label: "Privacy question" },
 ];
 
-const CONTACT_EMAIL = "hello@toolora.com";
+const CONTACT_EMAIL = "hello@toolsy.com";
 
 function validTopic(value: string | null): string {
   return CONTACT_TOPICS.some((topic) => topic.value === value) ? (value as string) : "general";
@@ -57,19 +57,19 @@ function validTopic(value: string | null): string {
 
 export function AboutPage() {
   useSeo({
-    title: "About Toolora — Free, Private Online Tools",
+    title: "About Toolsy — Free, Private Online Tools",
     description:
-      `Why Toolora exists: ${tools.length} genuinely useful browser-based tools, a privacy-first approach, honest funding plans and no fake statistics. Read our principles.`,
+      `Why Toolsy exists: ${tools.length} genuinely useful browser-based tools, a privacy-first approach, honest funding plans and no fake statistics. Read our principles.`,
     path: "/about",
     schema: {
       "@type": "AboutPage",
-      name: "About Toolora",
+      name: "About Toolsy",
       description:
-        "Toolora is a free online toolkit built around privacy, genuine utility and honest monetisation.",
+        "Toolsy is a free online toolkit built around privacy, genuine utility and honest monetisation.",
       url: `${SITE_URL}/about`,
       about: {
         "@type": "Organization",
-        name: "Toolora",
+        name: "Toolsy",
         url: SITE_URL,
         email: CONTACT_EMAIL,
         description:
@@ -83,14 +83,14 @@ export function AboutPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
 
       <header className="animate-fade-up max-w-3xl">
-        <Eyebrow>About Toolora</Eyebrow>
+        <Eyebrow>About Toolsy</Eyebrow>
         <h1 className="mt-3 text-[34px] font-semibold leading-[1.02] tracking-[-0.045em] text-mist-50 sm:text-[50px]">
           Tools should be useful.
           <br />
           <span className="font-serif font-normal italic text-brand-200">Not noisy.</span>
         </h1>
         <p className="mt-5 max-w-2xl text-[14.5px] leading-relaxed text-mist-400">
-          Toolora is a free online toolkit for the small tasks that break your concentration:
+          Toolsy is a free online toolkit for the small tasks that break your concentration:
           generating a password, counting a paragraph, converting a measurement, checking your age.
           {tools.length} tools, one calm interface and no account required.
         </p>
@@ -111,7 +111,7 @@ export function AboutPage() {
             <div className="mt-3 space-y-3 text-[13.5px] leading-[1.75] text-mist-400">
               <p>
                 Plenty of useful tools are buried under intrusive advertising, inflated claims or
-                sign-up walls. Toolora takes the opposite approach: the tool comes first, the
+                sign-up walls. Toolsy takes the opposite approach: the tool comes first, the
                 interface stays quiet, and nothing is uploaded unless there is a genuine reason.
               </p>
               <p>
@@ -120,7 +120,7 @@ export function AboutPage() {
                 the page explains the gap instead of inventing precision.
               </p>
               <p>
-                Toolora is an independent project rather than a large company. That means a smaller
+                Toolsy is an independent project rather than a large company. That means a smaller
                 catalogue and a slower roadmap, but also fewer reasons to compromise on the things
                 that make a tool worth trusting.
               </p>
@@ -151,7 +151,7 @@ export function AboutPage() {
             <ul className="mt-3 space-y-2.5 text-[13px] leading-relaxed text-mist-400">
               {[
                 "Most tools run entirely in your browser. Passwords use the Web Crypto API and calculations happen on your device.",
-                "Favorites are stored in your browser's local storage. They don't sync to other devices and Toolora cannot see them.",
+                "Favorites are stored in your browser's local storage. They don't sync to other devices and Toolsy cannot see them.",
                 "You can use every tool without an account. There is no email capture gate in front of results.",
                 "Pages are built with semantic HTML, keyboard focus states and reduced-motion support, so the site remains usable without a mouse or with animation disabled.",
               ].map((item) => (
@@ -165,11 +165,11 @@ export function AboutPage() {
 
           <section aria-labelledby="funding">
             <h2 id="funding" className="text-[24px] font-semibold tracking-[-0.025em] text-mist-50">
-              How Toolora is funded
+              How Toolsy is funded
             </h2>
             <div className="mt-3 space-y-3 text-[13.5px] leading-[1.75] text-mist-400">
               <p>
-                Toolora is free to use and currently shows no advertising. The plan is to fund the
+                Toolsy is free to use and currently shows no advertising. The plan is to fund the
                 project through clearly labelled advertising — for example Google AdSense after an
                 approval process — and, where genuinely relevant, affiliate links.
               </p>
@@ -199,7 +199,7 @@ export function AboutPage() {
                 className="inline-flex h-10 items-center gap-2 rounded-xl bg-brand-400 px-3.5 text-[12.5px] font-bold text-ink-950 transition hover:bg-brand-300"
               >
                 <Icon name="mail" size={14} />
-                Contact Toolora
+                Contact Toolsy
               </Link>
               <Link
                 href="/tools"
@@ -238,13 +238,13 @@ export function AboutPage() {
           <div className="mt-3 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4">
             <p className="text-[12px] font-semibold text-mist-100">Read the fine print</p>
             <div className="mt-2 space-y-1.5">
-              <Link href="/privacy" className="block text-[11.5px] text-mist-400 transition hover:text-brand-200">
+              <Link href="/privacy" className="inline-flex min-h-9 items-center text-[11.5px] text-mist-400 transition hover:text-brand-200">
                 Privacy policy
               </Link>
-              <Link href="/terms" className="block text-[11.5px] text-mist-400 transition hover:text-brand-200">
+              <Link href="/terms" className="inline-flex min-h-9 items-center text-[11.5px] text-mist-400 transition hover:text-brand-200">
                 Terms of use
               </Link>
-              <Link href="/contact?topic=advertising" className="block text-[11.5px] text-mist-400 transition hover:text-brand-200">
+              <Link href="/contact?topic=advertising" className="inline-flex min-h-9 items-center text-[11.5px] text-mist-400 transition hover:text-brand-200">
                 Advertising enquiries
               </Link>
             </div>
@@ -275,17 +275,17 @@ export function ContactPage() {
   const { openSearch } = useSearch();
 
   useSeo({
-    title: "Contact Toolora — Questions, Bugs & Advertising",
+    title: "Contact Toolsy — Questions, Bugs & Advertising",
     description:
-      "Get in touch with Toolora about a tool suggestion, bug report, privacy question or advertising enquiry. Direct email, no ticket system or account required.",
+      "Get in touch with Toolsy about a tool suggestion, bug report, privacy question or advertising enquiry. Direct email, no ticket system or account required.",
     path: "/contact",
     schema: {
       "@type": "ContactPage",
-      name: "Contact Toolora",
+      name: "Contact Toolsy",
       url: `${SITE_URL}/contact`,
       mainEntity: {
         "@type": "Organization",
-        name: "Toolora",
+        name: "Toolsy",
         email: CONTACT_EMAIL,
         contactPoint: {
           "@type": "ContactPoint",
@@ -320,8 +320,8 @@ export function ContactPage() {
 
     const topicLabel =
       CONTACT_TOPICS.find((topic) => topic.value === form.topic)?.label ?? "General question";
-    const subject = `[Toolora] ${topicLabel} — ${form.name.trim()}`;
-    const body = `From: ${form.name.trim()} <${form.email.trim()}>\nTopic: ${topicLabel}\n\n${form.message.trim()}\n\n---\nSent from the Toolora contact page.`;
+    const subject = `[Toolsy] ${topicLabel} — ${form.name.trim()}`;
+    const body = `From: ${form.name.trim()} <${form.email.trim()}>\nTopic: ${topicLabel}\n\n${form.message.trim()}\n\n---\nSent from the Toolsy contact page.`;
     const link = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setMailto(link);
     window.location.href = link;
@@ -417,7 +417,7 @@ export function ContactPage() {
             {mailto && (
               <div className="mt-4 space-y-3" role="status">
                 <Note tone="brand" title="Your email app should be opening">
-                  If nothing happened, use the direct link below or copy the message. Toolora cannot
+                  If nothing happened, use the direct link below or copy the message. Toolsy cannot
                   confirm that an email was sent until it reaches us.
                 </Note>
                 <div className="flex flex-wrap gap-2">
@@ -444,7 +444,7 @@ export function ContactPage() {
               href="/contact?topic=advertising"
               className="group rounded-xl border border-white/[0.07] bg-white/[0.018] p-4 transition hover:border-white/15"
             >
-              <p className="text-[12.5px] font-semibold text-mist-100">Advertise with Toolora</p>
+              <p className="text-[12.5px] font-semibold text-mist-100">Advertise with Toolsy</p>
               <p className="mt-1 text-[11.5px] leading-relaxed text-mist-500">
                 Ask about respectful, clearly labelled placements. No results are guaranteed.
               </p>
@@ -477,7 +477,7 @@ export function ContactPage() {
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-2 block break-all font-mono text-[12.5px] text-brand-200 underline decoration-brand-400/30 underline-offset-4 transition hover:text-brand-100"
+              className="mt-2 inline-flex min-h-9 items-center break-all font-mono text-[12.5px] text-brand-200 underline decoration-brand-400/30 underline-offset-4 transition hover:text-brand-100"
             >
               {CONTACT_EMAIL}
             </a>
@@ -523,8 +523,8 @@ export function NotFoundPage() {
   const { openSearch } = useSearch();
 
   useSeo({
-    title: "Page Not Found — Toolora",
-    description: "That page doesn't exist. Search the Toolora toolkit or browse all free tools.",
+    title: "Page Not Found — Toolsy",
+    description: "That page doesn't exist. Search the Toolsy toolkit or browse all free tools.",
     path: "/404",
     noindex: true,
   });
